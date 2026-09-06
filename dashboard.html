@@ -3,1641 +3,2029 @@
 
 <head>
 
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>PAHLAWAN REVOLUSI 5 - UANG KAS</title>
-
-  <link
-    rel="stylesheet"
-    href="css/style.css"
-  >
-
-  <style>
-
-    /* =====================================
-       DASHBOARD
-    ===================================== */
-
-    .dashboard-page {
-      min-height: 100vh;
-      padding: 18px;
-    }
-
-    .dashboard-container {
-      width: min(1200px, 100%);
-      margin: auto;
-    }
-
-
-    /* =====================================
-       TOPBAR
-    ===================================== */
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-
-      padding: 18px 20px;
-
-      border: 1px solid var(--line);
-      border-radius: 18px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(10,29,52,.98),
-          rgba(4,17,32,.98)
-        );
-
-      box-shadow:
-        0 12px 35px rgba(0,0,0,.25);
-    }
-
-    .brand-area {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .mini-logo {
-      width: 54px;
-      height: 54px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 14px;
-
-      background: white;
-
-      color: #0066b3;
-
-      font-size: 13px;
-      font-weight: 900;
-      font-style: italic;
-
-      box-shadow:
-        0 5px 20px rgba(0,0,0,.25);
-    }
-
-    .mini-logo span {
-      color: #e30613;
-    }
-
-    .brand-title h1 {
-      margin: 0;
-
-      font-size:
-        clamp(20px, 5vw, 30px);
-
-      line-height: 1.1;
-    }
-
-    .brand-title p {
-      margin-top: 5px;
-
-      color: var(--muted);
-
-      font-size: 11px;
-    }
-
-    .user-area {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .user-badge {
-      padding: 10px 14px;
-
-      border-radius: 10px;
-
-      background:
-        rgba(0,102,179,.15);
-
-      border:
-        1px solid rgba(0,102,179,.30);
-
-      text-align: right;
-    }
-
-    .user-badge strong {
-      display: block;
-      font-size: 12px;
-    }
-
-    .user-badge span {
-      display: block;
-
-      margin-top: 3px;
-
-      color: #72b8ee;
-
-      font-size: 9px;
-      font-weight: 700;
-    }
-
-    .logout-btn {
-      padding: 11px 14px;
-
-      border: 1px solid var(--line);
-
-      border-radius: 10px;
-
-      background: #102945;
-
-      color: white;
-
-      font-size: 11px;
-      font-weight: 800;
-
-      cursor: pointer;
-    }
-
-
-    /* =====================================
-       WELCOME
-    ===================================== */
-
-    .welcome-card {
-      margin-top: 18px;
-
-      padding: 25px;
-
-      border-radius: 18px;
-
-      border:
-        1px solid var(--line);
-
-      background:
-        linear-gradient(
-          135deg,
-          #0b2743,
-          #071a2d
-        );
-    }
-
-    .welcome-card h2 {
-      margin-top: 7px;
-
-      font-size:
-        clamp(22px, 5vw, 32px);
-    }
-
-    .welcome-card p:last-child {
-      margin-top: 8px;
-
-      color: var(--muted);
-
-      font-size: 12px;
-    }
-
-    .eyebrow {
-      color: #72b8ee;
-
-      font-size: 9px;
-
-      font-weight: 900;
-
-      letter-spacing: 1px;
-    }
-
-
-    /* =====================================
-       SUMMARY
-    ===================================== */
-
-    .summary-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 14px;
-
-      margin-top: 18px;
-    }
-
-    .summary-card {
-      padding: 20px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 17px;
-
-      background:
-        #081a2e;
-
-      min-height: 145px;
-    }
-
-    .summary-icon {
-      width: 38px;
-      height: 38px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 10px;
-
-      background:
-        rgba(255,255,255,.08);
-
-      font-size: 18px;
-
-      margin-bottom: 14px;
-    }
-
-    .summary-label {
-      color: var(--muted);
-
-      font-size: 10px;
-
-      font-weight: 800;
-
-      letter-spacing: .7px;
-    }
-
-    .summary-value {
-      margin-top: 7px;
-
-      font-size:
-        clamp(18px, 4vw, 27px);
-
-      font-weight: 900;
-    }
-
-    .summary-note {
-      margin-top: 7px;
-
-      color: #7ea0bd;
-
-      font-size: 9px;
-    }
-
-
-    /* =====================================
-       PANELS
-    ===================================== */
-
-    .panel {
-      margin-top: 18px;
-
-      padding: 20px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 18px;
-
-      background:
-        #081a2e;
-    }
-
-    .panel-header {
-      display: flex;
-
-      align-items: center;
-
-      justify-content:
-        space-between;
-
-      gap: 10px;
-
-      margin-bottom: 18px;
-    }
-
-    .panel-title {
-      font-size: 15px;
-      font-weight: 900;
-    }
-
-    .panel-subtitle {
-      margin-top: 4px;
-
-      color: var(--muted);
-
-      font-size: 10px;
-    }
-
-
-    /* =====================================
-       MONTH SELECTOR
-    ===================================== */
-
-    .period-box {
-      display: flex;
-
-      align-items: center;
-
-      gap: 8px;
-    }
-
-    .period-box select {
-      padding:
-        9px 11px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 9px;
-
-      color: white;
-
-      background:
-        #102945;
-
-      outline: none;
-
-      font-size: 10px;
-    }
-
-
-    /* =====================================
-       STATUS
-    ===================================== */
-
-    .status-summary {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 10px;
-
-      margin-bottom: 18px;
-    }
-
-    .status-box {
-      padding: 15px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 12px;
-
-      background:
-        rgba(255,255,255,.025);
-    }
-
-    .status-box span {
-      display: block;
-
-      color: var(--muted);
-
-      font-size: 9px;
-
-      font-weight: 800;
-    }
-
-    .status-box strong {
-      display: block;
-
-      margin-top: 6px;
-
-      font-size: 18px;
-    }
-
-    .status-box.paid strong {
-      color: #16d98b;
-    }
-
-    .status-box.unpaid strong {
-      color: #ff5965;
-    }
-
-
-    /* =====================================
-       TABLE
-    ===================================== */
-
-    .table-scroll {
-      width: 100%;
-      overflow-x: auto;
-    }
-
-    .employee-table {
-      width: 100%;
-
-      min-width: 700px;
-
-      border-collapse:
-        collapse;
-    }
-
-    .employee-table th {
-      padding:
-        12px 10px;
-
-      text-align: left;
-
-      color: #7893ad;
-
-      font-size: 9px;
-
-      letter-spacing: .5px;
-
-      border-bottom:
-        1px solid var(--line);
-    }
-
-    .employee-table td {
-      padding:
-        13px 10px;
-
-      border-bottom:
-        1px solid rgba(255,255,255,.055);
-
-      font-size: 11px;
-    }
-
-    .employee-table tr:last-child td {
-      border-bottom: 0;
-    }
-
-    .employee-name {
-      font-weight: 800;
-    }
-
-    .employee-job {
-      color: var(--muted);
-
-      font-size: 10px;
-    }
-
-
-    /* =====================================
-       BADGE
-    ===================================== */
-
-    .badge {
-      display: inline-block;
-
-      padding:
-        5px 8px;
-
-      border-radius: 20px;
-
-      font-size: 8px;
-
-      font-weight: 900;
-    }
-
-    .badge.paid {
-      color: #71f1ba;
-
-      background:
-        rgba(22,217,139,.12);
-
-      border:
-        1px solid rgba(22,217,139,.20);
-    }
-
-    .badge.unpaid {
-      color: #ff7780;
-
-      background:
-        rgba(255,64,80,.12);
-
-      border:
-        1px solid rgba(255,64,80,.20);
-    }
-
-
-    /* =====================================
-       ACTION BUTTON
-    ===================================== */
-
-    .edit-btn {
-      padding:
-        7px 10px;
-
-      border:
-        1px solid rgba(0,102,179,.35);
-
-      border-radius: 8px;
-
-      background:
-        rgba(0,102,179,.15);
-
-      color: #8dcaff;
-
-      font-size: 9px;
-
-      font-weight: 800;
-
-      cursor: pointer;
-    }
-
-    .edit-btn:hover {
-      background:
-        rgba(0,102,179,.25);
-    }
-
-
-    /* =====================================
-       ADMIN TOOLBAR
-    ===================================== */
-
-    .admin-toolbar {
-      display: none;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 10px;
-
-      margin-top: 18px;
-    }
-
-    body.admin-mode .admin-toolbar {
-      display: grid;
-    }
-
-    .admin-tool {
-      padding: 14px;
-
-      border:
-        1px solid rgba(227,6,19,.30);
-
-      border-radius: 11px;
-
-      color: white;
-
-      background:
-        rgba(227,6,19,.10);
-
-      font-size: 10px;
-
-      font-weight: 800;
-
-      cursor: pointer;
-    }
-
-    .admin-tool:hover {
-      background:
-        rgba(227,6,19,.18);
-    }
-
-
-    /* =====================================
-       MODAL
-    ===================================== */
-
-    .modal {
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 50;
-
-      display: grid;
-
-      place-items: center;
-
-      padding: 18px;
-
-      background:
-        rgba(0,0,0,.72);
-
-      backdrop-filter:
-        blur(8px);
-    }
-
-    .modal.hidden {
-      display: none;
-    }
-
-    .modal-box {
-      width:
-        min(460px, 100%);
-
-      padding: 25px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 20px;
-
-      background:
-        #081a2e;
-
-      box-shadow:
-        0 25px 80px rgba(0,0,0,.55);
-    }
-
-    .modal-header {
-      display: flex;
-
-      align-items: center;
-
-      justify-content:
-        space-between;
-
-      margin-bottom: 20px;
-    }
-
-    .modal-header h2 {
-      margin: 0;
-
-      font-size: 21px;
-    }
-
-    .close-modal {
-      border: 0;
-
-      background:
-        transparent;
-
-      color: white;
-
-      font-size: 26px;
-
-      cursor: pointer;
-    }
-
-
-    /* =====================================
-       FORM
-    ===================================== */
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-
-      margin-bottom: 7px;
-
-      color: #a9bdd0;
-
-      font-size: 10px;
-
-      font-weight: 800;
-    }
-
-    .form-group input,
-    .form-group select {
-      width: 100%;
-
-      padding: 13px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 10px;
-
-      outline: none;
-
-      color: white;
-
-      background:
-        #041326;
-
-      font-size: 12px;
-
-      box-sizing: border-box;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus {
-      border-color:
-        #2988c8;
-    }
-
-    .modal-buttons {
-      display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap: 10px;
-
-      margin-top: 20px;
-    }
-
-    .save-btn {
-      padding: 13px;
-
-      border: 0;
-
-      border-radius: 10px;
-
-      color: white;
-
-      background:
-        #e30613;
-
-      font-size: 10px;
-
-      font-weight: 900;
-
-      cursor: pointer;
-    }
-
-    .cancel-btn {
-      padding: 13px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 10px;
-
-      color: white;
-
-      background:
-        #102945;
-
-      font-size: 10px;
-
-      font-weight: 900;
-
-      cursor: pointer;
-    }
-
-
-    /* =====================================
-       INFO
-    ===================================== */
-
-    .transaction-info {
-      margin-top: 18px;
-
-      padding: 16px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 13px;
-
-      background:
-        rgba(255,255,255,.025);
-
-      color: var(--muted);
-
-      font-size: 10px;
-
-      line-height: 1.7;
-    }
-
-
-    /* =====================================
-       FOOTER
-    ===================================== */
-
-    .footer {
-      padding:
-        22px 10px;
-
-      text-align: center;
-
-      color: #61788f;
-
-      font-size: 9px;
-    }
-
-
-    /* =====================================
-       MOBILE
-    ===================================== */
-
-    @media (max-width: 850px) {
-
-      .summary-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-      .admin-toolbar {
-        grid-template-columns:
-          1fr;
-      }
-
-    }
-
-
-    @media (max-width: 600px) {
-
-      .dashboard-page {
-        padding: 10px;
-      }
-
-      .topbar {
-        align-items:
-          flex-start;
-
-        flex-direction:
-          column;
-      }
-
-      .user-area {
-        width: 100%;
-      }
-
-      .user-badge {
-        flex: 1;
-
-        text-align: left;
-      }
-
-      .summary-grid {
-        gap: 9px;
-      }
-
-      .summary-card {
-        padding: 15px;
-
-        min-height: 125px;
-      }
-
-      .status-summary {
-        grid-template-columns:
-          1fr;
-      }
-
-      .panel {
-        padding: 15px;
-      }
-
-      .period-box select {
-        max-width: 130px;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1.0"
+>
+
+<title>
+PAHLAWAN REVOLUSI 5 - DASHBOARD
+</title>
+
+<style>
+
+:root{
+  --r:#e30613;
+  --y:#ffc400;
+  --bg:#f6f6f7;
+  --line:#e7e7e7;
+  --muted:#888;
+  --g:#14a765
+}
+
+*{
+  box-sizing:border-box
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  font-family:Inter,Arial,sans-serif;
+  color:#171717
+}
+
+.app{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:245px 1fr
+}
+
+.side{
+  position:fixed;
+  inset:0 auto 0 0;
+  width:245px;
+  background:linear-gradient(
+    180deg,
+    #e30613,
+    #b60009
+  );
+  color:#fff;
+  padding:18px 14px;
+  z-index:20
+}
+
+.brand{
+  padding:10px 9px 20px;
+  border-bottom:1px solid #fff3
+}
+
+.mark{
+  width:50px;
+  height:50px;
+  background:#fff;
+  color:var(--r);
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  font-weight:1000;
+  margin-bottom:13px
+}
+
+.brand h1{
+  font-size:16px;
+  margin:0
+}
+
+.brand p{
+  font-size:8px;
+  opacity:.75;
+  letter-spacing:1px;
+  margin:5px 0 0
+}
+
+.nav{
+  display:grid;
+  gap:6px;
+  margin-top:17px
+}
+
+.nav button{
+  border:0;
+  background:transparent;
+  color:#fff;
+  text-align:left;
+  padding:12px;
+  border-radius:11px;
+  font-size:10px;
+  font-weight:900
+}
+
+.nav button.active,
+.nav button:hover{
+  background:#fff2
+}
+
+.bottom{
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:18px
+}
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid #fff3;
+  border-radius:12px;
+  padding:10px
+}
+
+.avatar{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:#fff;
+  color:var(--r);
+  display:grid;
+  place-items:center;
+  font-weight:1000
+}
+
+.profile strong{
+  display:block;
+  font-size:10px
+}
+
+.profile span{
+  font-size:8px;
+  opacity:.7
+}
+
+.logout{
+  width:100%;
+  margin-top:8px;
+  padding:10px;
+  border:1px solid #fff3;
+  background:#0002;
+  color:#fff;
+  border-radius:10px;
+  font-size:9px;
+  font-weight:900
+}
+
+.main{
+  grid-column:2;
+  padding:25px 28px 35px;
+  min-width:0
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:22px
+}
+
+.eyebrow{
+  color:var(--r);
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:1.5px
+}
+
+.top h2{
+  font-size:29px;
+  margin:5px 0
+}
+
+.top p{
+  margin:0;
+  color:var(--muted);
+  font-size:10px
+}
+
+.user{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#fff;
+  border:1px solid var(--line);
+  padding:7px 10px;
+  border-radius:12px
+}
+
+.user .avatar{
+  background:var(--r);
+  color:#fff;
+  width:30px;
+  height:30px
+}
+
+.user strong{
+  display:block;
+  font-size:9px
+}
+
+.user span{
+  font-size:7px;
+  color:#999
+}
+
+.section{
+  display:none
+}
+
+.section.active{
+  display:block
+}
+
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:15px;
+  box-shadow:0 8px 25px #00000007
+}
+
+.kpi .icon{
+  width:35px;
+  height:35px;
+  border-radius:10px;
+  background:#fff0f1;
+  color:var(--r);
+  display:grid;
+  place-items:center
+}
+
+.kpi:nth-child(2) .icon{
+  background:#e8f8f0;
+  color:var(--g)
+}
+
+.kpi:nth-child(4) .icon{
+  background:#fff7d9;
+  color:#a67b00
+}
+
+.kpi label{
+  display:block;
+  color:#888;
+  font-size:8px;
+  font-weight:900;
+  margin-top:11px
+}
+
+.kpi b{
+  display:block;
+  font-size:20px;
+  margin-top:5px
+}
+
+.kpi small{
+  display:block;
+  color:#aaa;
+  font-size:7px;
+  margin-top:5px
+}
+
+.row{
+  display:grid;
+  grid-template-columns:
+    minmax(0,1.65fr)
+    minmax(260px,.8fr);
+  gap:12px;
+  margin-top:12px
+}
+
+.head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:13px
+}
+
+.head h3{
+  font-size:12px;
+  margin:0
+}
+
+.head p{
+  font-size:8px;
+  color:#999;
+  margin:3px 0 0
+}
+
+.select{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:8px;
+  padding:7px;
+  font-size:8px
+}
+
+.chart{
+  height:230px
+}
+
+.chart canvas{
+  width:100%;
+  height:100%
+}
+
+.donutbox{
+  display:grid;
+  grid-template-columns:135px 1fr;
+  align-items:center;
+  gap:10px
+}
+
+.donut{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  background:
+    conic-gradient(
+      var(--r) 0 60%,
+      var(--y) 60%
+    );
+  display:grid;
+  place-items:center;
+  position:relative
+}
+
+.donut:after{
+  content:"";
+  width:78px;
+  height:78px;
+  background:#fff;
+  border-radius:50%
+}
+
+.donuttext{
+  position:absolute;
+  text-align:center;
+  font-size:8px;
+  color:#888
+}
+
+.donuttext b{
+  display:block;
+  color:#111;
+  font-size:12px
+}
+
+.legend{
+  display:grid;
+  gap:10px
+}
+
+.legend div{
+  display:flex;
+  justify-content:space-between;
+  font-size:8px
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  display:inline-block;
+  margin-right:5px
+}
+
+.red{
+  background:var(--r)
+}
+
+.yellow{
+  background:var(--y)
+}
+
+.quick{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px
+}
+
+.quick button{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:12px;
+  padding:12px;
+  text-align:left
+}
+
+.quick i{
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  background:#fff4d2;
+  border-radius:9px;
+  font-style:normal;
+  margin-bottom:8px
+}
+
+.quick b{
+  font-size:9px;
+  display:block
+}
+
+.quick span{
+  font-size:7px;
+  color:#999
+}
+
+.toolbar{
+  display:none;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  margin:12px 0
+}
+
+.admin-mode .toolbar{
+  display:grid
+}
+
+.tool{
+  border:1px solid #ffd0d4;
+  background:#fff5f6;
+  color:var(--r);
+  padding:11px;
+  border-radius:10px;
+  font-size:9px;
+  font-weight:950
+}
+
+.table-card{
+  margin-top:12px
+}
+
+.table-scroll{
+  overflow:auto
+}
+
+.table{
+  width:100%;
+  min-width:650px;
+  border-collapse:collapse
+}
+
+.table th{
+  padding:10px 8px;
+  text-align:left;
+  border-bottom:1px solid var(--line);
+  font-size:7px;
+  color:#999
+}
+
+.table td{
+  padding:11px 8px;
+  border-bottom:1px solid #f0f0f0;
+  font-size:9px
+}
+
+.name{
+  font-weight:900
+}
+
+.badge{
+  display:inline-block;
+  padding:5px 7px;
+  border-radius:20px;
+  font-size:7px;
+  font-weight:900
+}
+
+.paid{
+  background:#e4f8ef;
+  color:#078850
+}
+
+.unpaid{
+  background:#ffe8ea;
+  color:#d0000d
+}
+
+.action{
+  border:1px solid #ffd1d5;
+  background:#fff;
+  color:var(--r);
+  border-radius:7px;
+  padding:5px 7px;
+  font-size:7px;
+  font-weight:900
+}
+
+.status{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:12px
+}
+
+.status .card b{
+  font-size:15px
+}
+
+.info{
+  font-size:8px;
+  color:#8a6d00;
+  background:#fff8df;
+  border:1px solid #ffe5a0;
+  padding:11px;
+  border-radius:10px;
+  margin-top:11px
+}
+
+.activity{
+  display:grid
+}
+
+.act{
+  display:flex;
+  gap:8px;
+  padding:10px 0;
+  border-bottom:1px solid #f0f0f0
+}
+
+.act:last-child{
+  border:0
+}
+
+.acticon{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#e7f8ef;
+  color:var(--g);
+  flex:none
+}
+
+.acticon.out{
+  background:#ffe8ea;
+  color:var(--r)
+}
+
+.actmain{
+  flex:1;
+  min-width:0
+}
+
+.actmain b{
+  display:block;
+  font-size:8px
+}
+
+.actmain span{
+  display:block;
+  color:#999;
+  font-size:7px;
+  margin-top:3px
+}
+
+.actamt{
+  font-size:8px;
+  font-weight:900
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:#0009;
+  display:grid;
+  place-items:center;
+  padding:16px;
+  z-index:50
+}
+
+.hidden{
+  display:none
+}
+
+.modalbox{
+  width:min(430px,100%);
+  background:#fff;
+  border-radius:17px;
+  padding:20px
+}
+
+.modalhead{
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+
+.modalhead h3{
+  margin:0;
+  font-size:15px
+}
+
+.close{
+  border:0;
+  background:#f1f1f1;
+  border-radius:50%;
+  width:30px;
+  height:30px;
+  font-size:19px
+}
+
+.form{
+  display:grid;
+  gap:11px;
+  margin-top:16px
+}
+
+.form label{
+  font-size:8px;
+  font-weight:900;
+  color:#777
+}
+
+.form input,
+.form select{
+  display:block;
+  width:100%;
+  margin-top:5px;
+  border:1px solid #ddd;
+  border-radius:9px;
+  padding:10px;
+  font-size:10px;
+  outline:0
+}
+
+.actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:15px
+}
+
+.actions button{
+  padding:11px;
+  border-radius:9px;
+  font-size:8px;
+  font-weight:900
+}
+
+.cancel{
+  border:1px solid #ddd;
+  background:#f7f7f7
+}
+
+.save{
+  border:0;
+  background:var(--r);
+  color:#fff
+}
+
+.mobile-nav{
+  display:none
+}
+
+@media(max-width:1050px){
+
+  .kpis{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .row{
+    grid-template-columns:1fr
+  }
+
+  .side{
+    width:220px
+  }
+
+  .app{
+    grid-template-columns:220px 1fr
+  }
+}
+
+@media(max-width:700px){
+
+  .app{
+    display:block
+  }
+
+  .side{
+    position:fixed;
+    top:auto;
+    bottom:0;
+    width:100%;
+    height:64px;
+    padding:6px;
+    background:#fff;
+    color:#555;
+    border-top:1px solid var(--line);
+    box-shadow:0 -7px 20px #0001
+  }
+
+  .brand,
+  .bottom{
+    display:none
+  }
+
+  .nav{
+    margin:0;
+    height:100%;
+    display:flex;
+    justify-content:space-around
+  }
+
+  .nav button{
+    color:#777;
+    padding:4px 5px;
+    font-size:7px;
+    text-align:center
+  }
+
+  .nav button.active{
+    background:#fff0f1;
+    color:var(--r)
+  }
+
+  .main{
+    padding:15px 12px 80px
+  }
+
+  .top h2{
+    font-size:23px
+  }
+
+  .top p{
+    font-size:8px
+  }
+
+  .user{
+    padding:5px 7px
+  }
+
+  .user .avatar{
+    width:27px;
+    height:27px
+  }
+
+  .user strong{
+    font-size:8px
+  }
+
+  .user span{
+    font-size:6px
+  }
+
+  .kpis{
+    gap:8px
+  }
+
+  .card{
+    padding:12px;
+    border-radius:13px
+  }
+
+  .kpi b{
+    font-size:15px
+  }
+
+  .kpi label{
+    font-size:7px
+  }
+
+  .kpi small{
+    font-size:6px
+  }
+
+  .row{
+    gap:8px;
+    margin-top:8px
+  }
+
+  .quick{
+    grid-template-columns:1fr 1fr
+  }
+
+  .chart{
+    height:200px
+  }
+
+  .donutbox{
+    grid-template-columns:110px 1fr
+  }
+
+  .donut{
+    width:105px;
+    height:105px
+  }
+
+  .donut:after{
+    width:64px;
+    height:64px
+  }
+
+  .status{
+    grid-template-columns:1fr 1fr
+  }
+
+  .status .card:last-child{
+    grid-column:1/-1
+  }
+
+  .toolbar{
+    grid-template-columns:1fr
+  }
+
+  .panelhide{
+    display:none
+  }
+}
+
+</style>
 
 </head>
 
-
 <body>
 
+<div class="app">
 
-<main class="dashboard-page">
+<aside class="side">
 
-<div class="dashboard-container">
+<div class="brand">
 
+<div class="mark">
+PR5
+</div>
 
-  <!-- =================================
-       TOPBAR
-  ================================= -->
+<h1>
+PAHLAWAN REVOLUSI 5
+</h1>
 
-  <header class="topbar">
-
-    <div class="brand-area">
-
-      <div class="mini-logo">
-        Alfa<span>mart</span>
-      </div>
-
-      <div class="brand-title">
-
-        <h1>
-          PAHLAWAN REVOLUSI 5
-        </h1>
-
-        <p>
-          SISTEM UANG KAS KARYAWAN
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="user-area">
-
-      <div class="user-badge">
-
-        <strong id="userName">
-          VIEWER
-        </strong>
-
-        <span id="userRole">
-          MODE LIHAT
-        </span>
-
-      </div>
-
-
-      <button
-        class="logout-btn"
-        id="logoutBtn"
-      >
-        KELUAR
-      </button>
-
-    </div>
-
-  </header>
-
-
-  <!-- =================================
-       WELCOME
-  ================================= -->
-
-  <section class="welcome-card">
-
-    <p class="eyebrow">
-      DASHBOARD UANG KAS
-    </p>
-
-    <h2>
-      PAHLAWAN REVOLUSI 5
-    </h2>
-
-    <p>
-      MONITORING PEMBAYARAN KAS KARYAWAN
-    </p>
-
-  </section>
-
-
-  <!-- =================================
-       SUMMARY
-  ================================= -->
-
-  <section class="summary-grid">
-
-
-    <div class="summary-card">
-
-      <div class="summary-icon">
-        💰
-      </div>
-
-      <div class="summary-label">
-        SALDO KAS
-      </div>
-
-      <div
-        class="summary-value"
-        id="saldoValue"
-      >
-        RP 0
-      </div>
-
-      <div class="summary-note">
-        TOTAL UANG MASUK DIKURANGI PENGELUARAN
-      </div>
-
-    </div>
-
-
-    <div class="summary-card">
-
-      <div class="summary-icon">
-        📥
-      </div>
-
-      <div class="summary-label">
-        TOTAL UANG MASUK
-      </div>
-
-      <div
-        class="summary-value"
-        id="masukValue"
-      >
-        RP 0
-      </div>
-
-      <div class="summary-note">
-        DARI PEMBAYARAN KAS
-      </div>
-
-    </div>
-
-
-    <div class="summary-card">
-
-      <div class="summary-icon">
-        📤
-      </div>
-
-      <div class="summary-label">
-        TOTAL PENGELUARAN
-      </div>
-
-      <div
-        class="summary-value"
-        id="keluarValue"
-      >
-        RP 0
-      </div>
-
-      <div class="summary-note">
-        TOTAL UANG YANG DIGUNAKAN
-      </div>
-
-    </div>
-
-
-    <div class="summary-card">
-
-      <div class="summary-icon">
-        👥
-      </div>
-
-      <div class="summary-label">
-        JUMLAH KARYAWAN
-      </div>
-
-      <div
-        class="summary-value"
-      >
-        9 ORANG
-      </div>
-
-      <div class="summary-note">
-        DATA PAHLAWAN REVOLUSI 5
-      </div>
-
-    </div>
-
-
-  </section>
-
-
-  <!-- =================================
-       ADMIN TOOLBAR
-  ================================= -->
-
-  <section class="admin-toolbar">
-
-    <button
-      class="admin-tool"
-      id="addPaymentBtn"
-    >
-      ＋ TAMBAH PEMBAYARAN
-    </button>
-
-
-    <button
-      class="admin-tool"
-      id="addExpenseBtn"
-    >
-      ＋ TAMBAH PENGELUARAN
-    </button>
-
-
-    <button
-      class="admin-tool"
-      id="resetMonthBtn"
-    >
-      ↻ RESET STATUS BULAN INI
-    </button>
-
-  </section>
-
-
-  <!-- =================================
-       DATA PEMBAYARAN
-  ================================= -->
-
-  <section class="panel">
-
-
-    <div class="panel-header">
-
-      <div>
-
-        <div class="panel-title">
-          PEMBAYARAN UANG KAS
-        </div>
-
-        <div class="panel-subtitle">
-          SETIAP KARYAWAN MEMBAYAR RP50.000
-        </div>
-
-      </div>
-
-
-      <div class="period-box">
-
-        <select id="monthSelect">
-
-          <option value="2026-09">
-            SEPTEMBER 2026
-          </option>
-
-          <option value="2026-10">
-            OKTOBER 2026
-          </option>
-
-          <option value="2026-11">
-            NOVEMBER 2026
-          </option>
-
-          <option value="2026-12">
-            DESEMBER 2026
-          </option>
-
-        </select>
-
-      </div>
-
-    </div>
-
-
-    <!-- STATUS -->
-
-    <div class="status-summary">
-
-
-      <div class="status-box paid">
-
-        <span>
-          SUDAH BAYAR
-        </span>
-
-        <strong id="paidCount">
-          0 ORANG
-        </strong>
-
-      </div>
-
-
-      <div class="status-box unpaid">
-
-        <span>
-          BELUM BAYAR
-        </span>
-
-        <strong id="unpaidCount">
-          9 ORANG
-        </strong>
-
-      </div>
-
-
-      <div class="status-box">
-
-        <span>
-          TOTAL WAJIB BAYAR
-        </span>
-
-        <strong id="totalWajib">
-          RP 450.000
-        </strong>
-
-      </div>
-
-
-    </div>
-
-
-    <!-- TABLE -->
-
-    <div class="table-scroll">
-
-      <table class="employee-table">
-
-        <thead>
-
-          <tr>
-
-            <th>
-              NO
-            </th>
-
-            <th>
-              NAMA
-            </th>
-
-            <th>
-              JABATAN
-            </th>
-
-            <th>
-              IURAN
-            </th>
-
-            <th>
-              STATUS
-            </th>
-
-            <th>
-              TANGGAL BAYAR
-            </th>
-
-            <th>
-              AKSI
-            </th>
-
-          </tr>
-
-        </thead>
-
-
-        <tbody id="employeeTableBody">
-        </tbody>
-
-      </table>
-
-    </div>
-
-
-    <div class="transaction-info">
-
-      💡
-      <strong>
-        INFORMASI:
-      </strong>
-
-      SETIAP KARYAWAN WAJIB MEMBAYAR
-      <strong>
-        RP50.000
-      </strong>
-      SETIAP TANGGAL 28.
-
-      <br>
-
-      DATA PEMBAYARAN TERSIMPAN DI BROWSER.
-
-    </div>
-
-
-  </section>
-
-
-  <!-- =================================
-       RIWAYAT PENGELUARAN
-  ================================= -->
-
-  <section class="panel">
-
-
-    <div class="panel-header">
-
-      <div>
-
-        <div class="panel-title">
-          RIWAYAT PENGELUARAN KAS
-        </div>
-
-        <div class="panel-subtitle">
-          CATATAN UANG KAS YANG TELAH DIGUNAKAN
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="table-scroll">
-
-      <table class="employee-table">
-
-        <thead>
-
-          <tr>
-
-            <th>
-              NO
-            </th>
-
-            <th>
-              TANGGAL
-            </th>
-
-            <th>
-              KETERANGAN
-            </th>
-
-            <th>
-              NOMINAL
-            </th>
-
-            <th>
-              AKSI
-            </th>
-
-          </tr>
-
-        </thead>
-
-
-        <tbody id="expenseTableBody">
-        </tbody>
-
-      </table>
-
-    </div>
-
-
-    <div class="transaction-info">
-
-      💸
-      <strong>
-        TOTAL PENGELUARAN:
-      </strong>
-
-      <strong id="expenseTotal">
-        RP 0
-      </strong>
-
-    </div>
-
-
-  </section>
-
-
-  <footer class="footer">
-
-    ALFAMART • PAHLAWAN REVOLUSI 5
-
-    <br>
-
-    SISTEM UANG KAS KARYAWAN
-
-  </footer>
-
+<p>
+SISTEM MANAJEMEN KAS
+</p>
 
 </div>
 
+
+<nav class="nav">
+
+<button
+  class="active"
+  data-sec="dashboard"
+>
+⌂
+<br>
+DASHBOARD
+</button>
+
+<button
+  data-sec="payments"
+>
+▣
+<br>
+PEMBAYARAN
+</button>
+
+<button
+  data-sec="expenses"
+>
+−
+<br>
+PENGELUARAN
+</button>
+
+<button
+  data-sec="employees"
+>
+♙
+<br>
+KARYAWAN
+</button>
+
+<button
+  data-sec="reports"
+>
+▥
+<br>
+LAPORAN
+</button>
+
+</nav>
+
+
+<div class="bottom">
+
+<div class="profile">
+
+<div class="avatar">
+R
+</div>
+
+<div>
+
+<strong id="sideName">
+ROSTATI
+</strong>
+
+<span id="sideRole">
+PENGELOLA KAS
+</span>
+
+</div>
+
+</div>
+
+
+<button
+  class="logout"
+  id="logoutBtn"
+>
+KELUAR
+</button>
+
+</div>
+
+</aside>
+
+
+<main class="main">
+
+
+<header class="top">
+
+<div>
+
+<div class="eyebrow">
+SISTEM MANAJEMEN KAS
+</div>
+
+<h2>
+Selamat datang,
+<span id="greetName">
+ROSTATI
+</span>
+</h2>
+
+<p>
+Kelola pembayaran, pengeluaran, dan saldo kas dengan mudah.
+</p>
+
+</div>
+
+
+<div class="user">
+
+<div class="avatar">
+R
+</div>
+
+<div>
+
+<strong id="topName">
+ROSTATI
+</strong>
+
+<span id="topRole">
+PENGELOLA KAS
+</span>
+
+</div>
+
+</div>
+
+</header>
+
+
+<section
+  class="section active"
+  id="dashboard"
+>
+
+<div class="kpis">
+
+
+<div class="card kpi">
+
+<div class="icon">
+👥
+</div>
+
+<label>
+TOTAL KARYAWAN
+</label>
+
+<b>
+9 ORANG
+</b>
+
+<small>
+DATA AKTIF
+</small>
+
+</div>
+
+
+<div class="card kpi">
+
+<div class="icon">
+↓
+</div>
+
+<label>
+TOTAL KAS MASUK
+</label>
+
+<b id="dashIncome">
+RP 0
+</b>
+
+<small>
+PEMBAYARAN KAS
+</small>
+
+</div>
+
+
+<div class="card kpi">
+
+<div class="icon">
+↑
+</div>
+
+<label>
+TOTAL KAS KELUAR
+</label>
+
+<b id="dashExpense">
+RP 0
+</b>
+
+<small>
+PENGELUARAN
+</small>
+
+</div>
+
+
+<div class="card kpi">
+
+<div class="icon">
+▣
+</div>
+
+<label>
+SALDO KAS
+</label>
+
+<b id="dashBalance">
+RP 0
+</b>
+
+<small>
+MASUK - KELUAR
+</small>
+
+</div>
+
+</div>
+
+
+<div class="toolbar">
+
+<button
+  class="tool"
+  id="addPaymentBtn"
+>
+＋ TAMBAH PEMBAYARAN
+</button>
+
+<button
+  class="tool"
+  id="addExpenseBtn"
+>
+－ TAMBAH PENGELUARAN
+</button>
+
+<button
+  class="tool"
+  id="resetMonthBtn"
+>
+↻ RESET BULAN
+</button>
+
+</div>
+
+
+<div class="row">
+
+
+<div class="card">
+
+<div class="head">
+
+<div>
+
+<h3>
+GRAFIK ARUS KAS
+</h3>
+
+<p>
+Perbandingan pemasukan dan pengeluaran
+</p>
+
+</div>
+
+<select
+  class="select"
+  id="periodSelect"
+>
+
+<option>
+7 HARI
+</option>
+
+</select>
+
+</div>
+
+
+<div class="chart">
+
+<canvas
+  id="cashChart"
+></canvas>
+
+</div>
+
+
+<div style="font-size:8px;color:#777">
+
+<span class="dot red"></span>
+KAS MASUK
+
+&nbsp;&nbsp;
+
+<span class="dot yellow"></span>
+KAS KELUAR
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="head">
+
+<div>
+
+<h3>
+RINCIAN KAS
+</h3>
+
+<p>
+Total periode terpilih
+</p>
+
+</div>
+
+</div>
+
+
+<div class="donutbox">
+
+<div style="position:relative">
+
+<div
+  class="donut"
+  id="donut"
+></div>
+
+<div class="donuttext">
+
+TOTAL
+
+<b id="donutTotal">
+RP 0
+</b>
+
+</div>
+
+</div>
+
+
+<div class="legend">
+
+<div>
+
+<span>
+<i class="dot red"></i>
+KAS MASUK
+</span>
+
+<strong id="breakIncome">
+RP 0
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+<i class="dot yellow"></i>
+KAS KELUAR
+</span>
+
+<strong id="breakExpense">
+RP 0
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+SALDO
+</span>
+
+<strong id="breakBalance">
+RP 0
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+
+<div class="card">
+
+<div class="head">
+
+<div>
+
+<h3>
+MENU CEPAT
+</h3>
+
+<p>
+Akses fitur utama
+</p>
+
+</div>
+
+</div>
+
+
+<div class="quick">
+
+<button data-go="payments">
+
+<i>
+＋
+</i>
+
+<b>
+Tambah Pembayaran
+</b>
+
+<span>
+Catat iuran
+</span>
+
+</button>
+
+
+<button data-go="expenses">
+
+<i>
+−
+</i>
+
+<b>
+Tambah Pengeluaran
+</b>
+
+<span>
+Catat kas keluar
+</span>
+
+</button>
+
+
+<button data-go="employees">
+
+<i>
+♙
+</i>
+
+<b>
+Data Karyawan
+</b>
+
+<span>
+Status iuran
+</span>
+
+</button>
+
+
+<button data-go="reports">
+
+<i>
+▥
+</i>
+
+<b>
+Laporan Kas
+</b>
+
+<span>
+Ringkasan kas
+</span>
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="head">
+
+<div>
+
+<h3>
+AKTIVITAS TERBARU
+</h3>
+
+<p>
+Transaksi terakhir
+</p>
+
+</div>
+
+</div>
+
+<div
+  class="activity"
+  id="activityList"
+></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section
+  class="section"
+  id="payments"
+>
+
+<h3>
+PEMBAYARAN UANG KAS
+</h3>
+
+<p style="font-size:9px;color:#999">
+Setiap karyawan membayar RP50.000 setiap tanggal 28.
+</p>
+
+
+<div class="card">
+
+<div class="head">
+
+<div>
+
+<h3>
+STATUS PEMBAYARAN
+</h3>
+
+<p>
+Periode terpilih
+</p>
+
+</div>
+
+
+<select
+  class="select"
+  id="monthSelect"
+>
+
+<option value="2026-09">
+SEPTEMBER 2026
+</option>
+
+<option value="2026-10">
+OKTOBER 2026
+</option>
+
+<option value="2026-11">
+NOVEMBER 2026
+</option>
+
+<option value="2026-12">
+DESEMBER 2026
+</option>
+
+</select>
+
+</div>
+
+
+<div class="status">
+
+<div class="card">
+
+<label>
+SUDAH BAYAR
+</label>
+
+<b id="paidCount">
+0 ORANG
+</b>
+
+</div>
+
+
+<div class="card">
+
+<label>
+BELUM BAYAR
+</label>
+
+<b id="unpaidCount">
+9 ORANG
+</b>
+
+</div>
+
+
+<div class="card">
+
+<label>
+TOTAL WAJIB BAYAR
+</label>
+
+<b id="totalWajib">
+RP 450.000
+</b>
+
+</div>
+
+</div>
+
+
+<div class="table-scroll">
+
+<table class="table">
+
+<thead>
+
+<tr>
+
+<th>
+NO
+</th>
+
+<th>
+NAMA
+</th>
+
+<th>
+JABATAN
+</th>
+
+<th>
+IURAN
+</th>
+
+<th>
+STATUS
+</th>
+
+<th>
+TANGGAL BAYAR
+</th>
+
+<th>
+AKSI
+</th>
+
+</tr>
+
+</thead>
+
+<tbody
+  id="employeeTableBody"
+></tbody>
+
+</table>
+
+</div>
+
+
+<div class="info">
+
+SETIAP KARYAWAN WAJIB MEMBAYAR
+RP50.000 SETIAP TANGGAL 28.
+
+</div>
+
+</div>
+
+</section>
+
+
+<section
+  class="section"
+  id="expenses"
+>
+
+<h3>
+PENGELUARAN KAS
+</h3>
+
+<p style="font-size:9px;color:#999">
+Catat semua penggunaan uang kas.
+</p>
+
+
+<div class="card table-card">
+
+<div class="head">
+
+<div>
+
+<h3>
+RIWAYAT PENGELUARAN
+</h3>
+
+<p>
+Catatan kas keluar
+</p>
+
+</div>
+
+</div>
+
+
+<div class="table-scroll">
+
+<table class="table">
+
+<thead>
+
+<tr>
+
+<th>
+NO
+</th>
+
+<th>
+TANGGAL
+</th>
+
+<th>
+KETERANGAN
+</th>
+
+<th>
+NOMINAL
+</th>
+
+<th>
+AKSI
+</th>
+
+</tr>
+
+</thead>
+
+<tbody
+  id="expenseTableBody"
+></tbody>
+
+</table>
+
+</div>
+
+
+<div class="info">
+
+TOTAL PENGELUARAN:
+
+<strong id="expenseTotal">
+RP 0
+</strong>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section
+  class="section"
+  id="employees"
+>
+
+<h3>
+DATA KARYAWAN
+</h3>
+
+<p style="font-size:9px;color:#999">
+Daftar anggota dan status iuran.
+</p>
+
+
+<div class="card table-card">
+
+<div class="table-scroll">
+
+<table class="table">
+
+<thead>
+
+<tr>
+
+<th>
+NO
+</th>
+
+<th>
+NAMA
+</th>
+
+<th>
+JABATAN
+</th>
+
+<th>
+STATUS
+</th>
+
+<th>
+TANGGAL BAYAR
+</th>
+
+</tr>
+
+</thead>
+
+<tbody
+  id="employeeSummaryBody"
+></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section
+  class="section"
+  id="reports"
+>
+
+<h3>
+LAPORAN KAS
+</h3>
+
+<p style="font-size:9px;color:#999">
+Ringkasan pemasukan, pengeluaran, dan saldo.
+</p>
+
+
+<div class="kpis">
+
+
+<div class="card kpi">
+
+<label>
+PEMASUKAN
+</label>
+
+<b id="reportIncome">
+RP 0
+</b>
+
+</div>
+
+
+<div class="card kpi">
+
+<label>
+PENGELUARAN
+</label>
+
+<b id="reportExpense">
+RP 0
+</b>
+
+</div>
+
+
+<div class="card kpi">
+
+<label>
+SALDO
+</label>
+
+<b id="reportBalance">
+RP 0
+</b>
+
+</div>
+
+
+<div class="card kpi">
+
+<label>
+WAJIB BULANAN
+</label>
+
+<b>
+RP 450.000
+</b>
+
+</div>
+
+</div>
+
+
+<div class="card table-card">
+
+<h3 style="font-size:12px">
+RINGKASAN PEMBAYARAN
+</h3>
+
+<p
+  id="reportText"
+  style="font-size:9px;color:#777;line-height:1.7"
+></p>
+
+</div>
+
+</section>
+
 </main>
 
+</div>
 
-<!-- =====================================
-     MODAL PEMBAYARAN
-===================================== -->
 
 <div
   class="modal hidden"
   id="paymentModal"
 >
 
-  <div class="modal-box">
+<div class="modalbox">
 
+<div class="modalhead">
 
-    <div class="modal-header">
+<h3>
+CATAT PEMBAYARAN
+</h3>
 
-      <h2>
-        CATAT PEMBAYARAN
-      </h2>
-
-
-      <button
-        class="close-modal"
-        id="closePaymentModal"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        NAMA KARYAWAN
-      </label>
-
-      <select
-        id="employeeSelect"
-      >
-      </select>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        JUMLAH PEMBAYARAN
-      </label>
-
-      <input
-        id="paymentAmount"
-        type="number"
-        value="50000"
-        min="0"
-      >
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        TANGGAL PEMBAYARAN
-      </label>
-
-      <input
-        id="paymentDate"
-        type="date"
-      >
-
-    </div>
-
-
-    <div class="modal-buttons">
-
-      <button
-        class="cancel-btn"
-        id="cancelPayment"
-      >
-        BATAL
-      </button>
-
-
-      <button
-        class="save-btn"
-        id="savePayment"
-      >
-        SIMPAN PEMBAYARAN
-      </button>
-
-    </div>
-
-
-  </div>
+<button
+  class="close"
+  id="closePaymentModal"
+>
+×
+</button>
 
 </div>
 
 
-<!-- =====================================
-     MODAL PENGELUARAN
-===================================== -->
+<div class="form">
+
+<label>
+
+NAMA KARYAWAN
+
+<select
+  id="employeeSelect"
+></select>
+
+</label>
+
+
+<label>
+
+JUMLAH PEMBAYARAN
+
+<input
+  id="paymentAmount"
+  type="number"
+  value="50000"
+>
+
+</label>
+
+
+<label>
+
+TANGGAL PEMBAYARAN
+
+<input
+  id="paymentDate"
+  type="date"
+>
+
+</label>
+
+</div>
+
+
+<div class="actions">
+
+<button
+  class="cancel"
+  id="cancelPayment"
+>
+BATAL
+</button>
+
+<button
+  class="save"
+  id="savePayment"
+>
+SIMPAN
+</button>
+
+</div>
+
+</div>
+
+</div>
+
 
 <div
   class="modal hidden"
   id="expenseModal"
 >
 
-  <div class="modal-box">
+<div class="modalbox">
 
-    <div class="modal-header">
+<div class="modalhead">
 
-      <h2>
-        TAMBAH PENGELUARAN
-      </h2>
+<h3>
+TAMBAH PENGELUARAN
+</h3>
 
-      <button
-        class="close-modal"
-        id="closeExpenseModal"
-      >
-        ×
-      </button>
+<button
+  class="close"
+  id="closeExpenseModal"
+>
+×
+</button>
 
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        TANGGAL PENGELUARAN
-      </label>
-
-      <input
-        id="expenseDate"
-        type="date"
-      >
-
-    </div>
+</div>
 
 
-    <div class="form-group">
+<div class="form">
 
-      <label>
-        NOMINAL
-      </label>
+<label>
 
-      <input
-        id="expenseAmount"
-        type="number"
-        min="0"
-        placeholder="CONTOH: 50000"
-      >
+TANGGAL
 
-    </div>
+<input
+  id="expenseDate"
+  type="date"
+>
+
+</label>
 
 
-    <div class="form-group">
+<label>
 
-      <label>
-        KETERANGAN
-      </label>
+NOMINAL
 
-      <input
-        id="expenseDescription"
-        type="text"
-        placeholder="CONTOH: BELI AIR MINUM"
-        maxlength="100"
-      >
+<input
+  id="expenseAmount"
+  type="number"
+  placeholder="50000"
+>
 
-    </div>
+</label>
 
 
-    <div class="modal-buttons">
+<label>
 
-      <button
-        class="cancel-btn"
-        id="cancelExpense"
-      >
-        BATAL
-      </button>
+KETERANGAN
+
+<input
+  id="expenseDescription"
+  type="text"
+  placeholder="BELI AIR MINUM"
+>
+
+</label>
+
+</div>
 
 
-      <button
-        class="save-btn"
-        id="saveExpense"
-      >
-        SIMPAN PENGELUARAN
-      </button>
+<div class="actions">
 
-    </div>
+<button
+  class="cancel"
+  id="cancelExpense"
+>
+BATAL
+</button>
 
-  </div>
+<button
+  class="save"
+  id="saveExpense"
+>
+SIMPAN
+</button>
+
+</div>
+
+</div>
 
 </div>
 
 
 <script>
 
-
-/* =====================================
-   DATA KARYAWAN
-===================================== */
-
 const employees = [
 
   {
-    id: 1,
-    name: "M. DANI",
-    job: "COS"
+    id:1,
+    name:"M. DANI",
+    job:"COS"
   },
 
   {
-    id: 2,
-    name: "ANDRIANSYAH",
-    job: "ACOS"
+    id:2,
+    name:"ANDRIANSYAH",
+    job:"ACOS"
   },
 
   {
-    id: 3,
-    name: "AULIA JIHAN",
-    job: "ACOS"
+    id:3,
+    name:"AULIA JIHAN",
+    job:"ACOS"
   },
 
   {
-    id: 4,
-    name: "M. HAGGI",
-    job: "ACOS"
+    id:4,
+    name:"M. HAGGI",
+    job:"ACOS"
   },
 
   {
-    id: 5,
-    name: "ROSTATI",
-    job: "CREW"
+    id:5,
+    name:"ROSTATI",
+    job:"CREW"
   },
 
   {
-    id: 6,
-    name: "SHENNA",
-    job: "CREW"
+    id:6,
+    name:"SHENNA",
+    job:"CREW"
   },
 
   {
-    id: 7,
-    name: "FILLIO",
-    job: "CREW"
+    id:7,
+    name:"FILLIO",
+    job:"CREW"
   },
 
   {
-    id: 8,
-    name: "ILHAM",
-    job: "CREW"
+    id:8,
+    name:"ILHAM",
+    job:"CREW"
   },
 
   {
-    id: 9,
-    name: "PUTRI",
-    job: "CREW"
+    id:9,
+    name:"PUTRI",
+    job:"CREW"
   }
 
 ];
 
 
-/* =====================================
-   CONFIG
-===================================== */
-
 const IURAN = 50000;
 
+const PK =
+  "pahlawanRevolusi5Payments";
 
-/* =====================================
-   ROLE
-===================================== */
+const EK =
+  "pahlawanRevolusi5Expenses";
 
 const role =
   sessionStorage.getItem(
@@ -1645,481 +2033,354 @@ const role =
   );
 
 
-if (!role) {
+if(!role){
 
-  window.location.href =
+  location.href =
     "index.html";
 
 }
 
 
-if (role === "admin") {
-
-  document.body.classList.add(
-    "admin-mode"
-  );
-
-  document.getElementById(
-    "userName"
-  ).textContent =
-    "ROSTATI";
-
-  document.getElementById(
-    "userRole"
-  ).textContent =
-    "PENGELOLA KAS";
-
-} else {
-
-  document.getElementById(
-    "userName"
-  ).textContent =
-    "VIEWER";
-
-  document.getElementById(
-    "userRole"
-  ).textContent =
-    "MODE LIHAT";
-
-}
+const admin =
+  role === "admin";
 
 
-/* =====================================
-   STORAGE PEMBAYARAN
-===================================== */
-
-const STORAGE_KEY =
-  "pahlawanRevolusi5Payments";
+document.body.classList.toggle(
+  "admin-mode",
+  admin
+);
 
 
-function loadPayments() {
+const nm =
+  admin
+    ? "ROSTATI"
+    : "VIEWER";
 
-  try {
 
-    const data =
-      localStorage.getItem(
-        STORAGE_KEY
-      );
+[
+  "greetName",
+  "topName",
+  "sideName"
+].forEach(
+  id => {
 
-    return data
-      ? JSON.parse(data)
-      : {};
+    document.getElementById(
+      id
+    ).textContent = nm;
 
-  } catch {
+  }
+);
+
+
+document.getElementById(
+  "topRole"
+).textContent =
+  admin
+    ? "PENGELOLA KAS"
+    : "MODE LIHAT";
+
+
+document.getElementById(
+  "sideRole"
+).textContent =
+  admin
+    ? "PENGELOLA KAS"
+    : "MODE LIHAT";
+
+
+const lp = () => {
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(PK) ||
+      "{}"
+    );
+
+  }catch{
 
     return {};
 
   }
 
-}
+};
 
 
-function savePayments(data) {
-
+const sp = x =>
   localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(data)
+    PK,
+    JSON.stringify(x)
   );
 
-}
 
+const le = () => {
 
-/* =====================================
-   STORAGE PENGELUARAN
-===================================== */
+  try{
 
-const EXPENSE_STORAGE_KEY =
-  "pahlawanRevolusi5Expenses";
+    return JSON.parse(
+      localStorage.getItem(EK) ||
+      "[]"
+    );
 
-
-function loadExpenses() {
-
-  try {
-
-    const data =
-      localStorage.getItem(
-        EXPENSE_STORAGE_KEY
-      );
-
-    return data
-      ? JSON.parse(data)
-      : [];
-
-  } catch {
+  }catch{
 
     return [];
 
   }
 
-}
+};
 
 
-function saveExpenses(expenses) {
-
+const se = x =>
   localStorage.setItem(
-    EXPENSE_STORAGE_KEY,
-    JSON.stringify(expenses)
-  );
-
-}
-
-
-/* =====================================
-   PERIODE
-===================================== */
-
-const monthSelect =
-  document.getElementById(
-    "monthSelect"
+    EK,
+    JSON.stringify(x)
   );
 
 
-function currentMonth() {
+const rp = n =>
 
-  return monthSelect.value;
-
-}
-
-
-/* =====================================
-   FORMAT RUPIAH
-===================================== */
-
-function rupiah(number) {
-
-  return new Intl.NumberFormat(
+  new Intl.NumberFormat(
     "id-ID",
     {
-      style: "currency",
-      currency: "IDR",
-      maximumFractionDigits: 0
+      style:"currency",
+      currency:"IDR",
+      maximumFractionDigits:0
     }
-  ).format(number);
+  )
+  .format(Number(n) || 0)
+  .replace(/\s/g," ");
 
-}
 
+const fd = s => {
 
-/* =====================================
-   FORMAT TANGGAL
-===================================== */
-
-function formatDate(dateString) {
-
-  if (!dateString) {
+  if(!s)
     return "-";
-  }
 
-  const parts =
-    dateString.split("-");
+  let p =
+    s.split("-");
 
-  if (parts.length !== 3) {
-    return dateString;
-  }
+  return p.length === 3
+    ? `${p[2]}/${p[1]}/${p[0]}`
+    : s;
 
-  return (
-    parts[2] +
-    "/" +
-    parts[1] +
-    "/" +
-    parts[0]
+};
+
+
+const esc = s =>
+
+  String(s).replace(
+    /[&<>"']/g,
+    m => ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[m])
+  );
+
+
+const month = () =>
+  document.getElementById(
+    "monthSelect"
+  ).value;
+
+
+function inc(){
+
+  let p =
+    lp()[month()] || {};
+
+  return employees.reduce(
+    (t,e) =>
+      t +
+      (
+        p[e.id]
+          ? Number(
+              p[e.id].amount ||
+              IURAN
+            )
+          : 0
+      ),
+    0
   );
 
 }
 
 
-/* =====================================
-   ESCAPE HTML
-===================================== */
+function out(){
 
-function escapeHtml(text) {
-
-  return String(text)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-
-}
-
-
-/* =====================================
-   HITUNG TOTAL PEMASUKAN
-===================================== */
-
-function getTotalIncome() {
-
-  const payments =
-    loadPayments();
-
-  const month =
-    currentMonth();
-
-  const monthPayments =
-    payments[month] || {};
-
-  let total =
-    0;
-
-
-  employees.forEach(
-    employee => {
-
-      const payment =
-        monthPayments[
-          employee.id
-        ];
-
-
-      if (payment) {
-
-        total +=
-          Number(
-            payment.amount ||
-            IURAN
-          );
-
-      }
-
-    }
+  return le().reduce(
+    (t,e) =>
+      t +
+      Number(
+        e.amount || 0
+      ),
+    0
   );
 
-
-  return total;
-
 }
 
 
-/* =====================================
-   HITUNG TOTAL PENGELUARAN
-===================================== */
+function render(){
 
-function getTotalExpenses() {
+  let p =
+    lp()[month()] || {};
 
-  const expenses =
-    loadExpenses();
-
-  let total =
-    0;
-
-
-  expenses.forEach(
-    expense => {
-
-      total +=
-        Number(
-          expense.amount ||
-          0
-        );
-
-    }
-  );
-
-
-  return total;
-
-}
-
-
-/* =====================================
-   UPDATE RINGKASAN KEUANGAN
-===================================== */
-
-function updateFinancialSummary() {
-
-  const totalMasuk =
-    getTotalIncome();
-
-
-  const totalKeluar =
-    getTotalExpenses();
-
-
-  const saldo =
-    totalMasuk -
-    totalKeluar;
-
-
-  document.getElementById(
-    "masukValue"
-  ).textContent =
-    rupiah(totalMasuk);
-
-
-  document.getElementById(
-    "keluarValue"
-  ).textContent =
-    rupiah(totalKeluar);
-
-
-  document.getElementById(
-    "saldoValue"
-  ).textContent =
-    rupiah(saldo);
-
-}
-
-
-/* =====================================
-   RENDER KARYAWAN
-===================================== */
-
-function renderEmployees() {
-
-  const payments =
-    loadPayments();
-
-  const month =
-    currentMonth();
-
-  const monthPayments =
-    payments[month] || {};
-
-  const tbody =
+  let b =
     document.getElementById(
       "employeeTableBody"
     );
 
+  let s =
+    document.getElementById(
+      "employeeSummaryBody"
+    );
 
-  tbody.innerHTML = "";
+
+  b.innerHTML =
+    "";
+
+  s.innerHTML =
+    "";
 
 
-  let paid =
-    0;
+  let paid = 0;
 
 
   employees.forEach(
-    (employee, index) => {
+    (e,i) => {
+
+      let x =
+        p[e.id];
 
 
-      const payment =
-        monthPayments[
-          employee.id
-        ];
-
-
-      const isPaid =
-        !!payment;
-
-
-      if (isPaid) {
-
+      if(x)
         paid++;
 
-      }
+
+      let badge =
+        x
+
+          ? `
+            <span class="badge paid">
+              SUDAH BAYAR
+            </span>
+          `
+
+          : `
+            <span class="badge unpaid">
+              BELUM BAYAR
+            </span>
+          `;
 
 
-      const row =
-        document.createElement(
-          "tr"
-        );
+      let act =
+        admin
+
+          ? `
+            <button
+              class="action"
+              onclick="editPayment(${e.id})"
+            >
+              ${x ? "UBAH" : "CATAT"}
+            </button>
+          `
+
+          : `
+            <span
+              style="
+                font-size:7px;
+                color:#aaa
+              "
+            >
+              VIEW ONLY
+            </span>
+          `;
 
 
-      row.innerHTML = `
+      b.insertAdjacentHTML(
+        "beforeend",
+        `
+        <tr>
 
-        <td>
-          ${String(index + 1).padStart(2, "0")}
-        </td>
+          <td>
+            ${i + 1}
+          </td>
 
-        <td class="employee-name">
-          ${employee.name}
-        </td>
+          <td class="name">
+            ${e.name}
+          </td>
 
-        <td class="employee-job">
-          ${employee.job}
-        </td>
+          <td>
+            ${e.job}
+          </td>
 
-        <td>
-          ${rupiah(
-            isPaid
-              ? Number(
-                  payment.amount ||
-                  IURAN
-                )
-              : IURAN
-          )}
-        </td>
+          <td>
+            ${rp(
+              x
+                ? x.amount
+                : IURAN
+            )}
+          </td>
 
-        <td>
+          <td>
+            ${badge}
+          </td>
 
-          ${
-            isPaid
+          <td>
+            ${
+              x
+                ? fd(x.date)
+                : "-"
+            }
+          </td>
 
-              ? `
-                <span class="badge paid">
-                  SUDAH BAYAR
-                </span>
-              `
+          <td>
+            ${act}
+          </td>
 
-              : `
-                <span class="badge unpaid">
-                  BELUM BAYAR
-                </span>
-              `
-          }
-
-        </td>
-
-        <td>
-          ${
-            isPaid
-              ? formatDate(
-                  payment.date
-                )
-              : "-"
-          }
-        </td>
-
-        <td>
-
-          ${
-            role === "admin"
-
-              ? `
-
-                <button
-                  class="edit-btn"
-                  onclick="editPayment(${employee.id})"
-                >
-                  ${
-                    isPaid
-                      ? "UBAH"
-                      : "CATAT"
-                  }
-                </button>
-
-              `
-
-              : `
-
-                <span
-                  style="
-                    color:#61788f;
-                    font-size:9px;
-                  "
-                >
-                  VIEW ONLY
-                </span>
-
-              `
-          }
-
-        </td>
-
-      `;
+        </tr>
+        `
+      );
 
 
-      tbody.appendChild(
-        row
+      s.insertAdjacentHTML(
+        "beforeend",
+        `
+        <tr>
+
+          <td>
+            ${i + 1}
+          </td>
+
+          <td class="name">
+            ${e.name}
+          </td>
+
+          <td>
+            ${e.job}
+          </td>
+
+          <td>
+            ${badge}
+          </td>
+
+          <td>
+            ${
+              x
+                ? fd(x.date)
+                : "-"
+            }
+          </td>
+
+        </tr>
+        `
       );
 
     }
   );
-
-
-  const unpaid =
-    employees.length -
-    paid;
 
 
   document.getElementById(
@@ -2132,160 +2393,213 @@ function renderEmployees() {
   document.getElementById(
     "unpaidCount"
   ).textContent =
-    unpaid +
+    (
+      9 - paid
+    ) +
     " ORANG";
 
 
   document.getElementById(
     "totalWajib"
   ).textContent =
-    rupiah(
-      employees.length *
-      IURAN
-    );
+    rp(450000);
 
 
-  updateFinancialSummary();
+  finance();
+
+  activity();
+
+  report();
 
 }
 
 
-/* =====================================
-   RENDER PENGELUARAN
-===================================== */
+function finance(){
 
-function renderExpenses() {
+  let a =
+    inc();
 
-  const expenses =
-    loadExpenses();
+  let b =
+    out();
+
+  let c =
+    a - b;
 
 
-  const tbody =
+  document.getElementById(
+    "dashIncome"
+  ).textContent =
+    rp(a);
+
+
+  document.getElementById(
+    "dashExpense"
+  ).textContent =
+    rp(b);
+
+
+  document.getElementById(
+    "dashBalance"
+  ).textContent =
+    rp(c);
+
+
+  document.getElementById(
+    "breakIncome"
+  ).textContent =
+    rp(a);
+
+
+  document.getElementById(
+    "breakExpense"
+  ).textContent =
+    rp(b);
+
+
+  document.getElementById(
+    "breakBalance"
+  ).textContent =
+    rp(c);
+
+
+  document.getElementById(
+    "reportIncome"
+  ).textContent =
+    rp(a);
+
+
+  document.getElementById(
+    "reportExpense"
+  ).textContent =
+    rp(b);
+
+
+  document.getElementById(
+    "reportBalance"
+  ).textContent =
+    rp(c);
+
+
+  document.getElementById(
+    "donutTotal"
+  ).textContent =
+    rp(a + b);
+
+
+  let q =
+    a + b
+      ? a /
+        (a + b) *
+        100
+      : 0;
+
+
+  document.getElementById(
+    "donut"
+  ).style.background =
+    `conic-gradient(
+      var(--r) 0 ${q}%,
+      var(--y) ${q}% 100%
+    )`;
+
+
+  draw();
+
+}
+
+
+function renderExpenses(){
+
+  let a =
+    le().sort(
+      (x,y) =>
+        new Date(y.date) -
+        new Date(x.date)
+    );
+
+
+  let b =
     document.getElementById(
       "expenseTableBody"
     );
 
 
-  tbody.innerHTML =
+  b.innerHTML =
     "";
 
 
-  let total =
-    0;
+  if(!a.length){
 
-
-  const sortedExpenses =
-    [...expenses].sort(
-      (a, b) =>
-        new Date(b.date) -
-        new Date(a.date)
-    );
-
-
-  if (
-    sortedExpenses.length === 0
-  ) {
-
-    tbody.innerHTML = `
-
+    b.innerHTML = `
       <tr>
-
         <td
           colspan="5"
           style="
             text-align:center;
-            color:#61788f;
-            padding:25px;
+            color:#aaa;
+            padding:25px
           "
         >
           BELUM ADA PENGELUARAN
         </td>
-
       </tr>
-
     `;
 
   }
 
 
-  sortedExpenses.forEach(
-    (expense, index) => {
+  a.forEach(
+    (x,i) => {
 
+      b.insertAdjacentHTML(
+        "beforeend",
+        `
+        <tr>
 
-      total +=
-        Number(
-          expense.amount ||
-          0
-        );
+          <td>
+            ${i + 1}
+          </td>
 
+          <td>
+            ${fd(x.date)}
+          </td>
 
-      const row =
-        document.createElement(
-          "tr"
-        );
+          <td class="name">
+            ${esc(x.description)}
+          </td>
 
+          <td>
+            ${rp(x.amount)}
+          </td>
 
-      row.innerHTML = `
+          <td>
+            ${
+              admin
 
-        <td>
-          ${index + 1}
-        </td>
+                ? `
+                  <button
+                    class="action"
+                    onclick="deleteExpense(${x.id})"
+                  >
+                    HAPUS
+                  </button>
+                `
 
-        <td>
-          ${formatDate(
-            expense.date
-          )}
-        </td>
+                : `
+                  <span
+                    style="
+                      font-size:7px;
+                      color:#aaa
+                    "
+                  >
+                    VIEW ONLY
+                  </span>
+                `
+            }
+          </td>
 
-        <td class="employee-name">
-          ${escapeHtml(
-            expense.description
-          )}
-        </td>
-
-        <td>
-          ${rupiah(
-            expense.amount
-          )}
-        </td>
-
-        <td>
-
-          ${
-            role === "admin"
-
-              ? `
-
-                <button
-                  class="edit-btn"
-                  onclick="deleteExpense(${expense.id})"
-                >
-                  HAPUS
-                </button>
-
-              `
-
-              : `
-
-                <span
-                  style="
-                    color:#61788f;
-                    font-size:9px;
-                  "
-                >
-                  VIEW ONLY
-                </span>
-
-              `
-          }
-
-        </td>
-
-      `;
-
-
-      tbody.appendChild(
-        row
+        </tr>
+        `
       );
 
     }
@@ -2295,760 +2609,870 @@ function renderExpenses() {
   document.getElementById(
     "expenseTotal"
   ).textContent =
-    rupiah(total);
+    rp(out());
 
 
-  updateFinancialSummary();
+  finance();
+
+  activity();
 
 }
 
 
-/* =====================================
-   MODAL PEMBAYARAN
-===================================== */
+function activity(){
 
-const paymentModal =
-  document.getElementById(
-    "paymentModal"
-  );
+  let a = [];
 
-
-const employeeSelect =
-  document.getElementById(
-    "employeeSelect"
-  );
-
-
-const paymentAmount =
-  document.getElementById(
-    "paymentAmount"
-  );
-
-
-const paymentDate =
-  document.getElementById(
-    "paymentDate"
-  );
-
-
-let editingEmployeeId =
-  null;
-
-
-/* =====================================
-   ISI SELECT KARYAWAN
-===================================== */
-
-function fillEmployeeSelect() {
-
-  employeeSelect.innerHTML =
-    "";
+  let p =
+    lp()[month()] || {};
 
 
   employees.forEach(
-    employee => {
+    e => {
 
-      const option =
-        document.createElement(
-          "option"
+      if(p[e.id]){
+
+        a.push({
+
+          d:p[e.id].date,
+
+          t:
+            "Pembayaran - " +
+            e.name,
+
+          s:
+            "Iuran karyawan",
+
+          n:
+            Number(
+              p[e.id].amount ||
+              IURAN
+            ),
+
+          o:false
+
+        });
+
+      }
+
+    }
+  );
+
+
+  le().forEach(
+    e => {
+
+      a.push({
+
+        d:e.date,
+
+        t:"Pengeluaran",
+
+        s:e.description,
+
+        n:
+          Number(
+            e.amount || 0
+          ),
+
+        o:true
+
+      });
+
+    }
+  );
+
+
+  a.sort(
+    (x,y) =>
+      new Date(y.d) -
+      new Date(x.d)
+  );
+
+
+  let b =
+    document.getElementById(
+      "activityList"
+    );
+
+
+  b.innerHTML =
+    "";
+
+
+  a
+    .slice(0,5)
+    .forEach(
+      x => {
+
+        b.insertAdjacentHTML(
+          "beforeend",
+          `
+          <div class="act">
+
+            <div
+              class="
+                acticon
+                ${x.o ? "out" : ""}
+              "
+            >
+              ${x.o ? "−" : "＋"}
+            </div>
+
+            <div class="actmain">
+
+              <b>
+                ${esc(x.t)}
+              </b>
+
+              <span>
+                ${esc(x.s)}
+                •
+                ${fd(x.d)}
+              </span>
+
+            </div>
+
+            <div class="actamt">
+              ${rp(x.n)}
+            </div>
+
+          </div>
+          `
+        );
+
+      }
+    );
+
+
+  if(!a.length){
+
+    b.innerHTML = `
+      <div
+        style="
+          font-size:8px;
+          color:#aaa;
+          padding:15px 0
+        "
+      >
+        BELUM ADA AKTIVITAS.
+      </div>
+    `;
+
+  }
+
+}
+
+
+function report(){
+
+  let p =
+    lp()[month()] || {};
+
+
+  let paid =
+    employees.filter(
+      e => p[e.id]
+    ).length;
+
+
+  document.getElementById(
+    "reportText"
+  ).innerHTML = `
+
+    Periode
+    <b>
+      ${
+        document.getElementById(
+          "monthSelect"
+        ).selectedOptions[0].text
+      }
+    </b>:
+
+    <b>
+      ${paid}/9 karyawan
+    </b>
+
+    sudah membayar.
+
+    Target iuran
+    <b>
+      RP450.000
+    </b>,
+
+    pemasukan tercatat
+    <b>
+      ${rp(inc())}
+    </b>.
+
+  `;
+
+}
+
+
+function draw(){
+
+  let c =
+    document.getElementById(
+      "cashChart"
+    );
+
+
+  let x =
+    c.getContext("2d");
+
+
+  let w =
+    c.clientWidth;
+
+  let h =
+    c.clientHeight;
+
+  let d =
+    devicePixelRatio || 1;
+
+
+  c.width =
+    w * d;
+
+  c.height =
+    h * d;
+
+
+  x.setTransform(
+    d,
+    0,
+    0,
+    d,
+    0,
+    0
+  );
+
+
+  x.clearRect(
+    0,
+    0,
+    w,
+    h
+  );
+
+
+  let a =
+    inc();
+
+  let b =
+    out();
+
+  let m =
+    Math.max(
+      a,
+      b,
+      1
+    );
+
+
+  let l = 30;
+
+  let r = 10;
+
+  let t = 15;
+
+  let bot = 25;
+
+  let cw =
+    w - l - r;
+
+  let ch =
+    h - t - bot;
+
+
+  x.strokeStyle =
+    "#eee";
+
+
+  for(
+    let i = 0;
+    i < 5;
+    i++
+  ){
+
+    let y =
+      t +
+      ch *
+      i /
+      4;
+
+
+    x.beginPath();
+
+    x.moveTo(
+      l,
+      y
+    );
+
+    x.lineTo(
+      w - r,
+      y
+    );
+
+    x.stroke();
+
+  }
+
+
+  function line(
+    v,
+    col
+  ){
+
+    x.beginPath();
+
+
+    for(
+      let i = 0;
+      i < 7;
+      i++
+    ){
+
+      let f =
+        .45 +
+        .55 *
+        (i + 1) /
+        7;
+
+
+      let xx =
+        l +
+        cw *
+        i /
+        6;
+
+
+      let yy =
+        t +
+        ch *
+        (
+          1 -
+          (
+            v * f
+          ) /
+          m
         );
 
 
-      option.value =
-        employee.id;
+      if(i)
+        x.lineTo(
+          xx,
+          yy
+        );
+
+      else
+        x.moveTo(
+          xx,
+          yy
+        );
+
+    }
 
 
-      option.textContent =
-        employee.name +
-        " — " +
-        employee.job;
+    x.strokeStyle =
+      col;
+
+    x.lineWidth =
+      2.5;
+
+    x.stroke();
+
+  }
 
 
-      employeeSelect.appendChild(
-        option
+  line(
+    a,
+    "#e30613"
+  );
+
+
+  line(
+    b,
+    "#ffc400"
+  );
+
+}
+
+
+let editing =
+  null;
+
+
+function openPay(
+  id = null
+){
+
+  if(!admin)
+    return;
+
+
+  editing =
+    id;
+
+
+  let s =
+    document.getElementById(
+      "employeeSelect"
+    );
+
+
+  let p =
+    lp()[month()] || {};
+
+
+  s.innerHTML =
+    employees
+      .map(
+        e =>
+          `
+          <option
+            value="${e.id}"
+          >
+            ${e.name}
+            —
+            ${e.job}
+          </option>
+          `
+      )
+      .join("");
+
+
+  s.value =
+    id || 1;
+
+
+  document.getElementById(
+    "paymentAmount"
+  ).value =
+    id &&
+    p[id]
+      ? p[id].amount
+      : IURAN;
+
+
+  document.getElementById(
+    "paymentDate"
+  ).value =
+    id &&
+    p[id]
+      ? p[id].date
+      : new Date()
+          .toISOString()
+          .slice(
+            0,
+            10
+          );
+
+
+  document.getElementById(
+    "paymentModal"
+  ).classList.remove(
+    "hidden"
+  );
+
+}
+
+
+window.editPayment =
+  openPay;
+
+
+document.getElementById(
+  "addPaymentBtn"
+).onclick =
+  () =>
+    openPay();
+
+
+document.getElementById(
+  "savePayment"
+).onclick =
+  () => {
+
+    let id =
+      +document.getElementById(
+        "employeeSelect"
+      ).value;
+
+
+    let a =
+      +document.getElementById(
+        "paymentAmount"
+      ).value;
+
+
+    let d =
+      document.getElementById(
+        "paymentDate"
+      ).value;
+
+
+    if(
+      !id ||
+      a <= 0 ||
+      !d
+    ){
+
+      return alert(
+        "LENGKAPI DATA PEMBAYARAN."
       );
 
     }
-  );
-
-}
 
 
-fillEmployeeSelect();
+    let p =
+      lp();
+
+    let m =
+      month();
 
 
-/* =====================================
-   OPEN MODAL PEMBAYARAN
-===================================== */
-
-function openPaymentModal(
-  employeeId = null
-) {
-
-  if (role !== "admin") {
-    return;
-  }
+    p[m] ??= {};
 
 
-  editingEmployeeId =
-    employeeId;
+    p[m][id] = {
+
+      amount:a,
+
+      date:d
+
+    };
 
 
-  const payments =
-    loadPayments();
+    sp(p);
 
 
-  const month =
-    currentMonth();
+    document.getElementById(
+      "paymentModal"
+    ).classList.add(
+      "hidden"
+    );
 
 
-  const monthPayments =
-    payments[month] || {};
+    render();
+
+  };
 
 
-  if (employeeId) {
-
-    employeeSelect.value =
-      employeeId;
-
-
-    const payment =
-      monthPayments[
-        employeeId
-      ];
-
-
-    if (payment) {
-
-      paymentAmount.value =
-        payment.amount ||
-        IURAN;
+[
+  "closePaymentModal",
+  "cancelPayment"
+].forEach(
+  id =>
+    document.getElementById(
+      id
+    ).onclick =
+      () =>
+        document.getElementById(
+          "paymentModal"
+        ).classList.add(
+          "hidden"
+        )
+);
 
 
-      paymentDate.value =
-        payment.date ||
-        "";
+document.getElementById(
+  "addExpenseBtn"
+).onclick =
+  () => {
 
-    } else {
-
-      paymentAmount.value =
-        IURAN;
-
-
-      paymentDate.value =
-        new Date()
-          .toISOString()
-          .slice(0, 10);
-
-    }
-
-  } else {
-
-    employeeSelect.value =
-      employees[0].id;
+    if(!admin)
+      return;
 
 
-    paymentAmount.value =
-      IURAN;
-
-
-    paymentDate.value =
+    document.getElementById(
+      "expenseDate"
+    ).value =
       new Date()
         .toISOString()
-        .slice(0, 10);
-
-  }
-
-
-  paymentModal.classList.remove(
-    "hidden"
-  );
-
-}
+        .slice(
+          0,
+          10
+        );
 
 
-/* =====================================
-   CLOSE MODAL PEMBAYARAN
-===================================== */
-
-function closePaymentModal() {
-
-  paymentModal.classList.add(
-    "hidden"
-  );
+    document.getElementById(
+      "expenseAmount"
+    ).value =
+      "";
 
 
-  editingEmployeeId =
-    null;
-
-}
-
-
-/* =====================================
-   EDIT PEMBAYARAN
-===================================== */
-
-window.editPayment =
-  function(employeeId) {
-
-    if (role !== "admin") {
-      return;
-    }
+    document.getElementById(
+      "expenseDescription"
+    ).value =
+      "";
 
 
-    openPaymentModal(
-      employeeId
+    document.getElementById(
+      "expenseModal"
+    ).classList.remove(
+      "hidden"
     );
 
   };
 
 
-/* =====================================
-   TAMBAH PEMBAYARAN
-===================================== */
-
-document.getElementById(
-  "addPaymentBtn"
-).addEventListener(
-  "click",
-  () => {
-
-    openPaymentModal();
-
-  }
-);
-
-
-/* =====================================
-   SAVE PEMBAYARAN
-===================================== */
-
-document.getElementById(
-  "savePayment"
-).addEventListener(
-  "click",
-  () => {
-
-
-    if (role !== "admin") {
-      return;
-    }
-
-
-    const employeeId =
-      Number(
-        employeeSelect.value
-      );
-
-
-    const amount =
-      Number(
-        paymentAmount.value
-      );
-
-
-    const date =
-      paymentDate.value;
-
-
-    if (!employeeId) {
-
-      alert(
-        "PILIH KARYAWAN."
-      );
-
-      return;
-
-    }
-
-
-    if (
-      !amount ||
-      amount <= 0
-    ) {
-
-      alert(
-        "JUMLAH PEMBAYARAN TIDAK VALID."
-      );
-
-      return;
-
-    }
-
-
-    if (!date) {
-
-      alert(
-        "ISI TANGGAL PEMBAYARAN."
-      );
-
-      return;
-
-    }
-
-
-    const payments =
-      loadPayments();
-
-
-    const month =
-      currentMonth();
-
-
-    if (!payments[month]) {
-
-      payments[month] = {};
-
-    }
-
-
-    payments[month][employeeId] = {
-
-      amount:
-        amount,
-
-      date:
-        date
-
-    };
-
-
-    savePayments(
-      payments
-    );
-
-
-    closePaymentModal();
-
-
-    renderEmployees();
-
-    renderExpenses();
-
-  }
-);
-
-
-/* =====================================
-   CANCEL PEMBAYARAN
-===================================== */
-
-document.getElementById(
-  "cancelPayment"
-).addEventListener(
-  "click",
-  closePaymentModal
-);
-
-
-document.getElementById(
-  "closePaymentModal"
-).addEventListener(
-  "click",
-  closePaymentModal
-);
-
-
-/* =====================================
-   KLIK LUAR MODAL PEMBAYARAN
-===================================== */
-
-paymentModal.addEventListener(
-  "click",
-  event => {
-
-    if (
-      event.target ===
-      paymentModal
-    ) {
-
-      closePaymentModal();
-
-    }
-
-  }
-);
-
-
-/* =====================================
-   MODAL PENGELUARAN
-===================================== */
-
-const expenseModal =
-  document.getElementById(
-    "expenseModal"
-  );
-
-
-const expenseDate =
-  document.getElementById(
-    "expenseDate"
-  );
-
-
-const expenseAmount =
-  document.getElementById(
-    "expenseAmount"
-  );
-
-
-const expenseDescription =
-  document.getElementById(
-    "expenseDescription"
-  );
-
-
-/* =====================================
-   OPEN MODAL PENGELUARAN
-===================================== */
-
-function openExpenseModal() {
-
-  if (role !== "admin") {
-    return;
-  }
-
-
-  expenseDate.value =
-    new Date()
-      .toISOString()
-      .slice(0, 10);
-
-
-  expenseAmount.value =
-    "";
-
-
-  expenseDescription.value =
-    "";
-
-
-  expenseModal.classList.remove(
-    "hidden"
-  );
-
-}
-
-
-/* =====================================
-   CLOSE MODAL PENGELUARAN
-===================================== */
-
-function closeExpenseModal() {
-
-  expenseModal.classList.add(
-    "hidden"
-  );
-
-}
-
-
-/* =====================================
-   BUKA MODAL
-===================================== */
-
-document.getElementById(
-  "addExpenseBtn"
-).addEventListener(
-  "click",
-  openExpenseModal
-);
-
-
-/* =====================================
-   TUTUP MODAL
-===================================== */
-
-document.getElementById(
-  "closeExpenseModal"
-).addEventListener(
-  "click",
-  closeExpenseModal
-);
-
-
-document.getElementById(
-  "cancelExpense"
-).addEventListener(
-  "click",
-  closeExpenseModal
-);
-
-
-/* =====================================
-   KLIK LUAR MODAL PENGELUARAN
-===================================== */
-
-expenseModal.addEventListener(
-  "click",
-  event => {
-
-    if (
-      event.target ===
-      expenseModal
-    ) {
-
-      closeExpenseModal();
-
-    }
-
-  }
-);
-
-
-/* =====================================
-   SIMPAN PENGELUARAN
-===================================== */
-
 document.getElementById(
   "saveExpense"
-).addEventListener(
-  "click",
+).onclick =
   () => {
 
-
-    if (role !== "admin") {
-      return;
-    }
-
-
-    const date =
-      expenseDate.value;
+    let d =
+      document.getElementById(
+        "expenseDate"
+      ).value;
 
 
-    const amount =
-      Number(
-        expenseAmount.value
+    let a =
+      +document.getElementById(
+        "expenseAmount"
+      ).value;
+
+
+    let s =
+      document.getElementById(
+        "expenseDescription"
+      ).value.trim();
+
+
+    if(
+      !d ||
+      a <= 0 ||
+      !s
+    ){
+
+      return alert(
+        "LENGKAPI DATA PENGELUARAN."
       );
-
-
-    const description =
-      expenseDescription.value
-        .trim();
-
-
-    if (!date) {
-
-      alert(
-        "ISI TANGGAL PENGELUARAN."
-      );
-
-      return;
-
-    }
-
-
-    if (
-      !amount ||
-      amount <= 0
-    ) {
-
-      alert(
-        "NOMINAL PENGELUARAN TIDAK VALID."
-      );
-
-      return;
 
     }
 
 
-    if (!description) {
-
-      alert(
-        "ISI KETERANGAN PENGELUARAN."
-      );
-
-      return;
-
-    }
+    let e =
+      le();
 
 
-    const expenses =
-      loadExpenses();
-
-
-    expenses.push({
+    e.push({
 
       id:
         Date.now(),
 
       date:
-        date,
+        d,
 
       amount:
-        amount,
+        a,
 
       description:
-        description
+        s
 
     });
 
 
-    saveExpenses(
-      expenses
-    );
+    se(e);
 
 
-    closeExpenseModal();
-
-
-    renderExpenses();
-
-    updateFinancialSummary();
-
-  }
-);
-
-
-/* =====================================
-   HAPUS PENGELUARAN
-===================================== */
-
-window.deleteExpense =
-  function(id) {
-
-
-    if (role !== "admin") {
-      return;
-    }
-
-
-    const yakin =
-      confirm(
-        "YAKIN MAU MENGHAPUS PENGELUARAN INI?"
-      );
-
-
-    if (!yakin) {
-      return;
-    }
-
-
-    const expenses =
-      loadExpenses();
-
-
-    const updated =
-      expenses.filter(
-        expense =>
-          expense.id !== id
-      );
-
-
-    saveExpenses(
-      updated
+    document.getElementById(
+      "expenseModal"
+    ).classList.add(
+      "hidden"
     );
 
 
     renderExpenses();
-
-    updateFinancialSummary();
 
   };
 
 
-/* =====================================
-   GANTI BULAN
-===================================== */
+window.deleteExpense =
+  id => {
 
-monthSelect.addEventListener(
-  "change",
-  () => {
-
-    renderEmployees();
-
-    renderExpenses();
-
-    updateFinancialSummary();
-
-  }
-);
-
-
-/* =====================================
-   RESET STATUS BULAN
-===================================== */
-
-document.getElementById(
-  "resetMonthBtn"
-).addEventListener(
-  "click",
-  () => {
-
-
-    if (role !== "admin") {
-      return;
-    }
-
-
-    if (
+    if(
+      !admin ||
       !confirm(
-        "YAKIN MAU RESET SEMUA STATUS PEMBAYARAN BULAN INI?"
+        "YAKIN MAU MENGHAPUS PENGELUARAN INI?"
       )
-    ) {
-
+    )
       return;
 
-    }
 
-
-    const payments =
-      loadPayments();
-
-
-    delete payments[
-      currentMonth()
-    ];
-
-
-    savePayments(
-      payments
+    se(
+      le().filter(
+        x =>
+          x.id !== id
+      )
     );
 
 
-    renderEmployees();
-
     renderExpenses();
 
-    updateFinancialSummary();
+  };
 
-  }
+
+[
+  "closeExpenseModal",
+  "cancelExpense"
+].forEach(
+  id =>
+    document.getElementById(
+      id
+    ).onclick =
+      () =>
+        document.getElementById(
+          "expenseModal"
+        ).classList.add(
+          "hidden"
+        )
 );
 
 
-/* =====================================
-   LOGOUT
-===================================== */
+document.getElementById(
+  "resetMonthBtn"
+).onclick =
+  () => {
+
+    if(
+      admin &&
+      confirm(
+        "YAKIN MAU RESET SEMUA STATUS PEMBAYARAN BULAN INI?"
+      )
+    ){
+
+      let p =
+        lp();
+
+
+      delete p[
+        month()
+      ];
+
+
+      sp(p);
+
+
+      render();
+
+    }
+
+  };
+
+
+function show(
+  id
+){
+
+  document
+    .querySelectorAll(
+      ".section"
+    )
+    .forEach(
+      x =>
+        x.classList.remove(
+          "active"
+        )
+    );
+
+
+  document
+    .getElementById(
+      id
+    )
+    .classList.add(
+      "active"
+    );
+
+
+  document
+    .querySelectorAll(
+      ".nav button"
+    )
+    .forEach(
+      x =>
+        x.classList.toggle(
+          "active",
+          x.dataset.sec === id
+        )
+    );
+
+
+  scrollTo(
+    0,
+    0
+  );
+
+}
+
+
+document
+  .querySelectorAll(
+    ".nav button"
+  )
+  .forEach(
+    x =>
+      x.onclick =
+        () =>
+          show(
+            x.dataset.sec
+          )
+  );
+
+
+document
+  .querySelectorAll(
+    "[data-go]"
+  )
+  .forEach(
+    x =>
+      x.onclick =
+        () =>
+          show(
+            x.dataset.go
+          )
+  );
+
+
+document.getElementById(
+  "monthSelect"
+).onchange =
+  () => {
+
+    render();
+
+    renderExpenses();
+
+  };
+
 
 document.getElementById(
   "logoutBtn"
-).addEventListener(
-  "click",
+).onclick =
   () => {
 
     sessionStorage.clear();
 
-    window.location.href =
+    location.href =
       "index.html";
 
-  }
+  };
+
+
+addEventListener(
+  "resize",
+  draw
 );
 
 
-/* =====================================
-   INIT
-===================================== */
-
-renderEmployees();
+render();
 
 renderExpenses();
 
-updateFinancialSummary();
-
-
 </script>
 
-
 </body>
-
 </html>
