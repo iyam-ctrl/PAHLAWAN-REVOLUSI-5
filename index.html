@@ -1,1 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAHLAWAN REVOLUSI 5 - UANG KAS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+  <main class="landing">
+
+    <section class="brand-card">
+
+      <div class="alfamart-logo" aria-label="Alfamart">
+        Alfa<span>mart</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="eyebrow">SISTEM UANG KAS KARYAWAN</p>
+
+      <h1>PAHLAWAN REVOLUSI 5</h1>
+
+      <p class="subtitle">
+        PENGELOLA KAS: ROSTATI
+      </p>
+
+      <div class="action-grid">
+
+        <button class="action-btn admin-btn" id="openAdmin">
+
+          <span class="icon">🔐</span>
+
+          <span>
+            <strong>LOGIN ROSTATI</strong>
+            <small>AKSES PENGELOLA KAS</small>
+          </span>
+
+        </button>
+
+
+        <button class="action-btn viewer-btn" id="enterViewer">
+
+          <span class="icon">👁️</span>
+
+          <span>
+            <strong>MASUK SEBAGAI VIEWER</strong>
+            <small>LIHAT DATA TANPA LOGIN</small>
+          </span>
+
+        </button>
+
+      </div>
+
+
+      <div class="rules">
+
+        <div>
+          <b>RP50.000</b>
+          <span>IURAN / ORANG</span>
+        </div>
+
+        <div>
+          <b>TANGGAL 28</b>
+          <span>JATUH TEMPO</span>
+        </div>
+
+        <div>
+          <b>ROSTATI</b>
+          <span>PENGELOLA KAS</span>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- LOGIN ROSTATI -->
+
+  <div class="modal hidden" id="loginModal">
+
+    <div class="modal-box">
+
+      <button
+        class="close"
+        id="closeAdmin"
+        aria-label="Tutup"
+      >
+        ×
+      </button>
+
+
+      <div class="modal-icon">
+        🔐
+      </div>
+
+
+      <p class="eyebrow">
+        AKSES PENGELOLA
+      </p>
+
+
+      <h2>
+        LOGIN ROSTATI
+      </h2>
+
+
+      <p class="modal-desc">
+        Masukkan password pengelola untuk membuka fitur kas.
+      </p>
+
+
+      <label for="password">
+        PASSWORD
+      </label>
+
+
+      <div class="password-wrap">
+
+        <input
+          id="password"
+          type="password"
+          autocomplete="current-password"
+          placeholder="MASUKKAN PASSWORD"
+        >
+
+        <button
+          id="togglePassword"
+          type="button"
+        >
+          LIHAT
+        </button>
+
+      </div>
+
+
+      <p
+        class="error hidden"
+        id="loginError"
+      >
+        PASSWORD SALAH.
+      </p>
+
+
+      <button
+        class="primary-btn"
+        id="loginBtn"
+      >
+        MASUK KE DASHBOARD
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script src="js/auth.js"></script>
+
+</body>
+</html>
