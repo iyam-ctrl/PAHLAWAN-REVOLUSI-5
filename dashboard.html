@@ -965,7 +965,7 @@ SISTEM MANAJEMEN KAS
   class="active"
   data-sec="dashboard"
 >
-⌂
+âŒ‚
 <br>
 DASHBOARD
 </button>
@@ -973,7 +973,7 @@ DASHBOARD
 <button
   data-sec="payments"
 >
-▣
+â–£
 <br>
 PEMBAYARAN
 </button>
@@ -981,7 +981,7 @@ PEMBAYARAN
 <button
   data-sec="expenses"
 >
-−
+âˆ’
 <br>
 PENGELUARAN
 </button>
@@ -989,7 +989,7 @@ PENGELUARAN
 <button
   data-sec="employees"
 >
-♙
+â™™
 <br>
 KARYAWAN
 </button>
@@ -997,7 +997,7 @@ KARYAWAN
 <button
   data-sec="reports"
 >
-▥
+â–¥
 <br>
 LAPORAN
 </button>
@@ -1053,9 +1053,9 @@ KELUAR
 </button>
 <div class="menu-panel" id="menuPanel">
 <div class="menu-title">MENU UTAMA</div>
-<button class="menu-item" id="settingsMenu">⚙ PENGATURAN</button>
-<button class="menu-item" id="reportMenu">▥ LAPORAN KAS</button>
-<button class="menu-item logout-menu" id="menuLogout">↪ LOGOUT</button>
+<button class="menu-item" id="settingsMenu">âš™ PENGATURAN</button>
+<button class="menu-item" id="reportMenu">â–¥ LAPORAN KAS</button>
+<button class="menu-item logout-menu" id="menuLogout">â†ª LOGOUT</button>
 </div>
 </div>
 
@@ -1115,7 +1115,7 @@ PENGELOLA KAS
 <div class="card kpi">
 
 <div class="icon">
-👥
+ðŸ‘¥
 </div>
 
 <label>
@@ -1136,7 +1136,7 @@ DATA AKTIF
 <div class="card kpi">
 
 <div class="icon">
-↓
+â†“
 </div>
 
 <label>
@@ -1157,7 +1157,7 @@ PEMBAYARAN KAS
 <div class="card kpi">
 
 <div class="icon">
-↑
+â†‘
 </div>
 
 <label>
@@ -1178,7 +1178,7 @@ PENGELUARAN
 <div class="card kpi">
 
 <div class="icon">
-▣
+â–£
 </div>
 
 <label>
@@ -1204,21 +1204,21 @@ MASUK - KELUAR
   class="tool"
   id="addPaymentBtn"
 >
-＋ TAMBAH PEMBAYARAN
+ï¼‹ TAMBAH PEMBAYARAN
 </button>
 
 <button
   class="tool"
   id="addExpenseBtn"
 >
-－ TAMBAH PENGELUARAN
+ï¼ TAMBAH PENGELUARAN
 </button>
 
 <button
   class="tool"
   id="resetMonthBtn"
 >
-↻ RESET BULAN
+â†» RESET BULAN
 </button>
 
 </div>
@@ -1346,7 +1346,7 @@ Akses fitur utama
 <button data-go="payments">
 
 <i>
-＋
+ï¼‹
 </i>
 
 <b>
@@ -1363,7 +1363,7 @@ Catat iuran
 <button data-go="expenses">
 
 <i>
-−
+âˆ’
 </i>
 
 <b>
@@ -1380,7 +1380,7 @@ Catat kas keluar
 <button data-go="employees">
 
 <i>
-♙
+â™™
 </i>
 
 <b>
@@ -1397,7 +1397,7 @@ Status iuran
 <button data-go="reports">
 
 <i>
-▥
+â–¥
 </i>
 
 <b>
@@ -1770,7 +1770,7 @@ Ringkasan pemasukan, pengeluaran, dan saldo.
 </p>
 
 <div class="report-actions">
-<button class="pdf-btn" id="downloadPdfBtn">↓ DOWNLOAD LAPORAN PDF</button>
+<button class="pdf-btn" id="downloadPdfBtn">â†“ DOWNLOAD LAPORAN PDF</button>
 </div>
 
 <div class="kpis">
@@ -1854,7 +1854,7 @@ RINGKASAN PEMBAYARAN
 <div class="modalbox">
 <div class="modalhead">
 <h3>PENGATURAN</h3>
-<button class="close" id="closeSettingsModal">×</button>
+<button class="close" id="closeSettingsModal">Ã—</button>
 </div>
 <div class="settings-list">
 <div class="settings-row"><span>Pengguna</span><b id="settingUser">-</b></div>
@@ -1884,7 +1884,7 @@ CATAT PEMBAYARAN
   class="close"
   id="closePaymentModal"
 >
-×
+Ã—
 </button>
 
 </div>
@@ -1970,7 +1970,7 @@ TAMBAH PENGELUARAN
   class="close"
   id="closeExpenseModal"
 >
-×
+Ã—
 </button>
 
 </div>
@@ -2798,7 +2798,7 @@ function activity(){
                 ${x.o ? "out" : ""}
               "
             >
-              ${x.o ? "−" : "＋"}
+              ${x.o ? "âˆ’" : "ï¼‹"}
             </div>
 
             <div class="actmain">
@@ -2809,7 +2809,7 @@ function activity(){
 
               <span>
                 ${esc(x.s)}
-                •
+                â€¢
                 ${fd(x.d)}
               </span>
 
@@ -2899,9 +2899,6 @@ function report(){
 // =====================================
 const menuBtn = document.getElementById("menuBtn");
 const menuPanel = document.getElementById("menuPanel");
-const nm = sessionStorage.getItem("cashKasUser") || (role === "admin" ? "ROSTATI" : "VIEWER");
-const admin = role === "admin";
-
 menuBtn.onclick = (e) => {
   e.stopPropagation();
   menuPanel.classList.toggle("open");
@@ -2984,7 +2981,7 @@ function downloadCashReportPDF(){
       doc.setFont("helvetica","normal");
       doc.setFontSize(7);
       doc.setTextColor(130);
-      doc.text("PAHLAWAN REVOLUSI 5 • Laporan Kas",margin,290);
+      doc.text("PAHLAWAN REVOLUSI 5 â€¢ Laporan Kas",margin,290);
       doc.text("Halaman "+i+" / "+pages,pageW-margin,290,{align:"right"});
     }
   }
@@ -3052,7 +3049,7 @@ function downloadCashReportPDF(){
   });
   y += 30;
 
-  sectionTitle("STATUS IURAN KARYAWAN",paid+" sudah bayar • "+unpaid+" belum bayar");
+  sectionTitle("STATUS IURAN KARYAWAN",paid+" sudah bayar â€¢ "+unpaid+" belum bayar");
   const cols=[margin,margin+8,margin+53,margin+91,margin+130,margin+162];
   const widths=[8,45,38,39,32,contentW-162];
   function tableHeader(labels){
