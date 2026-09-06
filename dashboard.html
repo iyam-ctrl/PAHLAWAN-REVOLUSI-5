@@ -313,7 +313,6 @@ body{
   font-size:8px
 }
 
-
 .donutbox{
   display:grid;
   grid-template-columns:135px 1fr;
@@ -680,7 +679,9 @@ body{
   box-shadow:0 5px 16px #00000008
 }
 
-.menu-btn span,.menu-btn span:before,.menu-btn span:after{
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after{
   display:block;
   width:18px;
   height:2px;
@@ -690,8 +691,17 @@ body{
   position:relative
 }
 
-.menu-btn span:before{position:absolute;top:-6px;left:0}
-.menu-btn span:after{position:absolute;top:6px;left:0}
+.menu-btn span:before{
+  position:absolute;
+  top:-6px;
+  left:0
+}
+
+.menu-btn span:after{
+  position:absolute;
+  top:6px;
+  left:0
+}
 
 .menu-panel{
   position:absolute;
@@ -707,7 +717,9 @@ body{
   display:none
 }
 
-.menu-panel.open{display:block}
+.menu-panel.open{
+  display:block
+}
 
 .menu-title{
   padding:9px 10px 7px;
@@ -730,8 +742,13 @@ body{
   cursor:pointer
 }
 
-.menu-item:hover{background:#f7f7f7}
-.menu-item.logout-menu{color:var(--r)}
+.menu-item:hover{
+  background:#f7f7f7
+}
+
+.menu-item.logout-menu{
+  color:var(--r)
+}
 
 .report-actions{
   display:flex;
@@ -767,8 +784,13 @@ body{
   font-size:8px
 }
 
-.settings-row span{color:#888}
-.settings-row b{text-align:right}
+.settings-row span{
+  color:#888
+}
+
+.settings-row b{
+  text-align:right
+}
 
 .mobile-nav{
   display:none
@@ -784,155 +806,126 @@ body{
     grid-template-columns:1fr
   }
 
-  .side{
-    width:220px
-  }
-
-  .app{
-    grid-template-columns:220px 1fr
-  }
 }
 
-@media(max-width:700px){
+@media(max-width:800px){
 
   .app{
     display:block
   }
 
   .side{
-    position:fixed;
-    top:auto;
-    bottom:0;
-    width:100%;
-    height:64px;
-    padding:6px;
-    background:#fff;
-    color:#555;
-    border-top:1px solid var(--line);
-    box-shadow:0 -7px 20px #0001
-  }
-
-  .brand,
-  .bottom{
     display:none
   }
 
-  .nav{
-    margin:0;
-    height:100%;
-    display:flex;
-    justify-content:space-around
-  }
-
-  .nav button{
-    color:#777;
-    padding:4px 5px;
-    font-size:7px;
-    text-align:center
-  }
-
-  .nav button.active{
-    background:#fff0f1;
-    color:var(--r)
-  }
-
   .main{
-    padding:15px 12px 80px
+    padding:18px 14px 85px
+  }
+
+  .top{
+    align-items:flex-start
   }
 
   .top h2{
-    font-size:23px
-  }
-
-  .top p{
-    font-size:8px
+    font-size:22px
   }
 
   .user{
-    padding:5px 7px
-  }
-
-  .user .avatar{
-    width:27px;
-    height:27px
-  }
-
-  .user strong{
-    font-size:8px
-  }
-
-  .user span{
-    font-size:6px
+    display:none
   }
 
   .kpis{
+    grid-template-columns:repeat(2,1fr);
     gap:8px
   }
 
   .card{
-    padding:12px;
-    border-radius:13px
-  }
-
-  .kpi b{
-    font-size:15px
-  }
-
-  .kpi label{
-    font-size:7px
-  }
-
-  .kpi small{
-    font-size:6px
+    padding:12px
   }
 
   .row{
-    gap:8px;
-    margin-top:8px
+    grid-template-columns:1fr
   }
 
   .quick{
-    grid-template-columns:1fr 1fr
-  }
-
-  .chart{
-    height:200px
-  }
-
-  .donutbox{
-    grid-template-columns:110px 1fr
-  }
-
-  .donut{
-    width:105px;
-    height:105px
-  }
-
-  .donut:after{
-    width:64px;
-    height:64px
-  }
-
-  .status{
-    grid-template-columns:1fr 1fr
-  }
-
-  .status .card:last-child{
-    grid-column:1/-1
+    grid-template-columns:repeat(2,1fr)
   }
 
   .toolbar{
     grid-template-columns:1fr
   }
 
-  .panelhide{
-    display:none
+  .donutbox{
+    grid-template-columns:120px 1fr
   }
+
+  .donut{
+    width:115px;
+    height:115px
+  }
+
+  .donut:after{
+    width:68px;
+    height:68px
+  }
+
+  .mobile-nav{
+    position:fixed;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    left:0;
+    right:0;
+    bottom:0;
+    height:65px;
+    background:#fff;
+    border-top:1px solid var(--line);
+    z-index:30
+  }
+
+  .mobile-nav button{
+    border:0;
+    background:#fff;
+    font-size:7px;
+    font-weight:900;
+    color:#888
+  }
+
+  .mobile-nav button.active{
+    color:var(--r)
+  }
+
+}
+
+@media(max-width:480px){
+
+  .kpis{
+    grid-template-columns:1fr 1fr
+  }
+
+  .kpi b{
+    font-size:16px
+  }
+
+  .status{
+    grid-template-columns:1fr
+  }
+
+  .donutbox{
+    grid-template-columns:1fr;
+    justify-items:center
+  }
+
+  .legend{
+    width:100%
+  }
+
 }
 
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+</script>
 
 </head>
 
@@ -957,7 +950,6 @@ SISTEM MANAJEMEN KAS
 </p>
 
 </div>
-
 
 <nav class="nav">
 
@@ -1004,7 +996,6 @@ LAPORAN
 
 </nav>
 
-
 <div class="bottom">
 
 <div class="profile">
@@ -1027,7 +1018,6 @@ PENGELOLA KAS
 
 </div>
 
-
 <button
   class="logout"
   id="logoutBtn"
@@ -1042,21 +1032,52 @@ KELUAR
 
 <main class="main">
 
-
 <header class="top">
 
 <div style="display:flex;align-items:flex-start;gap:10px;min-width:0">
 
 <div class="menu-wrap">
-<button class="menu-btn" id="menuBtn" aria-label="Buka menu">
+
+<button
+  class="menu-btn"
+  id="menuBtn"
+  aria-label="Buka menu"
+>
 <span></span>
 </button>
-<div class="menu-panel" id="menuPanel">
-<div class="menu-title">MENU UTAMA</div>
-<button class="menu-item" id="settingsMenu">⚙ PENGATURAN</button>
-<button class="menu-item" id="reportMenu">▥ LAPORAN KAS</button>
-<button class="menu-item logout-menu" id="menuLogout">↪ LOGOUT</button>
+
+<div
+  class="menu-panel"
+  id="menuPanel"
+>
+
+<div class="menu-title">
+MENU UTAMA
 </div>
+
+<button
+  class="menu-item"
+  id="settingsMenu"
+>
+⚙ PENGATURAN
+</button>
+
+<button
+  class="menu-item"
+  id="reportMenu"
+>
+▥ LAPORAN KAS
+</button>
+
+<button
+  class="menu-item logout-menu"
+  id="menuLogout"
+>
+↪ LOGOUT
+</button>
+
+</div>
+
 </div>
 
 <div>
@@ -1111,44 +1132,22 @@ PENGELOLA KAS
 
 <div class="kpis">
 
-
 <div class="card kpi">
 
 <div class="icon">
-👥
+↗
 </div>
 
 <label>
-TOTAL KARYAWAN
-</label>
-
-<b>
-9 ORANG
-</b>
-
-<small>
-DATA AKTIF
-</small>
-
-</div>
-
-
-<div class="card kpi">
-
-<div class="icon">
-↓
-</div>
-
-<label>
-TOTAL KAS MASUK
+KAS MASUK
 </label>
 
 <b id="dashIncome">
-RP 0
+RP0
 </b>
 
 <small>
-PEMBAYARAN KAS
+Pemasukan bulan terpilih
 </small>
 
 </div>
@@ -1157,19 +1156,19 @@ PEMBAYARAN KAS
 <div class="card kpi">
 
 <div class="icon">
-↑
+↘
 </div>
 
 <label>
-TOTAL KAS KELUAR
+KAS KELUAR
 </label>
 
 <b id="dashExpense">
-RP 0
+RP0
 </b>
 
 <small>
-PENGELUARAN
+Total pengeluaran
 </small>
 
 </div>
@@ -1178,7 +1177,7 @@ PENGELUARAN
 <div class="card kpi">
 
 <div class="icon">
-▣
+=
 </div>
 
 <label>
@@ -1186,11 +1185,32 @@ SALDO KAS
 </label>
 
 <b id="dashBalance">
-RP 0
+RP0
 </b>
 
 <small>
-MASUK - KELUAR
+Kas masuk dikurangi keluar
+</small>
+
+</div>
+
+
+<div class="card kpi">
+
+<div class="icon">
+✓
+</div>
+
+<label>
+TARGET IURAN
+</label>
+
+<b id="totalWajib">
+RP450.000
+</b>
+
+<small>
+9 karyawan × Rp50.000
 </small>
 
 </div>
@@ -1198,44 +1218,81 @@ MASUK - KELUAR
 </div>
 
 
-<div class="toolbar">
+<div class="row">
 
-<button
-  class="tool"
-  id="addPaymentBtn"
->
-＋ TAMBAH PEMBAYARAN
-</button>
+<div class="card">
 
-<button
-  class="tool"
-  id="addExpenseBtn"
->
-－ TAMBAH PENGELUARAN
-</button>
+<div class="head">
 
-<button
-  class="tool"
-  id="resetMonthBtn"
+<div>
+
+<h3>
+RINCIAN KAS
+</h3>
+
+<p>
+Ringkasan pemasukan dan pengeluaran.
+</p>
+
+</div>
+
+<select
+  class="select"
+  id="monthSelect"
 >
-↻ RESET BULAN
-</button>
+
+<option value="2026-09">
+SEPTEMBER 2026
+</option>
+
+<option value="2026-08">
+AGUSTUS 2026
+</option>
+
+<option value="2026-07">
+JULI 2026
+</option>
+
+<option value="2026-06">
+JUNI 2026
+</option>
+
+<option value="2026-05">
+MEI 2026
+</option>
+
+<option value="2026-04">
+APRIL 2026
+</option>
+
+<option value="2026-03">
+MARET 2026
+</option>
+
+<option value="2026-02">
+FEBRUARI 2026
+</option>
+
+<option value="2026-01">
+JANUARI 2026
+</option>
+
+</select>
 
 </div>
 
 
-<div class="row">
+<div class="donutbox">
 
-
-
+<div class="donut">
 
 <div class="donuttext">
 
-TOTAL
-
-<b id="donutTotal">
-RP 0
+<b id="breakBalance">
+RP0
 </b>
+
+SALDO
 
 </div>
 
@@ -1247,40 +1304,38 @@ RP 0
 <div>
 
 <span>
-<i class="dot red"></i>
+<span class="dot red"></span>
 KAS MASUK
 </span>
 
-<strong id="breakIncome">
-RP 0
-</strong>
+<b id="breakIncome">
+RP0
+</b>
 
 </div>
-
 
 <div>
 
 <span>
-<i class="dot yellow"></i>
+<span class="dot yellow"></span>
 KAS KELUAR
 </span>
 
-<strong id="breakExpense">
-RP 0
-</strong>
+<b id="breakExpense">
+RP0
+</b>
 
 </div>
-
 
 <div>
 
 <span>
-SALDO
+TOTAL SALDO
 </span>
 
-<strong id="breakBalance">
-RP 0
-</strong>
+<b id="breakBalance2">
+RP0
+</b>
 
 </div>
 
@@ -1294,7 +1349,6 @@ RP 0
 
 
 <div class="row">
-
 
 <div class="card">
 
@@ -1307,7 +1361,7 @@ MENU CEPAT
 </h3>
 
 <p>
-Akses fitur utama
+Akses fitur utama.
 </p>
 
 </div>
@@ -1324,11 +1378,11 @@ Akses fitur utama
 </i>
 
 <b>
-Tambah Pembayaran
+CATAT PEMBAYARAN
 </b>
 
 <span>
-Catat iuran
+Catat iuran karyawan
 </span>
 
 </button>
@@ -1341,11 +1395,11 @@ Catat iuran
 </i>
 
 <b>
-Tambah Pengeluaran
+TAMBAH PENGELUARAN
 </b>
 
 <span>
-Catat kas keluar
+Catat pengeluaran kas
 </span>
 
 </button>
@@ -1358,11 +1412,11 @@ Catat kas keluar
 </i>
 
 <b>
-Data Karyawan
+DATA KARYAWAN
 </b>
 
 <span>
-Status iuran
+Lihat seluruh karyawan
 </span>
 
 </button>
@@ -1375,7 +1429,7 @@ Status iuran
 </i>
 
 <b>
-Laporan Kas
+LIHAT LAPORAN
 </b>
 
 <span>
@@ -1400,7 +1454,7 @@ AKTIVITAS TERBARU
 </h3>
 
 <p>
-Transaksi terakhir
+Aktivitas kas terakhir.
 </p>
 
 </div>
@@ -1409,8 +1463,9 @@ Transaksi terakhir
 
 <div
   class="activity"
-  id="activityList"
-></div>
+  id="recentActivity"
+>
+</div>
 
 </div>
 
@@ -1429,49 +1484,32 @@ PEMBAYARAN UANG KAS
 </h3>
 
 <p style="font-size:9px;color:#999">
-Setiap karyawan membayar RP50.000 setiap tanggal 28.
+Kelola pembayaran iuran bulanan karyawan.
 </p>
 
 
-<div class="card">
+<div class="toolbar">
 
-<div class="head">
-
-<div>
-
-<h3>
-STATUS PEMBAYARAN
-</h3>
-
-<p>
-Periode terpilih
-</p>
-
-</div>
-
-
-<select
-  class="select"
-  id="monthSelect"
+<button
+  class="tool"
+  id="addPaymentBtn"
 >
+＋ CATAT PEMBAYARAN
+</button>
 
-<option value="2026-09">
-SEPTEMBER 2026
-</option>
+<button
+  class="tool"
+  id="paymentInfoBtn"
+>
+ℹ INFO IURAN
+</button>
 
-<option value="2026-10">
-OKTOBER 2026
-</option>
-
-<option value="2026-11">
-NOVEMBER 2026
-</option>
-
-<option value="2026-12">
-DESEMBER 2026
-</option>
-
-</select>
+<button
+  class="tool"
+  data-go="reports"
+>
+▥ LIHAT LAPORAN
+</button>
 
 </div>
 
@@ -1490,7 +1528,6 @@ SUDAH BAYAR
 
 </div>
 
-
 <div class="card">
 
 <label>
@@ -1503,16 +1540,34 @@ BELUM BAYAR
 
 </div>
 
-
 <div class="card">
 
 <label>
-TOTAL WAJIB BAYAR
+TARGET BULANAN
 </label>
 
-<b id="totalWajib">
-RP 450.000
+<b>
+RP450.000
 </b>
+
+</div>
+
+</div>
+
+
+<div class="card table-card">
+
+<div class="head">
+
+<div>
+
+<h3>
+STATUS PEMBAYARAN
+</h3>
+
+<p>
+Daftar pembayaran karyawan.
+</p>
 
 </div>
 
@@ -1540,7 +1595,7 @@ JABATAN
 </th>
 
 <th>
-IURAN
+JUMLAH
 </th>
 
 <th>
@@ -1548,7 +1603,7 @@ STATUS
 </th>
 
 <th>
-TANGGAL BAYAR
+TANGGAL
 </th>
 
 <th>
@@ -1561,17 +1616,10 @@ AKSI
 
 <tbody
   id="employeeTableBody"
-></tbody>
+>
+</tbody>
 
 </table>
-
-</div>
-
-
-<div class="info">
-
-SETIAP KARYAWAN WAJIB MEMBAYAR
-RP50.000 SETIAP TANGGAL 28.
 
 </div>
 
@@ -1590,8 +1638,27 @@ PENGELUARAN KAS
 </h3>
 
 <p style="font-size:9px;color:#999">
-Catat semua penggunaan uang kas.
+Catat seluruh penggunaan uang kas.
 </p>
+
+
+<div class="toolbar">
+
+<button
+  class="tool"
+  id="addExpenseBtn"
+>
+＋ TAMBAH PENGELUARAN
+</button>
+
+<button
+  class="tool"
+  data-go="reports"
+>
+▥ LIHAT LAPORAN
+</button>
+
+</div>
 
 
 <div class="card table-card">
@@ -1605,7 +1672,7 @@ RIWAYAT PENGELUARAN
 </h3>
 
 <p>
-Catatan kas keluar
+Daftar transaksi pengeluaran.
 </p>
 
 </div>
@@ -1647,20 +1714,10 @@ AKSI
 
 <tbody
   id="expenseTableBody"
-></tbody>
+>
+</tbody>
 
 </table>
-
-</div>
-
-
-<div class="info">
-
-TOTAL PENGELUARAN:
-
-<strong id="expenseTotal">
-RP 0
-</strong>
 
 </div>
 
@@ -1679,7 +1736,7 @@ DATA KARYAWAN
 </h3>
 
 <p style="font-size:9px;color:#999">
-Daftar anggota dan status iuran.
+Daftar karyawan PAHLAWAN REVOLUSI 5.
 </p>
 
 
@@ -1706,7 +1763,7 @@ JABATAN
 </th>
 
 <th>
-STATUS
+STATUS IURAN
 </th>
 
 <th>
@@ -1719,7 +1776,8 @@ TANGGAL BAYAR
 
 <tbody
   id="employeeSummaryBody"
-></tbody>
+>
+</tbody>
 
 </table>
 
@@ -1743,12 +1801,20 @@ LAPORAN KAS
 Ringkasan pemasukan, pengeluaran, dan saldo.
 </p>
 
+
 <div class="report-actions">
-<button class="pdf-btn" id="downloadPdfBtn">↓ DOWNLOAD LAPORAN PDF</button>
+
+<button
+  class="pdf-btn"
+  id="downloadPdfBtn"
+>
+↓ DOWNLOAD LAPORAN PDF
+</button>
+
 </div>
 
-<div class="kpis">
 
+<div class="kpis">
 
 <div class="card kpi">
 
@@ -1757,11 +1823,10 @@ PEMASUKAN
 </label>
 
 <b id="reportIncome">
-RP 0
+RP0
 </b>
 
 </div>
-
 
 <div class="card kpi">
 
@@ -1770,11 +1835,10 @@ PENGELUARAN
 </label>
 
 <b id="reportExpense">
-RP 0
+RP0
 </b>
 
 </div>
-
 
 <div class="card kpi">
 
@@ -1783,20 +1847,19 @@ SALDO
 </label>
 
 <b id="reportBalance">
-RP 0
+RP0
 </b>
 
 </div>
 
-
 <div class="card kpi">
 
 <label>
-WAJIB BULANAN
+TARGET
 </label>
 
 <b>
-RP 450.000
+RP450.000
 </b>
 
 </div>
@@ -1806,40 +1869,191 @@ RP 450.000
 
 <div class="card table-card">
 
-<h3 style="font-size:12px">
-RINGKASAN PEMBAYARAN
+<div class="head">
+
+<div>
+
+<h3>
+REKAP PEMBAYARAN KARYAWAN
 </h3>
 
-<p
+<p>
+Status pembayaran per periode.
+</p>
+
+</div>
+
+</div>
+
+<div
+  class="info"
   id="reportText"
-  style="font-size:9px;color:#777;line-height:1.7"
-></p>
+>
+</div>
+
+</div>
+
+
+<div class="card table-card">
+
+<div class="head">
+
+<div>
+
+<h3>
+RIWAYAT PENGELUARAN
+</h3>
+
+<p>
+Detail penggunaan kas.
+</p>
+
+</div>
+
+</div>
+
+<div
+  id="reportExpenses"
+>
+</div>
 
 </div>
 
 </section>
+
 
 </main>
 
 </div>
 
 
-<div class="modal hidden" id="settingsModal">
+<div class="mobile-nav">
+
+<button
+  class="active"
+  data-sec="dashboard"
+>
+⌂
+<br>
+HOME
+</button>
+
+<button
+  data-sec="payments"
+>
+▣
+<br>
+IURAN
+</button>
+
+<button
+  data-sec="expenses"
+>
+−
+<br>
+KELUAR
+</button>
+
+<button
+  data-sec="employees"
+>
+♙
+<br>
+KARYAWAN
+</button>
+
+<button
+  data-sec="reports"
+>
+▥
+<br>
+LAPORAN
+</button>
+
+</div>
+
+
+<div
+  class="modal hidden"
+  id="settingsModal"
+>
+
 <div class="modalbox">
+
 <div class="modalhead">
-<h3>PENGATURAN</h3>
-<button class="close" id="closeSettingsModal">×</button>
+
+<h3>
+PENGATURAN
+</h3>
+
+<button
+  class="close"
+  id="closeSettingsModal"
+>
+×
+</button>
+
 </div>
+
+
 <div class="settings-list">
-<div class="settings-row"><span>Pengguna</span><b id="settingUser">-</b></div>
-<div class="settings-row"><span>Akses</span><b id="settingRole">-</b></div>
-<div class="settings-row"><span>Sistem</span><b>PAHLAWAN REVOLUSI 5</b></div>
+
+<div class="settings-row">
+
+<span>
+Pengguna
+</span>
+
+<b id="settingUser">
+-
+</b>
+
 </div>
+
+
+<div class="settings-row">
+
+<span>
+Akses
+</span>
+
+<b id="settingRole">
+-
+</b>
+
+</div>
+
+
+<div class="settings-row">
+
+<span>
+Sistem
+</span>
+
+<b>
+PAHLAWAN REVOLUSI 5
+</b>
+
+</div>
+
+</div>
+
+
 <div class="actions">
-<button class="cancel" id="cancelSettings">TUTUP</button>
+
+<button
+  class="cancel"
+  id="cancelSettings"
+>
+TUTUP
+</button>
+
 </div>
+
 </div>
+
 </div>
+
 
 <div
   class="modal hidden"
@@ -1856,7 +2070,7 @@ CATAT PEMBAYARAN
 
 <button
   class="close"
-  id="closePaymentModal"
+  id="closePayment"
 >
 ×
 </button>
@@ -1868,36 +2082,35 @@ CATAT PEMBAYARAN
 
 <label>
 
-NAMA KARYAWAN
+KARYAWAN
 
-<select
-  id="employeeSelect"
-></select>
-
-</label>
-
-
-<label>
-
-JUMLAH PEMBAYARAN
-
-<input
-  id="paymentAmount"
-  type="number"
-  value="50000"
->
+<select id="paymentEmployee">
+</select>
 
 </label>
 
 
 <label>
 
-TANGGAL PEMBAYARAN
+TANGGAL BAYAR
 
 <input
-  id="paymentDate"
   type="date"
->
+  id="paymentDate"
+/>
+
+</label>
+
+
+<label>
+
+JUMLAH IURAN
+
+<input
+  type="number"
+  id="paymentAmount"
+  value="50000"
+/>
 
 </label>
 
@@ -1942,7 +2155,7 @@ TAMBAH PENGELUARAN
 
 <button
   class="close"
-  id="closeExpenseModal"
+  id="closeExpense"
 >
 ×
 </button>
@@ -1957,22 +2170,9 @@ TAMBAH PENGELUARAN
 TANGGAL
 
 <input
-  id="expenseDate"
   type="date"
->
-
-</label>
-
-
-<label>
-
-NOMINAL
-
-<input
-  id="expenseAmount"
-  type="number"
-  placeholder="50000"
->
+  id="expenseDate"
+/>
 
 </label>
 
@@ -1982,10 +2182,23 @@ NOMINAL
 KETERANGAN
 
 <input
-  id="expenseDescription"
   type="text"
-  placeholder="BELI AIR MINUM"
->
+  id="expenseDescription"
+  placeholder="Contoh: ATK"
+/>
+
+</label>
+
+
+<label>
+
+NOMINAL
+
+<input
+  type="number"
+  id="expenseAmount"
+  placeholder="50000"
+/>
 
 </label>
 
@@ -2019,59 +2232,59 @@ SIMPAN
 
 const employees = [
 
-  {
-    id:1,
-    name:"M. DANI",
-    job:"COS"
-  },
+{
+  id:1,
+  name:"M. DANI",
+  job:"COS"
+},
 
-  {
-    id:2,
-    name:"ANDRIANSYAH",
-    job:"ACOS"
-  },
+{
+  id:2,
+  name:"ANDRIANSYAH",
+  job:"ACOS"
+},
 
-  {
-    id:3,
-    name:"AULIA JIHAN",
-    job:"ACOS"
-  },
+{
+  id:3,
+  name:"AULIA JIHAN",
+  job:"ACOS"
+},
 
-  {
-    id:4,
-    name:"M. HAGGI",
-    job:"ACOS"
-  },
+{
+  id:4,
+  name:"M. HAGGI",
+  job:"ACOS"
+},
 
-  {
-    id:5,
-    name:"ROSTATI",
-    job:"CREW"
-  },
+{
+  id:5,
+  name:"ROSTATI",
+  job:"CREW"
+},
 
-  {
-    id:6,
-    name:"SHENNA",
-    job:"CREW"
-  },
+{
+  id:6,
+  name:"SHENNA",
+  job:"CREW"
+},
 
-  {
-    id:7,
-    name:"FILLIO",
-    job:"CREW"
-  },
+{
+  id:7,
+  name:"FILLIO",
+  job:"CREW"
+},
 
-  {
-    id:8,
-    name:"ILHAM",
-    job:"CREW"
-  },
+{
+  id:8,
+  name:"ILHAM",
+  job:"CREW"
+},
 
-  {
-    id:9,
-    name:"PUTRI",
-    job:"CREW"
-  }
+{
+  id:9,
+  name:"PUTRI",
+  job:"CREW"
+}
 
 ];
 
@@ -2083,6 +2296,7 @@ const PK =
 
 const EK =
   "pahlawanRevolusi5Expenses";
+
 
 const role =
   sessionStorage.getItem(
@@ -2121,28 +2335,38 @@ const nm =
 ].forEach(
   id => {
 
-    document.getElementById(
-      id
-    ).textContent = nm;
+    const el =
+      document.getElementById(id);
+
+    if(el)
+      el.textContent = nm;
 
   }
 );
 
 
-document.getElementById(
-  "topRole"
-).textContent =
-  admin
-    ? "PENGELOLA KAS"
-    : "MODE LIHAT";
+const topRole =
+  document.getElementById(
+    "topRole"
+  );
+
+if(topRole)
+  topRole.textContent =
+    admin
+      ? "PENGELOLA KAS"
+      : "MODE LIHAT";
 
 
-document.getElementById(
-  "sideRole"
-).textContent =
-  admin
-    ? "PENGELOLA KAS"
-    : "MODE LIHAT";
+const sideRole =
+  document.getElementById(
+    "sideRole"
+  );
+
+if(sideRole)
+  sideRole.textContent =
+    admin
+      ? "PENGELOLA KAS"
+      : "MODE LIHAT";
 
 
 const lp = () => {
@@ -2239,6 +2463,7 @@ const esc = s =>
 
 
 const month = () =>
+
   document.getElementById(
     "monthSelect"
   ).value;
@@ -2249,9 +2474,13 @@ function inc(){
   let p =
     lp()[month()] || {};
 
+
   return employees.reduce(
+
     (t,e) =>
+
       t +
+
       (
         p[e.id]
           ? Number(
@@ -2260,7 +2489,9 @@ function inc(){
             )
           : 0
       ),
+
     0
+
   );
 
 }
@@ -2269,12 +2500,16 @@ function inc(){
 function out(){
 
   return le().reduce(
+
     (t,e) =>
+
       t +
       Number(
         e.amount || 0
       ),
+
     0
+
   );
 
 }
@@ -2285,10 +2520,12 @@ function render(){
   let p =
     lp()[month()] || {};
 
+
   let b =
     document.getElementById(
       "employeeTableBody"
     );
+
 
   let s =
     document.getElementById(
@@ -2307,6 +2544,7 @@ function render(){
 
 
   employees.forEach(
+
     (e,i) => {
 
       let x =
@@ -2334,32 +2572,31 @@ function render(){
 
 
       let act =
+
         admin
 
           ? `
+
             <button
               class="action"
               onclick="editPayment(${e.id})"
             >
+
               ${x ? "UBAH" : "CATAT"}
+
             </button>
+
           `
 
-          : `
-            <span
-              style="
-                font-size:7px;
-                color:#aaa
-              "
-            >
-              VIEW ONLY
-            </span>
-          `;
+          : "-";
 
 
       b.insertAdjacentHTML(
+
         "beforeend",
+
         `
+
         <tr>
 
           <td>
@@ -2399,13 +2636,18 @@ function render(){
           </td>
 
         </tr>
+
         `
+
       );
 
 
       s.insertAdjacentHTML(
+
         "beforeend",
+
         `
+
         <tr>
 
           <td>
@@ -2433,10 +2675,13 @@ function render(){
           </td>
 
         </tr>
+
         `
+
       );
 
     }
+
   );
 
 
@@ -2476,8 +2721,10 @@ function finance(){
   let a =
     inc();
 
+
   let b =
     out();
+
 
   let c =
     a - b;
@@ -2520,6 +2767,12 @@ function finance(){
 
 
   document.getElementById(
+    "breakBalance2"
+  ).textContent =
+    rp(c);
+
+
+  document.getElementById(
     "reportIncome"
   ).textContent =
     rp(a);
@@ -2536,286 +2789,165 @@ function finance(){
   ).textContent =
     rp(c);
 
-
-  document.getElementById(
-    "donutTotal"
-  ).textContent =
-    rp(a + b);
-
-
-  let q =
-    a + b
-      ? a /
-        (a + b) *
-        100
-      : 0;
-
-
-  document.getElementById(
-    "donut"
-  ).style.background =
-    `conic-gradient(
-      var(--r) 0 ${q}%,
-      var(--y) ${q}% 100%
-    )`;
-
-
-
-}
-
-
-function renderExpenses(){
-
-  let a =
-    le().sort(
-      (x,y) =>
-        new Date(y.date) -
-        new Date(x.date)
-    );
-
-
-  let b =
-    document.getElementById(
-      "expenseTableBody"
-    );
-
-
-  b.innerHTML =
-    "";
-
-
-  if(!a.length){
-
-    b.innerHTML = `
-      <tr>
-        <td
-          colspan="5"
-          style="
-            text-align:center;
-            color:#aaa;
-            padding:25px
-          "
-        >
-          BELUM ADA PENGELUARAN
-        </td>
-      </tr>
-    `;
-
-  }
-
-
-  a.forEach(
-    (x,i) => {
-
-      b.insertAdjacentHTML(
-        "beforeend",
-        `
-        <tr>
-
-          <td>
-            ${i + 1}
-          </td>
-
-          <td>
-            ${fd(x.date)}
-          </td>
-
-          <td class="name">
-            ${esc(x.description)}
-          </td>
-
-          <td>
-            ${rp(x.amount)}
-          </td>
-
-          <td>
-            ${
-              admin
-
-                ? `
-                  <button
-                    class="action"
-                    onclick="deleteExpense(${x.id})"
-                  >
-                    HAPUS
-                  </button>
-                `
-
-                : `
-                  <span
-                    style="
-                      font-size:7px;
-                      color:#aaa
-                    "
-                  >
-                    VIEW ONLY
-                  </span>
-                `
-            }
-          </td>
-
-        </tr>
-        `
-      );
-
-    }
-  );
-
-
-  document.getElementById(
-    "expenseTotal"
-  ).textContent =
-    rp(out());
-
-
-  finance();
-
-  activity();
-
 }
 
 
 function activity(){
 
-  let a = [];
+  let box =
+    document.getElementById(
+      "recentActivity"
+    );
+
+
+  let items = [];
+
 
   let p =
     lp()[month()] || {};
 
 
   employees.forEach(
+
     e => {
 
       if(p[e.id]){
 
-        a.push({
+        items.push({
 
-          d:p[e.id].date,
+          type:"in",
 
-          t:
-            "Pembayaran - " +
-            e.name,
+          name:e.name,
 
-          s:
-            "Iuran karyawan",
+          text:"Pembayaran iuran",
 
-          n:
-            Number(
-              p[e.id].amount ||
-              IURAN
-            ),
+          amount:Number(
+            p[e.id].amount ||
+            IURAN
+          ),
 
-          o:false
+          date:p[e.id].date
 
         });
 
       }
 
     }
+
   );
 
 
   le().forEach(
+
     e => {
 
-      a.push({
+      items.push({
 
-        d:e.date,
+        type:"out",
 
-        t:"Pengeluaran",
+        name:e.description,
 
-        s:e.description,
+        text:"Pengeluaran kas",
 
-        n:
-          Number(
-            e.amount || 0
-          ),
+        amount:Number(
+          e.amount || 0
+        ),
 
-        o:true
+        date:e.date
 
       });
 
     }
+
   );
 
 
-  a.sort(
-    (x,y) =>
-      new Date(y.d) -
-      new Date(x.d)
+  items.sort(
+
+    (a,b) =>
+
+      new Date(b.date) -
+      new Date(a.date)
+
   );
 
 
-  let b =
-    document.getElementById(
-      "activityList"
-    );
+  items =
+    items.slice(0,6);
 
 
-  b.innerHTML =
-    "";
+  if(!items.length){
 
+    box.innerHTML = `
 
-  a
-    .slice(0,5)
-    .forEach(
-      x => {
-
-        b.insertAdjacentHTML(
-          "beforeend",
-          `
-          <div class="act">
-
-            <div
-              class="
-                acticon
-                ${x.o ? "out" : ""}
-              "
-            >
-              ${x.o ? "−" : "＋"}
-            </div>
-
-            <div class="actmain">
-
-              <b>
-                ${esc(x.t)}
-              </b>
-
-              <span>
-                ${esc(x.s)}
-                •
-                ${fd(x.d)}
-              </span>
-
-            </div>
-
-            <div class="actamt">
-              ${rp(x.n)}
-            </div>
-
-          </div>
-          `
-        );
-
-      }
-    );
-
-
-  if(!a.length){
-
-    b.innerHTML = `
       <div
         style="
+          color:#999;
           font-size:8px;
-          color:#aaa;
           padding:15px 0
         "
       >
         BELUM ADA AKTIVITAS.
       </div>
+
     `;
 
+    return;
+
   }
+
+
+  box.innerHTML =
+    items.map(
+
+      x => `
+
+        <div class="act">
+
+          <div
+            class="acticon ${
+              x.type === "out"
+                ? "out"
+                : ""
+            }"
+          >
+            ${
+              x.type === "out"
+                ? "−"
+                : "+"
+            }
+          </div>
+
+          <div class="actmain">
+
+            <b>
+              ${esc(x.name)}
+            </b>
+
+            <span>
+              ${x.text} • ${fd(x.date)}
+            </span>
+
+          </div>
+
+          <div class="actamt">
+
+            ${
+              x.type === "out"
+                ? "-"
+                : "+"
+            }
+
+            ${rp(x.amount)}
+
+          </div>
+
+        </div>
+
+      `
+
+    )
+    .join("");
 
 }
 
@@ -2863,296 +2995,2141 @@ function report(){
 
   `;
 
+
+  let box =
+    document.getElementById(
+      "reportExpenses"
+    );
+
+
+  let expenses =
+    le()
+      .slice()
+      .sort(
+        (a,b) =>
+          new Date(b.date) -
+          new Date(a.date)
+      );
+
+
+  if(!expenses.length){
+
+    box.innerHTML = `
+
+      <div
+        style="
+          color:#999;
+          font-size:8px;
+          padding:15px
+        "
+      >
+        BELUM ADA PENGELUARAN.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML = `
+
+    <div class="table-scroll">
+
+      <table class="table">
+
+        <thead>
+
+          <tr>
+
+            <th>
+              TANGGAL
+            </th>
+
+            <th>
+              KETERANGAN
+            </th>
+
+            <th>
+              NOMINAL
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${
+            expenses.map(
+
+              e => `
+
+                <tr>
+
+                  <td>
+                    ${fd(e.date)}
+                  </td>
+
+                  <td class="name">
+                    ${esc(e.description)}
+                  </td>
+
+                  <td>
+                    ${rp(e.amount)}
+                  </td>
+
+                </tr>
+
+              `
+
+            ).join("")
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  `;
+
 }
-
-
 
 
 // =====================================
 // NAVIGASI SECTION + MENU CEPAT
 // =====================================
+
 function show(id){
-  document.querySelectorAll(".section").forEach(x => x.classList.remove("active"));
 
-  const target = document.getElementById(id);
-  if(!target) return;
+  document
+    .querySelectorAll(".section")
+    .forEach(
 
-  target.classList.add("active");
+      x =>
+        x.classList.remove(
+          "active"
+        )
 
-  document.querySelectorAll(".nav button").forEach(x => {
-    x.classList.toggle("active", x.dataset.sec === id);
-  });
+    );
 
-  window.scrollTo(0,0);
+
+  const target =
+    document.getElementById(id);
+
+
+  if(!target)
+    return;
+
+
+  target.classList.add(
+    "active"
+  );
+
+
+  document
+    .querySelectorAll(
+      ".nav button"
+    )
+    .forEach(
+
+      x =>
+
+        x.classList.toggle(
+
+          "active",
+
+          x.dataset.sec === id
+
+        )
+
+    );
+
+
+  document
+    .querySelectorAll(
+      ".mobile-nav button"
+    )
+    .forEach(
+
+      x =>
+
+        x.classList.toggle(
+
+          "active",
+
+          x.dataset.sec === id
+
+        )
+
+    );
+
+
+  window.scrollTo(
+    0,
+    0
+  );
+
 }
 
-document.querySelectorAll(".nav button").forEach(x => {
-  x.onclick = () => show(x.dataset.sec);
-});
 
-document.querySelectorAll("[data-go]").forEach(x => {
-  x.onclick = () => show(x.dataset.go);
-});
+document
+  .querySelectorAll(
+    ".nav button"
+  )
+  .forEach(
 
-document.getElementById("monthSelect").onchange = () => {
+    x => {
+
+      x.onclick = () =>
+        show(
+          x.dataset.sec
+        );
+
+    }
+
+  );
+
+
+document
+  .querySelectorAll(
+    ".mobile-nav button"
+  )
+  .forEach(
+
+    x => {
+
+      x.onclick = () =>
+        show(
+          x.dataset.sec
+        );
+
+    }
+
+  );
+
+
+document
+  .querySelectorAll(
+    "[data-go]"
+  )
+  .forEach(
+
+    x => {
+
+      x.onclick = () =>
+        show(
+          x.dataset.go
+        );
+
+    }
+
+  );
+
+
+document.getElementById(
+  "monthSelect"
+).onchange = () => {
+
   render();
+
   renderExpenses();
+
 };
 
 
 // =====================================
 // MENU GARIS TIGA + PDF
 // =====================================
-const menuBtn = document.getElementById("menuBtn");
-const menuPanel = document.getElementById("menuPanel");
-menuBtn.onclick = (e) => {
+
+const menuBtn =
+  document.getElementById(
+    "menuBtn"
+  );
+
+
+const menuPanel =
+  document.getElementById(
+    "menuPanel"
+  );
+
+
+menuBtn.onclick = e => {
+
   e.stopPropagation();
-  menuPanel.classList.toggle("open");
+
+  menuPanel.classList.toggle(
+    "open"
+  );
+
 };
 
-document.addEventListener("click", (e) => {
-  if(!menuPanel.contains(e.target) && e.target !== menuBtn){
-    menuPanel.classList.remove("open");
+
+document.addEventListener(
+  "click",
+  e => {
+
+    if(
+      !menuPanel.contains(
+        e.target
+      ) &&
+      e.target !== menuBtn
+    ){
+
+      menuPanel.classList.remove(
+        "open"
+      );
+
+    }
+
   }
-});
+);
+
 
 function logoutNow(){
+
   sessionStorage.clear();
-  location.href = "index.html";
+
+  location.href =
+    "index.html";
+
 }
 
-document.getElementById("menuLogout").onclick = logoutNow;
 
-document.getElementById("settingsMenu").onclick = () => {
-  menuPanel.classList.remove("open");
-  document.getElementById("settingUser").textContent = nm;
-  document.getElementById("settingRole").textContent = admin ? "PENGELOLA KAS" : "MODE LIHAT";
-  document.getElementById("settingsModal").classList.remove("hidden");
+document.getElementById(
+  "menuLogout"
+).onclick =
+  logoutNow;
+
+
+document.getElementById(
+  "settingsMenu"
+).onclick = () => {
+
+  menuPanel.classList.remove(
+    "open"
+  );
+
+
+  document.getElementById(
+    "settingUser"
+  ).textContent =
+    nm;
+
+
+  document.getElementById(
+    "settingRole"
+  ).textContent =
+    admin
+      ? "PENGELOLA KAS"
+      : "MODE LIHAT";
+
+
+  document.getElementById(
+    "settingsModal"
+  ).classList.remove(
+    "hidden"
+  );
+
 };
 
-["closeSettingsModal","cancelSettings"].forEach(id => {
-  document.getElementById(id).onclick = () =>
-    document.getElementById("settingsModal").classList.add("hidden");
-});
 
-document.getElementById("reportMenu").onclick = () => {
-  menuPanel.classList.remove("open");
-  show("reports");
+[
+  "closeSettingsModal",
+  "cancelSettings"
+].forEach(
+
+  id => {
+
+    const el =
+      document.getElementById(
+        id
+      );
+
+    if(el){
+
+      el.onclick = () =>
+        document.getElementById(
+          "settingsModal"
+        ).classList.add(
+          "hidden"
+        );
+
+    }
+
+  }
+
+);
+
+
+document.getElementById(
+  "reportMenu"
+).onclick = () => {
+
+  menuPanel.classList.remove(
+    "open"
+  );
+
+  show(
+    "reports"
+  );
+
 };
+
 
 function downloadCashReportPDF(){
-  if(!window.jspdf || !window.jspdf.jsPDF){
-    return alert("FITUR PDF BELUM SIAP. PASTIKAN INTERNET AKTIF LALU COBA LAGI.");
+
+  if(
+    !window.jspdf ||
+    !window.jspdf.jsPDF
+  ){
+
+    return alert(
+      "FITUR PDF BELUM SIAP. PASTIKAN INTERNET AKTIF LALU COBA LAGI."
+    );
+
   }
 
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({unit:"mm",format:"a4"});
-  const selectedMonth = document.getElementById("monthSelect").value;
-  const selectedText = document.getElementById("monthSelect").selectedOptions[0].text;
-  const p = lp()[selectedMonth] || {};
-  const expenses = le().slice().sort((a,b) => new Date(a.date)-new Date(b.date));
-  const income = inc();
-  const expense = out();
-  const balance = income - expense;
-  const paid = employees.filter(e => p[e.id]).length;
-  const unpaid = employees.length - paid;
-  const target = employees.length * IURAN;
 
-  const pageW = 210, margin = 14, contentW = pageW - margin*2;
-  let y = 14;
+  const {
+    jsPDF
+  } =
+    window.jspdf;
+
+
+  const doc =
+    new jsPDF({
+      unit:"mm",
+      format:"a4"
+    });
+
+
+  const selectedMonth =
+    document.getElementById(
+      "monthSelect"
+    ).value;
+
+
+  const selectedText =
+    document.getElementById(
+      "monthSelect"
+    ).selectedOptions[0].text;
+
+
+  const p =
+    lp()[selectedMonth] ||
+    {};
+
+
+  const expenses =
+    le()
+      .slice()
+      .sort(
+        (a,b) =>
+          new Date(a.date) -
+          new Date(b.date)
+      );
+
+
+  const income =
+    inc();
+
+
+  const expense =
+    out();
+
+
+  const balance =
+    income -
+    expense;
+
+
+  const paid =
+    employees.filter(
+      e => p[e.id]
+    ).length;
+
+
+  const unpaid =
+    employees.length -
+    paid;
+
+
+  const target =
+    employees.length *
+    IURAN;
+
+
+  const pageW =
+    210;
+
+
+  const margin =
+    14;
+
+
+  const contentW =
+    pageW -
+    margin * 2;
+
+
+  let y =
+    14;
+
 
   function header(){
-    doc.setFillColor(227,6,19);
-    doc.rect(0,0,pageW,7,"F");
-    doc.setTextColor(227,6,19);
-    doc.setFont("helvetica","bold");
-    doc.setFontSize(18);
-    doc.text("LAPORAN KAS",margin,18);
-    doc.setFontSize(10);
-    doc.setTextColor(80);
-    doc.text("PAHLAWAN REVOLUSI 5",margin,24);
-    doc.setFont("helvetica","normal");
-    doc.setFontSize(8);
-    doc.text("Laporan keuangan dan pembayaran iuran",margin,29);
-    doc.setTextColor(30);
-    y = 36;
+
+    doc.setFillColor(
+      227,
+      6,
+      19
+    );
+
+
+    doc.rect(
+      0,
+      0,
+      pageW,
+      7,
+      "F"
+    );
+
+
+    doc.setTextColor(
+      227,
+      6,
+      19
+    );
+
+
+    doc.setFont(
+      "helvetica",
+      "bold"
+    );
+
+
+    doc.setFontSize(
+      18
+    );
+
+
+    doc.text(
+      "LAPORAN KAS",
+      margin,
+      18
+    );
+
+
+    doc.setFontSize(
+      10
+    );
+
+
+    doc.setTextColor(
+      80
+    );
+
+
+    doc.text(
+      "PAHLAWAN REVOLUSI 5",
+      margin,
+      24
+    );
+
+
+    doc.setFont(
+      "helvetica",
+      "normal"
+    );
+
+
+    doc.setFontSize(
+      8
+    );
+
+
+    doc.text(
+      "Laporan keuangan dan pembayaran iuran",
+      margin,
+      29
+    );
+
+
+    doc.setTextColor(
+      30
+    );
+
+
+    y =
+      36;
+
   }
+
 
   function footer(){
-    const pages = doc.getNumberOfPages();
-    for(let i=1;i<=pages;i++){
+
+    const pages =
+      doc.getNumberOfPages();
+
+
+    for(
+      let i = 1;
+      i <= pages;
+      i++
+    ){
+
       doc.setPage(i);
-      doc.setDrawColor(225);
-      doc.line(margin,285,pageW-margin,285);
-      doc.setFont("helvetica","normal");
-      doc.setFontSize(7);
-      doc.setTextColor(130);
-      doc.text("PAHLAWAN REVOLUSI 5 • Laporan Kas",margin,290);
-      doc.text("Halaman "+i+" / "+pages,pageW-margin,290,{align:"right"});
+
+
+      doc.setDrawColor(
+        225
+      );
+
+
+      doc.line(
+        margin,
+        285,
+        pageW - margin,
+        285
+      );
+
+
+      doc.setFont(
+        "helvetica",
+        "normal"
+      );
+
+
+      doc.setFontSize(
+        7
+      );
+
+
+      doc.setTextColor(
+        130
+      );
+
+
+      doc.text(
+        "PAHLAWAN REVOLUSI 5 • Laporan Kas",
+        margin,
+        290
+      );
+
+
+      doc.text(
+        "Halaman " +
+        i +
+        " / " +
+        pages,
+        pageW - margin,
+        290,
+        {
+          align:"right"
+        }
+      );
+
     }
+
   }
+
 
   function newPage(){
+
     doc.addPage();
+
     header();
+
   }
 
-  function sectionTitle(title, subtitle=""){
-    if(y > 255) newPage();
-    doc.setFillColor(247,247,247);
-    doc.roundedRect(margin,y,contentW,10,2,2,"F");
-    doc.setTextColor(35);
-    doc.setFont("helvetica","bold");
-    doc.setFontSize(9);
-    doc.text(title,margin+4,y+6.5);
+
+  function sectionTitle(
+    title,
+    subtitle=""
+  ){
+
+    if(y > 255)
+      newPage();
+
+
+    doc.setFillColor(
+      247,
+      247,
+      247
+    );
+
+
+    doc.roundedRect(
+      margin,
+      y,
+      contentW,
+      10,
+      2,
+      2,
+      "F"
+    );
+
+
+    doc.setTextColor(
+      35
+    );
+
+
+    doc.setFont(
+      "helvetica",
+      "bold"
+    );
+
+
+    doc.setFontSize(
+      9
+    );
+
+
+    doc.text(
+      title,
+      margin + 4,
+      y + 6.5
+    );
+
+
     if(subtitle){
-      doc.setFont("helvetica","normal");
-      doc.setFontSize(7);
-      doc.setTextColor(120);
-      doc.text(subtitle,pageW-margin-4,y+6.5,{align:"right"});
+
+      doc.setFont(
+        "helvetica",
+        "normal"
+      );
+
+
+      doc.setFontSize(
+        7
+      );
+
+
+      doc.setTextColor(
+        120
+      );
+
+
+      doc.text(
+        subtitle,
+        pageW - margin - 4,
+        y + 6.5,
+        {
+          align:"right"
+        }
+      );
+
     }
+
+
     y += 15;
+
   }
+
 
   function money(n){
-    return rp(n).replace("Rp","Rp ");
+
+    return rp(n)
+      .replace(
+        "Rp",
+        "Rp "
+      );
+
   }
+
 
   header();
 
-  doc.setFillColor(255,248,220);
-  doc.roundedRect(margin,y,contentW,20,3,3,"F");
-  doc.setTextColor(35);
-  doc.setFont("helvetica","bold");
-  doc.setFontSize(8);
-  doc.text("PERIODE",margin+5,y+7);
-  doc.text("DIBUAT",margin+5,y+14);
-  doc.setFont("helvetica","normal");
-  doc.text(selectedText,margin+30,y+7);
-  doc.text(new Date().toLocaleString("id-ID"),margin+30,y+14);
+
+  doc.setFillColor(
+    255,
+    248,
+    220
+  );
+
+
+  doc.roundedRect(
+    margin,
+    y,
+    contentW,
+    20,
+    3,
+    3,
+    "F"
+  );
+
+
+  doc.setTextColor(
+    35
+  );
+
+
+  doc.setFont(
+    "helvetica",
+    "bold"
+  );
+
+
+  doc.setFontSize(
+    8
+  );
+
+
+  doc.text(
+    "PERIODE",
+    margin + 5,
+    y + 7
+  );
+
+
+  doc.text(
+    "DIBUAT",
+    margin + 5,
+    y + 14
+  );
+
+
+  doc.setFont(
+    "helvetica",
+    "normal"
+  );
+
+
+  doc.text(
+    selectedText,
+    margin + 30,
+    y + 7
+  );
+
+
+  doc.text(
+    new Date().toLocaleString(
+      "id-ID"
+    ),
+    margin + 30,
+    y + 14
+  );
+
+
   y += 27;
 
-  sectionTitle("RINGKASAN KEUANGAN","PERIODE TERPILIH");
+
+  sectionTitle(
+    "RINGKASAN KEUANGAN",
+    "PERIODE TERPILIH"
+  );
+
+
   const cards = [
-    ["KAS MASUK",money(income)],
-    ["KAS KELUAR",money(expense)],
-    ["SALDO KAS",money(balance)],
-    ["TARGET IURAN",money(target)]
+
+    [
+      "KAS MASUK",
+      money(income)
+    ],
+
+    [
+      "KAS KELUAR",
+      money(expense)
+    ],
+
+    [
+      "SALDO KAS",
+      money(balance)
+    ],
+
+    [
+      "TARGET IURAN",
+      money(target)
+    ]
+
   ];
-  const gap=4, cw=(contentW-gap*3)/4;
-  cards.forEach((c,i)=>{
-    const x=margin+i*(cw+gap);
-    doc.setDrawColor(225);
-    doc.setFillColor(255,255,255);
-    doc.roundedRect(x,y,cw,23,2,2,"FD");
-    doc.setFont("helvetica","bold");
-    doc.setFontSize(7);
-    doc.setTextColor(120);
-    doc.text(c[0],x+4,y+7);
-    doc.setFontSize(9);
-    doc.setTextColor(25);
-    doc.text(c[1],x+4,y+16);
-  });
+
+
+  const gap =
+    4;
+
+
+  const cw =
+    (
+      contentW -
+      gap * 3
+    ) / 4;
+
+
+  cards.forEach(
+
+    (c,i) => {
+
+      const x =
+        margin +
+        i *
+        (
+          cw +
+          gap
+        );
+
+
+      doc.setDrawColor(
+        225
+      );
+
+
+      doc.setFillColor(
+        255,
+        255,
+        255
+      );
+
+
+      doc.roundedRect(
+        x,
+        y,
+        cw,
+        23,
+        2,
+        2,
+        "FD"
+      );
+
+
+      doc.setFont(
+        "helvetica",
+        "bold"
+      );
+
+
+      doc.setFontSize(
+        7
+      );
+
+
+      doc.setTextColor(
+        120
+      );
+
+
+      doc.text(
+        c[0],
+        x + 4,
+        y + 7
+      );
+
+
+      doc.setFontSize(
+        9
+      );
+
+
+      doc.setTextColor(
+        25
+      );
+
+
+      doc.text(
+        c[1],
+        x + 4,
+        y + 16
+      );
+
+    }
+
+  );
+
+
   y += 30;
 
-  sectionTitle("STATUS IURAN KARYAWAN",paid+" sudah bayar • "+unpaid+" belum bayar");
-  const cols=[margin,margin+8,margin+53,margin+91,margin+130,margin+162];
-  const widths=[8,45,38,39,32,contentW-162];
-  function tableHeader(labels){
-    doc.setFillColor(227,6,19);
-    doc.rect(margin,y,contentW,8,"F");
-    doc.setTextColor(255);
-    doc.setFont("helvetica","bold");
-    doc.setFontSize(7);
-    labels.forEach((v,i)=>doc.text(v,cols[i]+2,y+5.3));
+
+  sectionTitle(
+    "STATUS IURAN KARYAWAN",
+    paid +
+    " sudah bayar • " +
+    unpaid +
+    " belum bayar"
+  );
+
+
+  const cols = [
+
+    margin,
+    margin + 8,
+    margin + 53,
+    margin + 91,
+    margin + 130,
+    margin + 162
+
+  ];
+
+
+  const widths = [
+
+    8,
+    45,
+    38,
+    39,
+    32,
+    contentW - 162
+
+  ];
+
+
+  function tableHeader(
+    labels
+  ){
+
+    doc.setFillColor(
+      227,
+      6,
+      19
+    );
+
+
+    doc.rect(
+      margin,
+      y,
+      contentW,
+      8,
+      "F"
+    );
+
+
+    doc.setTextColor(
+      255
+    );
+
+
+    doc.setFont(
+      "helvetica",
+      "bold"
+    );
+
+
+    doc.setFontSize(
+      7
+    );
+
+
+    labels.forEach(
+
+      (v,i) =>
+
+        doc.text(
+          v,
+          cols[i] + 2,
+          y + 5.3
+        )
+
+    );
+
+
     y += 8;
+
   }
+
+
   function checkPage(){
-    if(y > 273){ newPage(); sectionTitle("STATUS IURAN KARYAWAN (LANJUTAN)"); tableHeader(["NO","NAMA","JABATAN","STATUS","TANGGAL BAYAR","IURAN"]); }
+
+    if(y > 273){
+
+      newPage();
+
+      sectionTitle(
+        "STATUS IURAN KARYAWAN (LANJUTAN)"
+      );
+
+
+      tableHeader(
+        [
+          "NO",
+          "NAMA",
+          "JABATAN",
+          "STATUS",
+          "TANGGAL BAYAR",
+          "IURAN"
+        ]
+      );
+
+    }
+
   }
-  tableHeader(["NO","NAMA","JABATAN","STATUS","TANGGAL BAYAR","IURAN"]);
-  employees.forEach((e,i)=>{
-    checkPage();
-    const x=p[e.id];
-    const vals=[String(i+1),e.name,e.job,x?"SUDAH BAYAR":"BELUM BAYAR",x?fd(x.date):"-",money(x?x.amount:IURAN)];
-    const rowH=8;
-    if(i%2===0){doc.setFillColor(250,250,250);doc.rect(margin,y,contentW,rowH,"F");}
-    doc.setTextColor(35);
-    doc.setFont("helvetica",x?"bold":"normal");
-    doc.setFontSize(7);
-    vals.forEach((v,j)=>{
-      let tx=String(v);
-      if(j===5) doc.text(tx,cols[j]+widths[j]-2,y+5.2,{align:"right"});
-      else doc.text(tx,cols[j]+2,y+5.2);
-    });
-    y+=rowH;
-  });
+
+
+  tableHeader(
+
+    [
+      "NO",
+      "NAMA",
+      "JABATAN",
+      "STATUS",
+      "TANGGAL BAYAR",
+      "IURAN"
+    ]
+
+  );
+
+
+  employees.forEach(
+
+    (e,i) => {
+
+      checkPage();
+
+
+      const x =
+        p[e.id];
+
+
+      const vals = [
+
+        String(i + 1),
+
+        e.name,
+
+        e.job,
+
+        x
+          ? "SUDAH BAYAR"
+          : "BELUM BAYAR",
+
+        x
+          ? fd(x.date)
+          : "-",
+
+        money(
+          x
+            ? x.amount
+            : IURAN
+        )
+
+      ];
+
+
+      const rowH =
+        8;
+
+
+      if(
+        i % 2 === 0
+      ){
+
+        doc.setFillColor(
+          250,
+          250,
+          250
+        );
+
+
+        doc.rect(
+          margin,
+          y,
+          contentW,
+          rowH,
+          "F"
+        );
+
+      }
+
+
+      doc.setTextColor(
+        35
+      );
+
+
+      doc.setFont(
+        "helvetica",
+        x
+          ? "bold"
+          : "normal"
+      );
+
+
+      doc.setFontSize(
+        7
+      );
+
+
+      vals.forEach(
+
+        (v,j) => {
+
+          let tx =
+            String(v);
+
+
+          if(j === 5){
+
+            doc.text(
+              tx,
+              cols[j] +
+              widths[j] -
+              2,
+              y + 5.2,
+              {
+                align:"right"
+              }
+            );
+
+          }else{
+
+            doc.text(
+              tx,
+              cols[j] + 2,
+              y + 5.2
+            );
+
+          }
+
+        }
+
+      );
+
+
+      y += rowH;
+
+    }
+
+  );
+
+
   y += 8;
 
-  sectionTitle("REKAP PEMBAYARAN","9 karyawan");
-  doc.setFont("helvetica","normal");
-  doc.setFontSize(8);
-  doc.setTextColor(60);
-  doc.text("Jumlah karyawan             : "+employees.length+" orang",margin,y); y+=6;
-  doc.text("Sudah membayar              : "+paid+" orang",margin,y); y+=6;
-  doc.text("Belum membayar              : "+unpaid+" orang",margin,y); y+=6;
-  doc.text("Target iuran                : "+money(target),margin,y); y+=6;
-  doc.text("Total pemasukan iuran       : "+money(income),margin,y); y+=10;
 
-  sectionTitle("RIWAYAT PENGELUARAN",expenses.length+" transaksi");
+  sectionTitle(
+    "REKAP PEMBAYARAN",
+    "9 karyawan"
+  );
+
+
+  doc.setFont(
+    "helvetica",
+    "normal"
+  );
+
+
+  doc.setFontSize(
+    8
+  );
+
+
+  doc.setTextColor(
+    60
+  );
+
+
+  doc.text(
+    "Jumlah karyawan             : " +
+    employees.length +
+    " orang",
+    margin,
+    y
+  );
+
+  y += 6;
+
+
+  doc.text(
+    "Sudah membayar              : " +
+    paid +
+    " orang",
+    margin,
+    y
+  );
+
+  y += 6;
+
+
+  doc.text(
+    "Belum membayar              : " +
+    unpaid +
+    " orang",
+    margin,
+    y
+  );
+
+  y += 6;
+
+
+  doc.text(
+    "Target iuran                : " +
+    money(target),
+    margin,
+    y
+  );
+
+  y += 6;
+
+
+  doc.text(
+    "Total pemasukan iuran       : " +
+    money(income),
+    margin,
+    y
+  );
+
+  y += 10;
+
+
+  sectionTitle(
+    "RIWAYAT PENGELUARAN",
+    expenses.length +
+    " transaksi"
+  );
+
+
   if(!expenses.length){
-    doc.setTextColor(130); doc.setFontSize(8);
-    doc.text("Belum ada pengeluaran yang tercatat.",margin,y); y+=10;
+
+    doc.setTextColor(
+      130
+    );
+
+
+    doc.setFontSize(
+      8
+    );
+
+
+    doc.text(
+      "Belum ada pengeluaran yang tercatat.",
+      margin,
+      y
+    );
+
+
+    y += 10;
+
   }else{
-    tableHeader(["NO","TANGGAL","KETERANGAN","NOMINAL"]);
-    expenses.forEach((e,i)=>{
-      if(y>273){newPage();sectionTitle("RIWAYAT PENGELUARAN (LANJUTAN)");tableHeader(["NO","TANGGAL","KETERANGAN","NOMINAL"]);}
-      const rowH=8;
-      if(i%2===0){doc.setFillColor(250,250,250);doc.rect(margin,y,contentW,rowH,"F");}
-      doc.setTextColor(35);doc.setFont("helvetica","normal");doc.setFontSize(7);
-      doc.text(String(i+1),margin+2,y+5.2);
-      doc.text(fd(e.date),margin+15,y+5.2);
-      let desc=String(e.description||"-");
-      if(desc.length>70) desc=desc.slice(0,67)+"...";
-      doc.text(desc,margin+50,y+5.2);
-      doc.text(money(e.amount),pageW-margin-2,y+5.2,{align:"right"});
-      y+=rowH;
-    });
-    y+=4;
-    doc.setFont("helvetica","bold");doc.setFontSize(8);
-    doc.text("TOTAL PENGELUARAN",margin,y);
-    doc.text(money(expense),pageW-margin-2,y,{align:"right"});
-    y+=10;
+
+    tableHeader(
+      [
+        "NO",
+        "TANGGAL",
+        "KETERANGAN",
+        "NOMINAL"
+      ]
+    );
+
+
+    expenses.forEach(
+
+      (e,i) => {
+
+        if(y > 273){
+
+          newPage();
+
+          sectionTitle(
+            "RIWAYAT PENGELUARAN (LANJUTAN)"
+          );
+
+
+          tableHeader(
+            [
+              "NO",
+              "TANGGAL",
+              "KETERANGAN",
+              "NOMINAL"
+            ]
+          );
+
+        }
+
+
+        const rowH =
+          8;
+
+
+        if(
+          i % 2 === 0
+        ){
+
+          doc.setFillColor(
+            250,
+            250,
+            250
+          );
+
+
+          doc.rect(
+            margin,
+            y,
+            contentW,
+            rowH,
+            "F"
+          );
+
+        }
+
+
+        doc.setTextColor(
+          35
+        );
+
+
+        doc.setFont(
+          "helvetica",
+          "normal"
+        );
+
+
+        doc.setFontSize(
+          7
+        );
+
+
+        doc.text(
+          String(i + 1),
+          margin + 2,
+          y + 5.2
+        );
+
+
+        doc.text(
+          fd(e.date),
+          margin + 15,
+          y + 5.2
+        );
+
+
+        let desc =
+          String(
+            e.description ||
+            "-"
+          );
+
+
+        if(
+          desc.length > 70
+        ){
+
+          desc =
+            desc.slice(
+              0,
+              67
+            ) +
+            "...";
+
+        }
+
+
+        doc.text(
+          desc,
+          margin + 50,
+          y + 5.2
+        );
+
+
+        doc.text(
+          money(e.amount),
+          pageW - margin - 2,
+          y + 5.2,
+          {
+            align:"right"
+          }
+        );
+
+
+        y += rowH;
+
+      }
+
+    );
+
+
+    y += 4;
+
+
+    doc.setFont(
+      "helvetica",
+      "bold"
+    );
+
+
+    doc.setFontSize(
+      8
+    );
+
+
+    doc.text(
+      "TOTAL PENGELUARAN",
+      margin,
+      y
+    );
+
+
+    doc.text(
+      money(expense),
+      pageW - margin - 2,
+      y,
+      {
+        align:"right"
+      }
+    );
+
+
+    y += 10;
+
   }
 
-  if(y>255)newPage();
-  sectionTitle("KESIMPULAN");
-  doc.setFont("helvetica","normal");
-  doc.setFontSize(8);
-  doc.setTextColor(55);
-  const lines=[
-    "Saldo kas periode ini: "+money(balance),
-    "Status iuran: "+paid+" dari "+employees.length+" karyawan sudah membayar.",
-    "Target iuran bulanan: "+money(target)+".",
-    "Total kas keluar yang tercatat: "+money(expense)+"."
+
+  if(y > 255)
+    newPage();
+
+
+  sectionTitle(
+    "KESIMPULAN"
+  );
+
+
+  doc.setFont(
+    "helvetica",
+    "normal"
+  );
+
+
+  doc.setFontSize(
+    8
+  );
+
+
+  doc.setTextColor(
+    55
+  );
+
+
+  const lines = [
+
+    "Saldo kas periode ini: " +
+    money(balance),
+
+    "Status iuran: " +
+    paid +
+    " dari " +
+    employees.length +
+    " karyawan sudah membayar.",
+
+    "Target iuran bulanan: " +
+    money(target) +
+    ".",
+
+    "Total kas keluar yang tercatat: " +
+    money(expense) +
+    "."
+
   ];
-  lines.forEach(t=>{doc.text(t,margin,y);y+=6;});
-  y+=5;
-  doc.setFontSize(7);
-  doc.setTextColor(125);
-  doc.text("Catatan: laporan ini dibuat berdasarkan data yang tersimpan pada perangkat/browser ini.",margin,y);
-  doc.text("Mohon periksa kembali data sebelum laporan digunakan sebagai arsip resmi.",margin,y+5);
+
+
+  lines.forEach(
+
+    t => {
+
+      doc.text(
+        t,
+        margin,
+        y
+      );
+
+      y += 6;
+
+    }
+
+  );
+
+
+  y += 5;
+
+
+  doc.setFontSize(
+    7
+  );
+
+
+  doc.setTextColor(
+    125
+  );
+
+
+  doc.text(
+    "Catatan: laporan ini dibuat berdasarkan data yang tersimpan pada perangkat/browser ini.",
+    margin,
+    y
+  );
+
+
+  doc.text(
+    "Mohon periksa kembali data sebelum laporan digunakan sebagai arsip resmi.",
+    margin,
+    y + 5
+  );
+
 
   footer();
-  doc.save("Laporan-Kas-PAHLAWAN-REVOLUSI-5-"+selectedMonth+".pdf");
+
+
+  doc.save(
+    "Laporan-Kas-PAHLAWAN-REVOLUSI-5-" +
+    selectedMonth +
+    ".pdf"
+  );
+
 }
 
-document.getElementById("downloadPdfBtn").onclick = downloadCashReportPDF;
+
+document.getElementById(
+  "downloadPdfBtn"
+).onclick =
+  downloadCashReportPDF;
+
 
 // tombol keluar asli tetap bekerja
-if(document.getElementById("logoutBtn")){
-  document.getElementById("logoutBtn").onclick = logoutNow;
+
+if(
+  document.getElementById(
+    "logoutBtn"
+  )
+){
+
+  document.getElementById(
+    "logoutBtn"
+  ).onclick =
+    logoutNow;
+
 }
+
+
+// =====================================
+// MODAL PEMBAYARAN
+// =====================================
+
+const paymentModal =
+  document.getElementById(
+    "paymentModal"
+  );
+
+
+const paymentEmployee =
+  document.getElementById(
+    "paymentEmployee"
+  );
+
+
+function fillPaymentEmployees(){
+
+  paymentEmployee.innerHTML =
+    employees.map(
+
+      e => `
+
+        <option value="${e.id}">
+          ${e.name} - ${e.job}
+        </option>
+
+      `
+
+    ).join("");
+
+}
+
+
+fillPaymentEmployees();
+
+
+function openPaymentModal(
+  employeeId = null
+){
+
+  if(!admin){
+
+    alert(
+      "AKSES KHUSUS PENGELOLA KAS."
+    );
+
+    return;
+
+  }
+
+
+  fillPaymentEmployees();
+
+
+  const today =
+    new Date()
+      .toISOString()
+      .slice(
+        0,
+        10
+      );
+
+
+  document.getElementById(
+    "paymentDate"
+  ).value =
+    today;
+
+
+  document.getElementById(
+    "paymentAmount"
+  ).value =
+    IURAN;
+
+
+  if(employeeId){
+
+    paymentEmployee.value =
+      employeeId;
+
+
+    const p =
+      lp()[month()] ||
+      {};
+
+
+    if(p[employeeId]){
+
+      document.getElementById(
+        "paymentDate"
+      ).value =
+        p[employeeId].date ||
+        today;
+
+
+      document.getElementById(
+        "paymentAmount"
+      ).value =
+        p[employeeId].amount ||
+        IURAN;
+
+    }
+
+  }
+
+
+  paymentModal.classList.remove(
+    "hidden"
+  );
+
+}
+
+
+function editPayment(
+  id
+){
+
+  openPaymentModal(
+    id
+  );
+
+}
+
+
+document.getElementById(
+  "addPaymentBtn"
+).onclick = () =>
+  openPaymentModal();
+
+
+document.getElementById(
+  "closePayment"
+).onclick = () =>
+  paymentModal.classList.add(
+    "hidden"
+  );
+
+
+document.getElementById(
+  "cancelPayment"
+).onclick = () =>
+  paymentModal.classList.add(
+    "hidden"
+  );
+
+
+document.getElementById(
+  "savePayment"
+).onclick = () => {
+
+  if(!admin){
+
+    alert(
+      "AKSES KHUSUS PENGELOLA KAS."
+    );
+
+    return;
+
+  }
+
+
+  const id =
+    Number(
+      paymentEmployee.value
+    );
+
+
+  const date =
+    document.getElementById(
+      "paymentDate"
+    ).value;
+
+
+  const amount =
+    Number(
+      document.getElementById(
+        "paymentAmount"
+      ).value
+    );
+
+
+  if(!id || !date || amount <= 0){
+
+    alert(
+      "LENGKAPI DATA PEMBAYARAN."
+    );
+
+    return;
+
+  }
+
+
+  const data =
+    lp();
+
+
+  if(!data[month()])
+    data[month()] = {};
+
+
+  data[month()][id] = {
+
+    amount,
+
+    date
+
+  };
+
+
+  sp(data);
+
+
+  paymentModal.classList.add(
+    "hidden"
+  );
+
+
+  render();
+
+};
+
+
+// =====================================
+// MODAL PENGELUARAN
+// =====================================
+
+const expenseModal =
+  document.getElementById(
+    "expenseModal"
+  );
+
+
+function openExpenseModal(){
+
+  if(!admin){
+
+    alert(
+      "AKSES KHUSUS PENGELOLA KAS."
+    );
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "expenseDate"
+  ).value =
+    new Date()
+      .toISOString()
+      .slice(
+        0,
+        10
+      );
+
+
+  document.getElementById(
+    "expenseDescription"
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "expenseAmount"
+  ).value =
+    "";
+
+
+  expenseModal.classList.remove(
+    "hidden"
+  );
+
+}
+
+
+document.getElementById(
+  "addExpenseBtn"
+).onclick =
+  openExpenseModal;
+
+
+document.getElementById(
+  "closeExpense"
+).onclick = () =>
+  expenseModal.classList.add(
+    "hidden"
+  );
+
+
+document.getElementById(
+  "cancelExpense"
+).onclick = () =>
+  expenseModal.classList.add(
+    "hidden"
+  );
+
+
+document.getElementById(
+  "saveExpense"
+).onclick = () => {
+
+  if(!admin){
+
+    alert(
+      "AKSES KHUSUS PENGELOLA KAS."
+    );
+
+    return;
+
+  }
+
+
+  const date =
+    document.getElementById(
+      "expenseDate"
+    ).value;
+
+
+  const description =
+    document.getElementById(
+      "expenseDescription"
+    ).value.trim();
+
+
+  const amount =
+    Number(
+      document.getElementById(
+        "expenseAmount"
+      ).value
+    );
+
+
+  if(
+    !date ||
+    !description ||
+    amount <= 0
+  ){
+
+    alert(
+      "LENGKAPI DATA PENGELUARAN."
+    );
+
+    return;
+
+  }
+
+
+  const data =
+    le();
+
+
+  data.push({
+
+    id:
+      Date.now(),
+
+    date,
+
+    description,
+
+    amount
+
+  });
+
+
+  se(data);
+
+
+  expenseModal.classList.add(
+    "hidden"
+  );
+
+
+  renderExpenses();
+
+  render();
+
+};
+
+
+function renderExpenses(){
+
+  const body =
+    document.getElementById(
+      "expenseTableBody"
+    );
+
+
+  if(!body)
+    return;
+
+
+  const data =
+    le()
+      .slice()
+      .sort(
+        (a,b) =>
+          new Date(b.date) -
+          new Date(a.date)
+      );
+
+
+  if(!data.length){
+
+    body.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="5"
+          style="
+            text-align:center;
+            color:#999;
+            padding:20px
+          "
+        >
+          BELUM ADA PENGELUARAN.
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+
+  body.innerHTML =
+    data.map(
+
+      (x,i) => `
+
+        <tr>
+
+          <td>
+            ${i + 1}
+          </td>
+
+          <td>
+            ${fd(x.date)}
+          </td>
+
+          <td class="name">
+            ${esc(x.description)}
+          </td>
+
+          <td>
+            ${rp(x.amount)}
+          </td>
+
+          <td>
+
+            ${
+              admin
+
+                ? `
+
+                  <button
+                    class="action"
+                    onclick="deleteExpense(${x.id})"
+                  >
+                    HAPUS
+                  </button>
+
+                `
+
+                : "-"
+            }
+
+          </td>
+
+        </tr>
+
+      `
+
+    ).join("");
+
+}
+
+
+function deleteExpense(
+  id
+){
+
+  if(!admin){
+
+    alert(
+      "AKSES KHUSUS PENGELOLA KAS."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    !confirm(
+      "HAPUS PENGELUARAN INI?"
+    )
+  )
+    return;
+
+
+  const data =
+    le().filter(
+      x =>
+        x.id !== id
+    );
+
+
+  se(data);
+
+
+  renderExpenses();
+
+  render();
+
+}
+
+
+document.getElementById(
+  "paymentInfoBtn"
+).onclick = () => {
+
+  alert(
+    "IURAN WAJIB BULANAN SETIAP KARYAWAN ADALAH RP50.000.\n\nTARGET 9 KARYAWAN = RP450.000 PER BULAN."
+  );
+
+};
+
 
 render();
 
