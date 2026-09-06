@@ -280,9 +280,7 @@ body{
 
 .row{
   display:grid;
-  grid-template-columns:
-    minmax(0,1.65fr)
-    minmax(260px,.8fr);
+  grid-template-columns:1fr;
   gap:12px;
   margin-top:12px
 }
@@ -1108,60 +1106,6 @@ MASUK - KELUAR
 
 
 <div class="row">
-
-
-<div class="card">
-
-<div class="head">
-
-<div>
-
-<h3>
-GRAFIK ARUS KAS
-</h3>
-
-<p>
-Perbandingan pemasukan dan pengeluaran
-</p>
-
-</div>
-
-<select
-  class="select"
-  id="periodSelect"
->
-
-<option>
-7 HARI
-</option>
-
-</select>
-
-</div>
-
-
-<div class="chart">
-
-<canvas
-  id="cashChart"
-></canvas>
-
-</div>
-
-
-<div style="font-size:8px;color:#777">
-
-<span class="dot red"></span>
-KAS MASUK
-
-&nbsp;&nbsp;
-
-<span class="dot yellow"></span>
-KAS KELUAR
-
-</div>
-
-</div>
 
 
 <div class="card">
@@ -2502,9 +2446,6 @@ function finance(){
       var(--y) ${q}% 100%
     )`;
 
-
-  draw();
-
 }
 
 
@@ -2808,197 +2749,6 @@ function report(){
   `;
 
 }
-
-
-function draw(){
-
-  let c =
-    document.getElementById(
-      "cashChart"
-    );
-
-
-  let x =
-    c.getContext("2d");
-
-
-  let w =
-    c.clientWidth;
-
-  let h =
-    c.clientHeight;
-
-  let d =
-    devicePixelRatio || 1;
-
-
-  c.width =
-    w * d;
-
-  c.height =
-    h * d;
-
-
-  x.setTransform(
-    d,
-    0,
-    0,
-    d,
-    0,
-    0
-  );
-
-
-  x.clearRect(
-    0,
-    0,
-    w,
-    h
-  );
-
-
-  let a =
-    inc();
-
-  let b =
-    out();
-
-  let m =
-    Math.max(
-      a,
-      b,
-      1
-    );
-
-
-  let l = 30;
-
-  let r = 10;
-
-  let t = 15;
-
-  let bot = 25;
-
-  let cw =
-    w - l - r;
-
-  let ch =
-    h - t - bot;
-
-
-  x.strokeStyle =
-    "#eee";
-
-
-  for(
-    let i = 0;
-    i < 5;
-    i++
-  ){
-
-    let y =
-      t +
-      ch *
-      i /
-      4;
-
-
-    x.beginPath();
-
-    x.moveTo(
-      l,
-      y
-    );
-
-    x.lineTo(
-      w - r,
-      y
-    );
-
-    x.stroke();
-
-  }
-
-
-  function line(
-    v,
-    col
-  ){
-
-    x.beginPath();
-
-
-    for(
-      let i = 0;
-      i < 7;
-      i++
-    ){
-
-      let f =
-        .45 +
-        .55 *
-        (i + 1) /
-        7;
-
-
-      let xx =
-        l +
-        cw *
-        i /
-        6;
-
-
-      let yy =
-        t +
-        ch *
-        (
-          1 -
-          (
-            v * f
-          ) /
-          m
-        );
-
-
-      if(i)
-        x.lineTo(
-          xx,
-          yy
-        );
-
-      else
-        x.moveTo(
-          xx,
-          yy
-        );
-
-    }
-
-
-    x.strokeStyle =
-      col;
-
-    x.lineWidth =
-      2.5;
-
-    x.stroke();
-
-  }
-
-
-  line(
-    a,
-    "#e30613"
-  );
-
-
-  line(
-    b,
-    "#ffc400"
-  );
-
-}
-
 
 let editing =
   null;
