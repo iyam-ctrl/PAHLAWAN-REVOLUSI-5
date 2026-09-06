@@ -1591,6 +1591,10 @@ NAMA
 </th>
 
 <th>
+NIK
+</th>
+
+<th>
 JABATAN
 </th>
 
@@ -1756,6 +1760,10 @@ NO
 
 <th>
 NAMA
+</th>
+
+<th>
+NIK
 </th>
 
 <th>
@@ -2236,54 +2244,63 @@ const employees = [
   id:1,
   name:"MUHAMMAD DANI FARID SUGIANTO",
   job:"COS"
+  nik:"04050340"
 },
 
 {
   id:2,
   name:"ANDRIANSYAH",
   job:"ACOS"
+  nik:"19107474"
 },
 
 {
   id:3,
   name:"AULIA JIHAN SYAKHILA",
   job:"ACOS"
+  nik:"21037991"
 },
 
 {
   id:4,
   name:"MUHAMMAD HAGGI",
   job:"ACOS"
+  nik:"23023332"
 },
 
 {
   id:5,
   name:"ROSTATI",
   job:"CREW"
+  nik:"23121542"
 },
 
 {
   id:6,
   name:"SHENNA MA'RIFAH AHMAD",
   job:"CREW"
+  nik:"24033140"
 },
 
 {
   id:7,
   name:"FILLIO DEODATUS MEZE MONA",
   job:"CREW"
+  nik:"25011192"
 },
 
 {
   id:8,
   name:"ILHAM ADITYAWAN",
   job:"CREW"
+  nik:"25037146"
 },
 
 {
   id:9,
   name:"PUTRI HERMALIA",
   job:"CREW"
+  nik:"25084051"
 }
 
 ];
@@ -2608,6 +2625,10 @@ function render(){
           </td>
 
           <td>
+            ${e.nik}
+          </td>
+
+          <td>
             ${e.job}
           </td>
 
@@ -2656,6 +2677,10 @@ function render(){
 
           <td class="name">
             ${e.name}
+          </td>
+
+          <td>
+            ${e.nik}
           </td>
 
           <td>
@@ -4044,6 +4069,7 @@ function downloadCashReportPDF(){
         [
           "NO",
           "NAMA",
+          "NIK",
           "JABATAN",
           "STATUS",
           "TANGGAL BAYAR",
@@ -4061,6 +4087,7 @@ function downloadCashReportPDF(){
     [
       "NO",
       "NAMA",
+      "NIK",
       "JABATAN",
       "STATUS",
       "TANGGAL BAYAR",
