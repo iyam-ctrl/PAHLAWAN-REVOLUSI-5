@@ -3,37 +3,42 @@
 STEP 1 - SISTEM AKSES
 =========================================
 
-GANTI PASSWORD DI BAWAH INI.
+PASSWORD ROSTATI:
 
-CONTOH:
-
-const ROSTATI_PASSWORD = "123456";
+pusingbanget
 
 */
 
-const ROSTATI_PASSWORD = "GANTI_PASSWORD_ROSTATI";
+const ROSTATI_PASSWORD = "pusingbanget";
 
 
 const openAdmin =
   document.getElementById("openAdmin");
 
+
 const closeAdmin =
   document.getElementById("closeAdmin");
+
 
 const enterViewer =
   document.getElementById("enterViewer");
 
+
 const loginModal =
   document.getElementById("loginModal");
+
 
 const loginBtn =
   document.getElementById("loginBtn");
 
+
 const passwordInput =
   document.getElementById("password");
 
+
 const loginError =
   document.getElementById("loginError");
+
 
 const togglePassword =
   document.getElementById("togglePassword");
