@@ -1682,7 +1682,20 @@ LAPORAN KAS
 Ringkasan pemasukan, pengeluaran, dan saldo.
 </p>
 
-<div style="margin:12px 0;display:flex;justify-content:flex-end">\n<select class="select" id="monthSelect">\n<option value="2026-09">SEPTEMBER 2026</option>\n<option value="2026-08">AGUSTUS 2026</option>\n<option value="2026-07">JULI 2026</option>\n<option value="2026-06">JUNI 2026</option>\n<option value="2026-05">MEI 2026</option>\n<option value="2026-04">APRIL 2026</option>\n<option value="2026-03">MARET 2026</option>\n<option value="2026-02">FEBRUARI 2026</option>\n<option value="2026-01">JANUARI 2026</option>\n</select>\n</div>\n\n<div class="report-actions">
+<div style="margin:12px 0;display:flex;justify-content:flex-end">
+<select class="select" id="reportMonthSelect">
+<option value="2026-09">SEPTEMBER 2026</option>
+<option value="2026-08">AGUSTUS 2026</option>
+<option value="2026-07">JULI 2026</option>
+<option value="2026-06">JUNI 2026</option>
+<option value="2026-05">MEI 2026</option>
+<option value="2026-04">APRIL 2026</option>
+<option value="2026-03">MARET 2026</option>
+<option value="2026-02">FEBRUARI 2026</option>
+<option value="2026-01">JANUARI 2026</option>
+</select>
+</div>
+\n<div class="report-actions">
 <button class="pdf-btn" id="downloadPdfBtn">↓ DOWNLOAD LAPORAN PDF</button>
 </div>
 
@@ -2477,42 +2490,9 @@ function finance(){
     rp(c);
 
 
-  document.getElementById(
-    "donutTotal"
-  ).textContent =
-    rp(a + b);
-
-
-  let q =
-    a + b
-      ? a /
-        (a + b) *
-        100
-      : 0;
-
-
-  document.getElementById(
-    "donut"
-  ).style.background =
-    `conic-gradient(
-      var(--r) 0 ${q}%,
-      var(--y) ${q}% 100%
-    )`;
-
-
-
 }
 
-
 function renderExpenses(){
-
-  let a =
-    le().sort(
-      (x,y) =>
-        new Date(y.date) -
-        new Date(x.date)
-    );
-
 
   let b =
     document.getElementById(
@@ -2809,6 +2789,96 @@ function report(){
 
 
 // =====================================
+// AKSI PEMBAYARAN & PENGELUARAN
+// =====================================
+let editing = null;
+
+function openPay(id = null){
+  if(!admin) return;
+
+  editing = id;
+  const s = document.getElementById("employeeSelect");
+  const p = lp()[month()] || {};
+
+  s.innerHTML = employees.map(e => `
+    <option value="${e.id}">${e.name} — ${e.job} — ${e.nik}</option>
+  `).join("");
+
+  s.value = id || 1;
+  document.getElementById("paymentAmount").value = id && p[id] ? p[id].amount : IURAN;
+  document.getElementById("paymentDate").value = id && p[id] ? p[id].date : new Date().toISOString().slice(0,10);
+  document.getElementById("paymentModal").classList.remove("hidden");
+}
+
+window.editPayment = openPay;
+
+document.getElementById("addPaymentBtn").onclick = () => openPay();
+
+document.getElementById("savePayment").onclick = () => {
+  const id = +document.getElementById("employeeSelect").value;
+  const a = +document.getElementById("paymentAmount").value;
+  const d = document.getElementById("paymentDate").value;
+
+  if(!id || a <= 0 || !d) return alert("LENGKAPI DATA PEMBAYARAN.");
+
+  const p = lp();
+  const m = month();
+  p[m] ??= {};
+  p[m][id] = { amount:a, date:d };
+  sp(p);
+
+  document.getElementById("paymentModal").classList.add("hidden");
+  editing = null;
+  render();
+};
+
+["closePaymentModal","cancelPayment"].forEach(id => {
+  document.getElementById(id).onclick = () =>
+    document.getElementById("paymentModal").classList.add("hidden");
+});
+
+document.getElementById("addExpenseBtn").onclick = () => {
+  if(!admin) return;
+  document.getElementById("expenseDate").value = new Date().toISOString().slice(0,10);
+  document.getElementById("expenseAmount").value = "";
+  document.getElementById("expenseDescription").value = "";
+  document.getElementById("expenseModal").classList.remove("hidden");
+};
+
+document.getElementById("saveExpense").onclick = () => {
+  const d = document.getElementById("expenseDate").value;
+  const a = +document.getElementById("expenseAmount").value;
+  const s = document.getElementById("expenseDescription").value.trim();
+  if(!d || a <= 0 || !s) return alert("LENGKAPI DATA PENGELUARAN.");
+
+  const e = le();
+  e.push({id:Date.now(),date:d,amount:a,description:s});
+  se(e);
+  document.getElementById("expenseModal").classList.add("hidden");
+  renderExpenses();
+};
+
+window.deleteExpense = id => {
+  if(!admin || !confirm("YAKIN MAU MENGHAPUS PENGELUARAN INI?")) return;
+  se(le().filter(x => x.id !== id));
+  renderExpenses();
+};
+
+["closeExpenseModal","cancelExpense"].forEach(id => {
+  document.getElementById(id).onclick = () =>
+    document.getElementById("expenseModal").classList.add("hidden");
+});
+
+document.getElementById("resetMonthBtn").onclick = () => {
+  if(!admin) return;
+  if(!confirm("YAKIN MAU RESET SEMUA STATUS PEMBAYARAN BULAN INI?")) return;
+  const p = lp();
+  delete p[month()];
+  sp(p);
+  render();
+};
+
+// =====================================
 // NAVIGASI SECTION + MENU CEPAT
 // =====================================
 function show(id){
@@ -2835,9 +2905,21 @@ document.querySelectorAll("[data-go]").forEach(x => {
 });
 
 document.getElementById("monthSelect").onchange = () => {
+  const r = document.getElementById("reportMonthSelect");
+  if(r) r.value = document.getElementById("monthSelect").value;
   render();
   renderExpenses();
 };
+
+const reportMonthSelect = document.getElementById("reportMonthSelect");
+if(reportMonthSelect){
+  reportMonthSelect.value = document.getElementById("monthSelect").value;
+  reportMonthSelect.onchange = () => {
+    document.getElementById("monthSelect").value = reportMonthSelect.value;
+    render();
+    renderExpenses();
+  };
+}
 
 
 // =====================================
@@ -3095,6 +3177,9 @@ if(document.getElementById("logoutBtn")){
 }
 
 render();
+
+const initialReportMonth = document.getElementById("reportMonthSelect");
+if(initialReportMonth) initialReportMonth.value = document.getElementById("monthSelect").value;
 
 renderExpenses();
 
