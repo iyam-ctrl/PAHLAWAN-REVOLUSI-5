@@ -313,6 +313,7 @@ body{
   font-size:8px
 }
 
+
 .donutbox{
   display:grid;
   grid-template-columns:135px 1fr;
@@ -679,9 +680,7 @@ body{
   box-shadow:0 5px 16px #00000008
 }
 
-.menu-btn span,
-.menu-btn span:before,
-.menu-btn span:after{
+.menu-btn span,.menu-btn span:before,.menu-btn span:after{
   display:block;
   width:18px;
   height:2px;
@@ -691,17 +690,8 @@ body{
   position:relative
 }
 
-.menu-btn span:before{
-  position:absolute;
-  top:-6px;
-  left:0
-}
-
-.menu-btn span:after{
-  position:absolute;
-  top:6px;
-  left:0
-}
+.menu-btn span:before{position:absolute;top:-6px;left:0}
+.menu-btn span:after{position:absolute;top:6px;left:0}
 
 .menu-panel{
   position:absolute;
@@ -717,9 +707,7 @@ body{
   display:none
 }
 
-.menu-panel.open{
-  display:block
-}
+.menu-panel.open{display:block}
 
 .menu-title{
   padding:9px 10px 7px;
@@ -742,13 +730,8 @@ body{
   cursor:pointer
 }
 
-.menu-item:hover{
-  background:#f7f7f7
-}
-
-.menu-item.logout-menu{
-  color:var(--r)
-}
+.menu-item:hover{background:#f7f7f7}
+.menu-item.logout-menu{color:var(--r)}
 
 .report-actions{
   display:flex;
@@ -784,13 +767,8 @@ body{
   font-size:8px
 }
 
-.settings-row span{
-  color:#888
-}
-
-.settings-row b{
-  text-align:right
-}
+.settings-row span{color:#888}
+.settings-row b{text-align:right}
 
 .mobile-nav{
   display:none
@@ -806,126 +784,155 @@ body{
     grid-template-columns:1fr
   }
 
+  .side{
+    width:220px
+  }
+
+  .app{
+    grid-template-columns:220px 1fr
+  }
 }
 
-@media(max-width:800px){
+@media(max-width:700px){
 
   .app{
     display:block
   }
 
   .side{
+    position:fixed;
+    top:auto;
+    bottom:0;
+    width:100%;
+    height:64px;
+    padding:6px;
+    background:#fff;
+    color:#555;
+    border-top:1px solid var(--line);
+    box-shadow:0 -7px 20px #0001
+  }
+
+  .brand,
+  .bottom{
     display:none
+  }
+
+  .nav{
+    margin:0;
+    height:100%;
+    display:flex;
+    justify-content:space-around
+  }
+
+  .nav button{
+    color:#777;
+    padding:4px 5px;
+    font-size:7px;
+    text-align:center
+  }
+
+  .nav button.active{
+    background:#fff0f1;
+    color:var(--r)
   }
 
   .main{
-    padding:18px 14px 85px
-  }
-
-  .top{
-    align-items:flex-start
+    padding:15px 12px 80px
   }
 
   .top h2{
-    font-size:22px
+    font-size:23px
+  }
+
+  .top p{
+    font-size:8px
   }
 
   .user{
-    display:none
+    padding:5px 7px
+  }
+
+  .user .avatar{
+    width:27px;
+    height:27px
+  }
+
+  .user strong{
+    font-size:8px
+  }
+
+  .user span{
+    font-size:6px
   }
 
   .kpis{
-    grid-template-columns:repeat(2,1fr);
     gap:8px
   }
 
   .card{
-    padding:12px
+    padding:12px;
+    border-radius:13px
+  }
+
+  .kpi b{
+    font-size:15px
+  }
+
+  .kpi label{
+    font-size:7px
+  }
+
+  .kpi small{
+    font-size:6px
   }
 
   .row{
-    grid-template-columns:1fr
+    gap:8px;
+    margin-top:8px
   }
 
   .quick{
-    grid-template-columns:repeat(2,1fr)
+    grid-template-columns:1fr 1fr
+  }
+
+  .chart{
+    height:200px
+  }
+
+  .donutbox{
+    grid-template-columns:110px 1fr
+  }
+
+  .donut{
+    width:105px;
+    height:105px
+  }
+
+  .donut:after{
+    width:64px;
+    height:64px
+  }
+
+  .status{
+    grid-template-columns:1fr 1fr
+  }
+
+  .status .card:last-child{
+    grid-column:1/-1
   }
 
   .toolbar{
     grid-template-columns:1fr
   }
 
-  .donutbox{
-    grid-template-columns:120px 1fr
+  .panelhide{
+    display:none
   }
-
-  .donut{
-    width:115px;
-    height:115px
-  }
-
-  .donut:after{
-    width:68px;
-    height:68px
-  }
-
-  .mobile-nav{
-    position:fixed;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    left:0;
-    right:0;
-    bottom:0;
-    height:65px;
-    background:#fff;
-    border-top:1px solid var(--line);
-    z-index:30
-  }
-
-  .mobile-nav button{
-    border:0;
-    background:#fff;
-    font-size:7px;
-    font-weight:900;
-    color:#888
-  }
-
-  .mobile-nav button.active{
-    color:var(--r)
-  }
-
-}
-
-@media(max-width:480px){
-
-  .kpis{
-    grid-template-columns:1fr 1fr
-  }
-
-  .kpi b{
-    font-size:16px
-  }
-
-  .status{
-    grid-template-columns:1fr
-  }
-
-  .donutbox{
-    grid-template-columns:1fr;
-    justify-items:center
-  }
-
-  .legend{
-    width:100%
-  }
-
 }
 
 </style>
 
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 </head>
 
@@ -946,10 +953,11 @@ PAHLAWAN REVOLUSI 5
 </h1>
 
 <p>
-TRANSPARASI KAS
+SISTEM MANAJEMEN KAS
 </p>
 
 </div>
+
 
 <nav class="nav">
 
@@ -996,6 +1004,7 @@ LAPORAN
 
 </nav>
 
+
 <div class="bottom">
 
 <div class="profile">
@@ -1018,6 +1027,7 @@ PENGELOLA KAS
 
 </div>
 
+
 <button
   class="logout"
   id="logoutBtn"
@@ -1032,58 +1042,27 @@ KELUAR
 
 <main class="main">
 
+
 <header class="top">
 
 <div style="display:flex;align-items:flex-start;gap:10px;min-width:0">
 
 <div class="menu-wrap">
-
-<button
-  class="menu-btn"
-  id="menuBtn"
-  aria-label="Buka menu"
->
+<button class="menu-btn" id="menuBtn" aria-label="Buka menu">
 <span></span>
 </button>
-
-<div
-  class="menu-panel"
-  id="menuPanel"
->
-
-<div class="menu-title">
-MENU UTAMA
+<div class="menu-panel" id="menuPanel">
+<div class="menu-title">MENU UTAMA</div>
+<button class="menu-item" id="settingsMenu">⚙ PENGATURAN</button>
+<button class="menu-item" id="reportMenu">▥ LAPORAN KAS</button>
+<button class="menu-item logout-menu" id="menuLogout">↪ LOGOUT</button>
 </div>
-
-<button
-  class="menu-item"
-  id="settingsMenu"
->
-⚙ PENGATURAN
-</button>
-
-<button
-  class="menu-item"
-  id="reportMenu"
->
-▥ LAPORAN KAS
-</button>
-
-<button
-  class="menu-item logout-menu"
-  id="menuLogout"
->
-↪ LOGOUT
-</button>
-
-</div>
-
 </div>
 
 <div>
 
 <div class="eyebrow">
-TRANSPARASI KAS
+SISTEM MANAJEMEN KAS
 </div>
 
 <h2>
@@ -1132,22 +1111,44 @@ PENGELOLA KAS
 
 <div class="kpis">
 
+
 <div class="card kpi">
 
 <div class="icon">
-↗
+👥
 </div>
 
 <label>
-KAS MASUK
+TOTAL KARYAWAN
+</label>
+
+<b>
+9 ORANG
+</b>
+
+<small>
+DATA AKTIF
+</small>
+
+</div>
+
+
+<div class="card kpi">
+
+<div class="icon">
+↓
+</div>
+
+<label>
+TOTAL KAS MASUK
 </label>
 
 <b id="dashIncome">
-RP0
+RP 0
 </b>
 
 <small>
-Pemasukan bulan terpilih
+PEMBAYARAN KAS
 </small>
 
 </div>
@@ -1156,19 +1157,19 @@ Pemasukan bulan terpilih
 <div class="card kpi">
 
 <div class="icon">
-↘
+↑
 </div>
 
 <label>
-KAS KELUAR
+TOTAL KAS KELUAR
 </label>
 
 <b id="dashExpense">
-RP0
+RP 0
 </b>
 
 <small>
-Total pengeluaran
+PENGELUARAN
 </small>
 
 </div>
@@ -1177,7 +1178,7 @@ Total pengeluaran
 <div class="card kpi">
 
 <div class="icon">
-=
+▣
 </div>
 
 <label>
@@ -1185,32 +1186,11 @@ SALDO KAS
 </label>
 
 <b id="dashBalance">
-RP0
+RP 0
 </b>
 
 <small>
-Kas masuk dikurangi keluar
-</small>
-
-</div>
-
-
-<div class="card kpi">
-
-<div class="icon">
-✓
-</div>
-
-<label>
-TARGET KAS
-</label>
-
-<b id="totalWajib">
-RP450.000
-</b>
-
-<small>
-9 karyawan × Rp50.000
+MASUK - KELUAR
 </small>
 
 </div>
@@ -1218,137 +1198,34 @@ RP450.000
 </div>
 
 
-<div class="row">
+<div class="toolbar">
 
-<div class="card">
-
-<div class="head">
-
-<div>
-
-<h3>
-RINCIAN KAS
-</h3>
-
-<p>
-Ringkasan pemasukan dan pengeluaran.
-</p>
-
-</div>
-
-<select
-  class="select"
-  id="monthSelect"
+<button
+  class="tool"
+  id="addPaymentBtn"
 >
+＋ TAMBAH PEMBAYARAN
+</button>
 
-<option value="2026-09">
-SEPTEMBER 2026
-</option>
+<button
+  class="tool"
+  id="addExpenseBtn"
+>
+－ TAMBAH PENGELUARAN
+</button>
 
-<option value="2026-08">
-AGUSTUS 2026
-</option>
-
-<option value="2026-07">
-JULI 2026
-</option>
-
-<option value="2026-06">
-JUNI 2026
-</option>
-
-<option value="2026-05">
-MEI 2026
-</option>
-
-<option value="2026-04">
-APRIL 2026
-</option>
-
-<option value="2026-03">
-MARET 2026
-</option>
-
-<option value="2026-02">
-FEBRUARI 2026
-</option>
-
-<option value="2026-01">
-JANUARI 2026
-</option>
-
-</select>
-
-</div>
-
-
-<div class="donutbox">
-
-<div class="donut">
-
-<div class="donuttext">
-
-<b id="breakBalance">
-RP0
-</b>
-
-SALDO
-
-</div>
-
-</div>
-
-
-<div class="legend">
-
-<div>
-
-<span>
-<span class="dot red"></span>
-KAS MASUK
-</span>
-
-<b id="breakIncome">
-RP0
-</b>
-
-</div>
-
-<div>
-
-<span>
-<span class="dot yellow"></span>
-KAS KELUAR
-</span>
-
-<b id="breakExpense">
-RP0
-</b>
-
-</div>
-
-<div>
-
-<span>
-TOTAL SALDO
-</span>
-
-<b id="breakBalance2">
-RP0
-</b>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+<button
+  class="tool"
+  id="resetMonthBtn"
+>
+↻ RESET BULAN
+</button>
 
 </div>
 
 
 <div class="row">
+
 
 <div class="card">
 
@@ -1361,7 +1238,7 @@ MENU CEPAT
 </h3>
 
 <p>
-Akses fitur utama.
+Akses fitur utama
 </p>
 
 </div>
@@ -1378,11 +1255,11 @@ Akses fitur utama.
 </i>
 
 <b>
-CATAT PEMBAYARAN
+Tambah Pembayaran
 </b>
 
 <span>
-Catat Kas karyawan
+Catat iuran
 </span>
 
 </button>
@@ -1395,11 +1272,11 @@ Catat Kas karyawan
 </i>
 
 <b>
-TAMBAH PENGELUARAN
+Tambah Pengeluaran
 </b>
 
 <span>
-Catat pengeluaran kas
+Catat kas keluar
 </span>
 
 </button>
@@ -1412,11 +1289,11 @@ Catat pengeluaran kas
 </i>
 
 <b>
-DATA KARYAWAN
+Data Karyawan
 </b>
 
 <span>
-Lihat seluruh karyawan
+Status iuran
 </span>
 
 </button>
@@ -1429,7 +1306,7 @@ Lihat seluruh karyawan
 </i>
 
 <b>
-LIHAT LAPORAN
+Laporan Kas
 </b>
 
 <span>
@@ -1454,7 +1331,7 @@ AKTIVITAS TERBARU
 </h3>
 
 <p>
-Aktivitas kas terakhir.
+Transaksi terakhir
 </p>
 
 </div>
@@ -1463,9 +1340,8 @@ Aktivitas kas terakhir.
 
 <div
   class="activity"
-  id="recentActivity"
->
-</div>
+  id="activityList"
+></div>
 
 </div>
 
@@ -1484,32 +1360,49 @@ PEMBAYARAN UANG KAS
 </h3>
 
 <p style="font-size:9px;color:#999">
-Kelola pembayaran kas bulanan karyawan.
+Setiap karyawan membayar RP50.000 setiap tanggal 28.
 </p>
 
 
-<div class="toolbar">
+<div class="card">
 
-<button
-  class="tool"
-  id="addPaymentBtn"
->
-＋ CATAT PEMBAYARAN
-</button>
+<div class="head">
 
-<button
-  class="tool"
-  id="paymentInfoBtn"
->
-ℹ INFO KAS
-</button>
+<div>
 
-<button
-  class="tool"
-  data-go="reports"
+<h3>
+STATUS PEMBAYARAN
+</h3>
+
+<p>
+Periode terpilih
+</p>
+
+</div>
+
+
+<select
+  class="select"
+  id="monthSelect"
 >
-▥ LIHAT LAPORAN
-</button>
+
+<option value="2026-09">
+SEPTEMBER 2026
+</option>
+
+<option value="2026-10">
+OKTOBER 2026
+</option>
+
+<option value="2026-11">
+NOVEMBER 2026
+</option>
+
+<option value="2026-12">
+DESEMBER 2026
+</option>
+
+</select>
 
 </div>
 
@@ -1528,6 +1421,7 @@ SUDAH BAYAR
 
 </div>
 
+
 <div class="card">
 
 <label>
@@ -1540,34 +1434,16 @@ BELUM BAYAR
 
 </div>
 
+
 <div class="card">
 
 <label>
-TARGET BULANAN
+TOTAL WAJIB BAYAR
 </label>
 
-<b>
-RP450.000
+<b id="totalWajib">
+RP 450.000
 </b>
-
-</div>
-
-</div>
-
-
-<div class="card table-card">
-
-<div class="head">
-
-<div>
-
-<h3>
-STATUS PEMBAYARAN
-</h3>
-
-<p>
-Daftar pembayaran karyawan.
-</p>
 
 </div>
 
@@ -1599,7 +1475,7 @@ JABATAN
 </th>
 
 <th>
-JUMLAH
+IURAN
 </th>
 
 <th>
@@ -1607,7 +1483,7 @@ STATUS
 </th>
 
 <th>
-TANGGAL
+TANGGAL BAYAR
 </th>
 
 <th>
@@ -1620,10 +1496,17 @@ AKSI
 
 <tbody
   id="employeeTableBody"
->
-</tbody>
+></tbody>
 
 </table>
+
+</div>
+
+
+<div class="info">
+
+SETIAP KARYAWAN WAJIB MEMBAYAR
+RP50.000 SETIAP TANGGAL 28.
 
 </div>
 
@@ -1642,27 +1525,8 @@ PENGELUARAN KAS
 </h3>
 
 <p style="font-size:9px;color:#999">
-Catat seluruh penggunaan uang kas.
+Catat semua penggunaan uang kas.
 </p>
-
-
-<div class="toolbar">
-
-<button
-  class="tool"
-  id="addExpenseBtn"
->
-＋ TAMBAH PENGELUARAN
-</button>
-
-<button
-  class="tool"
-  data-go="reports"
->
-▥ LIHAT LAPORAN
-</button>
-
-</div>
 
 
 <div class="card table-card">
@@ -1676,7 +1540,7 @@ RIWAYAT PENGELUARAN
 </h3>
 
 <p>
-Daftar transaksi pengeluaran.
+Catatan kas keluar
 </p>
 
 </div>
@@ -1718,10 +1582,20 @@ AKSI
 
 <tbody
   id="expenseTableBody"
->
-</tbody>
+></tbody>
 
 </table>
+
+</div>
+
+
+<div class="info">
+
+TOTAL PENGELUARAN:
+
+<strong id="expenseTotal">
+RP 0
+</strong>
 
 </div>
 
@@ -1740,7 +1614,7 @@ DATA KARYAWAN
 </h3>
 
 <p style="font-size:9px;color:#999">
-Daftar karyawan PAHLAWAN REVOLUSI 5.
+Daftar anggota dan status iuran.
 </p>
 
 
@@ -1771,7 +1645,7 @@ JABATAN
 </th>
 
 <th>
-STATUS KAS
+STATUS
 </th>
 
 <th>
@@ -1784,8 +1658,7 @@ TANGGAL BAYAR
 
 <tbody
   id="employeeSummaryBody"
->
-</tbody>
+></tbody>
 
 </table>
 
@@ -1809,20 +1682,12 @@ LAPORAN KAS
 Ringkasan pemasukan, pengeluaran, dan saldo.
 </p>
 
-
-<div class="report-actions">
-
-<button
-  class="pdf-btn"
-  id="downloadPdfBtn"
->
-↓ DOWNLOAD LAPORAN PDF
-</button>
-
+<div style="margin:12px 0;display:flex;justify-content:flex-end">\n<select class="select" id="monthSelect">\n<option value="2026-09">SEPTEMBER 2026</option>\n<option value="2026-08">AGUSTUS 2026</option>\n<option value="2026-07">JULI 2026</option>\n<option value="2026-06">JUNI 2026</option>\n<option value="2026-05">MEI 2026</option>\n<option value="2026-04">APRIL 2026</option>\n<option value="2026-03">MARET 2026</option>\n<option value="2026-02">FEBRUARI 2026</option>\n<option value="2026-01">JANUARI 2026</option>\n</select>\n</div>\n\n<div class="report-actions">
+<button class="pdf-btn" id="downloadPdfBtn">↓ DOWNLOAD LAPORAN PDF</button>
 </div>
 
-
 <div class="kpis">
+
 
 <div class="card kpi">
 
@@ -1831,10 +1696,11 @@ PEMASUKAN
 </label>
 
 <b id="reportIncome">
-RP0
+RP 0
 </b>
 
 </div>
+
 
 <div class="card kpi">
 
@@ -1843,10 +1709,11 @@ PENGELUARAN
 </label>
 
 <b id="reportExpense">
-RP0
+RP 0
 </b>
 
 </div>
+
 
 <div class="card kpi">
 
@@ -1855,19 +1722,20 @@ SALDO
 </label>
 
 <b id="reportBalance">
-RP0
+RP 0
 </b>
 
 </div>
+
 
 <div class="card kpi">
 
 <label>
-TARGET
+WAJIB BULANAN
 </label>
 
 <b>
-RP450.000
+RP 450.000
 </b>
 
 </div>
@@ -1877,191 +1745,40 @@ RP450.000
 
 <div class="card table-card">
 
-<div class="head">
-
-<div>
-
-<h3>
-REKAP PEMBAYARAN KARYAWAN
+<h3 style="font-size:12px">
+RINGKASAN PEMBAYARAN
 </h3>
 
-<p>
-Status pembayaran per periode.
-</p>
-
-</div>
-
-</div>
-
-<div
-  class="info"
+<p
   id="reportText"
->
-</div>
-
-</div>
-
-
-<div class="card table-card">
-
-<div class="head">
-
-<div>
-
-<h3>
-RIWAYAT PENGELUARAN
-</h3>
-
-<p>
-Detail penggunaan kas.
-</p>
-
-</div>
-
-</div>
-
-<div
-  id="reportExpenses"
->
-</div>
+  style="font-size:9px;color:#777;line-height:1.7"
+></p>
 
 </div>
 
 </section>
-
 
 </main>
 
 </div>
 
 
-<div class="mobile-nav">
-
-<button
-  class="active"
-  data-sec="dashboard"
->
-⌂
-<br>
-HOME
-</button>
-
-<button
-  data-sec="payments"
->
-▣
-<br>
-KAS
-</button>
-
-<button
-  data-sec="expenses"
->
-−
-<br>
-KELUAR
-</button>
-
-<button
-  data-sec="employees"
->
-♙
-<br>
-KARYAWAN
-</button>
-
-<button
-  data-sec="reports"
->
-▥
-<br>
-LAPORAN
-</button>
-
-</div>
-
-
-<div
-  class="modal hidden"
-  id="settingsModal"
->
-
+<div class="modal hidden" id="settingsModal">
 <div class="modalbox">
-
 <div class="modalhead">
-
-<h3>
-PENGATURAN
-</h3>
-
-<button
-  class="close"
-  id="closeSettingsModal"
->
-×
-</button>
-
+<h3>PENGATURAN</h3>
+<button class="close" id="closeSettingsModal">×</button>
 </div>
-
-
 <div class="settings-list">
-
-<div class="settings-row">
-
-<span>
-Pengguna
-</span>
-
-<b id="settingUser">
--
-</b>
-
+<div class="settings-row"><span>Pengguna</span><b id="settingUser">-</b></div>
+<div class="settings-row"><span>Akses</span><b id="settingRole">-</b></div>
+<div class="settings-row"><span>Sistem</span><b>PAHLAWAN REVOLUSI 5</b></div>
 </div>
-
-
-<div class="settings-row">
-
-<span>
-Akses
-</span>
-
-<b id="settingRole">
--
-</b>
-
-</div>
-
-
-<div class="settings-row">
-
-<span>
-Sistem
-</span>
-
-<b>
-PAHLAWAN REVOLUSI 5
-</b>
-
-</div>
-
-</div>
-
-
 <div class="actions">
-
-<button
-  class="cancel"
-  id="cancelSettings"
->
-TUTUP
-</button>
-
+<button class="cancel" id="cancelSettings">TUTUP</button>
 </div>
-
 </div>
-
 </div>
-
 
 <div
   class="modal hidden"
@@ -2078,7 +1795,7 @@ CATAT PEMBAYARAN
 
 <button
   class="close"
-  id="closePayment"
+  id="closePaymentModal"
 >
 ×
 </button>
@@ -2090,35 +1807,36 @@ CATAT PEMBAYARAN
 
 <label>
 
-KARYAWAN
+NAMA KARYAWAN
 
-<select id="paymentEmployee">
-</select>
-
-</label>
-
-
-<label>
-
-TANGGAL BAYAR
-
-<input
-  type="date"
-  id="paymentDate"
-/>
+<select
+  id="employeeSelect"
+></select>
 
 </label>
 
 
 <label>
 
-JUMLAH KAS
+JUMLAH PEMBAYARAN
 
 <input
-  type="number"
   id="paymentAmount"
+  type="number"
   value="50000"
-/>
+>
+
+</label>
+
+
+<label>
+
+TANGGAL PEMBAYARAN
+
+<input
+  id="paymentDate"
+  type="date"
+>
 
 </label>
 
@@ -2163,7 +1881,7 @@ TAMBAH PENGELUARAN
 
 <button
   class="close"
-  id="closeExpense"
+  id="closeExpenseModal"
 >
 ×
 </button>
@@ -2178,22 +1896,9 @@ TAMBAH PENGELUARAN
 TANGGAL
 
 <input
-  type="date"
   id="expenseDate"
-/>
-
-</label>
-
-
-<label>
-
-KETERANGAN
-
-<input
-  type="text"
-  id="expenseDescription"
-  placeholder="Contoh: ATK"
-/>
+  type="date"
+>
 
 </label>
 
@@ -2203,10 +1908,23 @@ KETERANGAN
 NOMINAL
 
 <input
-  type="number"
   id="expenseAmount"
+  type="number"
   placeholder="50000"
-/>
+>
+
+</label>
+
+
+<label>
+
+KETERANGAN
+
+<input
+  id="expenseDescription"
+  type="text"
+  placeholder="BELI AIR MINUM"
+>
 
 </label>
 
@@ -2240,68 +1958,68 @@ SIMPAN
 
 const employees = [
 
-{
-  id:1,
-  name:"MUHAMMAD DANI FARID SUGIANTO",
-  job:"COS"
-  nik:"04050340"
-},
+  {
+    id:1,
+    name:"MUHAMMAD DANI FARID SUGIANTO",
+    job:"COS",
+    nik:"04050340"
+  },
 
-{
-  id:2,
-  name:"ANDRIANSYAH",
-  job:"ACOS"
-  nik:"19107474"
-},
+  {
+    id:2,
+    name:"ANDRIANSYAH",
+    job:"ACOS",
+    nik:"19107474"
+  },
 
-{
-  id:3,
-  name:"AULIA JIHAN SYAKHILA",
-  job:"ACOS"
-  nik:"21037991"
-},
+  {
+    id:3,
+    name:"AULIA JIHAN SYAKHILA",
+    job:"ACOS",
+    nik:"21037991"
+  },
 
-{
-  id:4,
-  name:"MUHAMMAD HAGGI",
-  job:"ACOS"
-  nik:"23023332"
-},
+  {
+    id:4,
+    name:"MUHAMMAD HAGGI",
+    job:"ACOS",
+    nik:"23023332"
+  },
 
-{
-  id:5,
-  name:"ROSTATI",
-  job:"CREW"
-  nik:"23121542"
-},
+  {
+    id:5,
+    name:"ROSTATI",
+    job:"CREW",
+    nik:"23121542"
+  },
 
-{
-  id:6,
-  name:"SHENNA MA'RIFAH AHMAD",
-  job:"CREW"
-  nik:"24033140"
-},
+  {
+    id:6,
+    name:"SHENNA MA'RIFAH AHMAD",
+    job:"CREW",
+    nik:"24033140"
+  },
 
-{
-  id:7,
-  name:"FILLIO DEODATUS MEZE MONA",
-  job:"CREW"
-  nik:"25011192"
-},
+  {
+    id:7,
+    name:"FILLIO DEODATUS MEZE MONA",
+    job:"CREW",
+    nik:"25011192"
+  },
 
-{
-  id:8,
-  name:"ILHAM ADITYAWAN",
-  job:"CREW"
-  nik:"25037146"
-},
+  {
+    id:8,
+    name:"ILHAM ADITYAWAN",
+    job:"CREW",
+    nik:"25037146"
+  },
 
-{
-  id:9,
-  name:"PUTRI HERMALIA",
-  job:"CREW"
-  nik:"25084051"
-}
+  {
+    id:9,
+    name:"PUTRI HERMALIA",
+    job:"CREW",
+    nik:"25084051"
+  }
 
 ];
 
@@ -2313,7 +2031,6 @@ const PK =
 
 const EK =
   "pahlawanRevolusi5Expenses";
-
 
 const role =
   sessionStorage.getItem(
@@ -2352,38 +2069,28 @@ const nm =
 ].forEach(
   id => {
 
-    const el =
-      document.getElementById(id);
-
-    if(el)
-      el.textContent = nm;
+    document.getElementById(
+      id
+    ).textContent = nm;
 
   }
 );
 
 
-const topRole =
-  document.getElementById(
-    "topRole"
-  );
-
-if(topRole)
-  topRole.textContent =
-    admin
-      ? "PENGELOLA KAS"
-      : "MODE LIHAT";
+document.getElementById(
+  "topRole"
+).textContent =
+  admin
+    ? "PENGELOLA KAS"
+    : "MODE LIHAT";
 
 
-const sideRole =
-  document.getElementById(
-    "sideRole"
-  );
-
-if(sideRole)
-  sideRole.textContent =
-    admin
-      ? "PENGELOLA KAS"
-      : "MODE LIHAT";
+document.getElementById(
+  "sideRole"
+).textContent =
+  admin
+    ? "PENGELOLA KAS"
+    : "MODE LIHAT";
 
 
 const lp = () => {
@@ -2480,7 +2187,6 @@ const esc = s =>
 
 
 const month = () =>
-
   document.getElementById(
     "monthSelect"
   ).value;
@@ -2491,13 +2197,9 @@ function inc(){
   let p =
     lp()[month()] || {};
 
-
   return employees.reduce(
-
     (t,e) =>
-
       t +
-
       (
         p[e.id]
           ? Number(
@@ -2506,9 +2208,7 @@ function inc(){
             )
           : 0
       ),
-
     0
-
   );
 
 }
@@ -2517,16 +2217,12 @@ function inc(){
 function out(){
 
   return le().reduce(
-
     (t,e) =>
-
       t +
       Number(
         e.amount || 0
       ),
-
     0
-
   );
 
 }
@@ -2537,12 +2233,10 @@ function render(){
   let p =
     lp()[month()] || {};
 
-
   let b =
     document.getElementById(
       "employeeTableBody"
     );
-
 
   let s =
     document.getElementById(
@@ -2561,7 +2255,6 @@ function render(){
 
 
   employees.forEach(
-
     (e,i) => {
 
       let x =
@@ -2589,31 +2282,32 @@ function render(){
 
 
       let act =
-
         admin
 
           ? `
-
             <button
               class="action"
               onclick="editPayment(${e.id})"
             >
-
               ${x ? "UBAH" : "CATAT"}
-
             </button>
-
           `
 
-          : "-";
+          : `
+            <span
+              style="
+                font-size:7px;
+                color:#aaa
+              "
+            >
+              VIEW ONLY
+            </span>
+          `;
 
 
       b.insertAdjacentHTML(
-
         "beforeend",
-
         `
-
         <tr>
 
           <td>
@@ -2657,18 +2351,13 @@ function render(){
           </td>
 
         </tr>
-
         `
-
       );
 
 
       s.insertAdjacentHTML(
-
         "beforeend",
-
         `
-
         <tr>
 
           <td>
@@ -2700,13 +2389,10 @@ function render(){
           </td>
 
         </tr>
-
         `
-
       );
 
     }
-
   );
 
 
@@ -2746,10 +2432,8 @@ function finance(){
   let a =
     inc();
 
-
   let b =
     out();
-
 
   let c =
     a - b;
@@ -2773,28 +2457,6 @@ function finance(){
     rp(c);
 
 
-  document.getElementById(
-    "breakIncome"
-  ).textContent =
-    rp(a);
-
-
-  document.getElementById(
-    "breakExpense"
-  ).textContent =
-    rp(b);
-
-
-  document.getElementById(
-    "breakBalance"
-  ).textContent =
-    rp(c);
-
-
-  document.getElementById(
-    "breakBalance2"
-  ).textContent =
-    rp(c);
 
 
   document.getElementById(
@@ -2814,165 +2476,286 @@ function finance(){
   ).textContent =
     rp(c);
 
+
+  document.getElementById(
+    "donutTotal"
+  ).textContent =
+    rp(a + b);
+
+
+  let q =
+    a + b
+      ? a /
+        (a + b) *
+        100
+      : 0;
+
+
+  document.getElementById(
+    "donut"
+  ).style.background =
+    `conic-gradient(
+      var(--r) 0 ${q}%,
+      var(--y) ${q}% 100%
+    )`;
+
+
+
+}
+
+
+function renderExpenses(){
+
+  let a =
+    le().sort(
+      (x,y) =>
+        new Date(y.date) -
+        new Date(x.date)
+    );
+
+
+  let b =
+    document.getElementById(
+      "expenseTableBody"
+    );
+
+
+  b.innerHTML =
+    "";
+
+
+  if(!a.length){
+
+    b.innerHTML = `
+      <tr>
+        <td
+          colspan="5"
+          style="
+            text-align:center;
+            color:#aaa;
+            padding:25px
+          "
+        >
+          BELUM ADA PENGELUARAN
+        </td>
+      </tr>
+    `;
+
+  }
+
+
+  a.forEach(
+    (x,i) => {
+
+      b.insertAdjacentHTML(
+        "beforeend",
+        `
+        <tr>
+
+          <td>
+            ${i + 1}
+          </td>
+
+          <td>
+            ${fd(x.date)}
+          </td>
+
+          <td class="name">
+            ${esc(x.description)}
+          </td>
+
+          <td>
+            ${rp(x.amount)}
+          </td>
+
+          <td>
+            ${
+              admin
+
+                ? `
+                  <button
+                    class="action"
+                    onclick="deleteExpense(${x.id})"
+                  >
+                    HAPUS
+                  </button>
+                `
+
+                : `
+                  <span
+                    style="
+                      font-size:7px;
+                      color:#aaa
+                    "
+                  >
+                    VIEW ONLY
+                  </span>
+                `
+            }
+          </td>
+
+        </tr>
+        `
+      );
+
+    }
+  );
+
+
+  document.getElementById(
+    "expenseTotal"
+  ).textContent =
+    rp(out());
+
+
+  finance();
+
+  activity();
+
 }
 
 
 function activity(){
 
-  let box =
-    document.getElementById(
-      "recentActivity"
-    );
-
-
-  let items = [];
-
+  let a = [];
 
   let p =
     lp()[month()] || {};
 
 
   employees.forEach(
-
     e => {
 
       if(p[e.id]){
 
-        items.push({
+        a.push({
 
-          type:"in",
+          d:p[e.id].date,
 
-          name:e.name,
+          t:
+            "Pembayaran - " +
+            e.name,
 
-          text:"Pembayaran iuran",
+          s:
+            "Iuran karyawan",
 
-          amount:Number(
-            p[e.id].amount ||
-            IURAN
-          ),
+          n:
+            Number(
+              p[e.id].amount ||
+              IURAN
+            ),
 
-          date:p[e.id].date
+          o:false
 
         });
 
       }
 
     }
-
   );
 
 
   le().forEach(
-
     e => {
 
-      items.push({
+      a.push({
 
-        type:"out",
+        d:e.date,
 
-        name:e.description,
+        t:"Pengeluaran",
 
-        text:"Pengeluaran kas",
+        s:e.description,
 
-        amount:Number(
-          e.amount || 0
-        ),
+        n:
+          Number(
+            e.amount || 0
+          ),
 
-        date:e.date
+        o:true
 
       });
 
     }
-
   );
 
 
-  items.sort(
-
-    (a,b) =>
-
-      new Date(b.date) -
-      new Date(a.date)
-
+  a.sort(
+    (x,y) =>
+      new Date(y.d) -
+      new Date(x.d)
   );
 
 
-  items =
-    items.slice(0,6);
+  let b =
+    document.getElementById(
+      "activityList"
+    );
 
 
-  if(!items.length){
+  b.innerHTML =
+    "";
 
-    box.innerHTML = `
 
+  a
+    .slice(0,5)
+    .forEach(
+      x => {
+
+        b.insertAdjacentHTML(
+          "beforeend",
+          `
+          <div class="act">
+
+            <div
+              class="
+                acticon
+                ${x.o ? "out" : ""}
+              "
+            >
+              ${x.o ? "−" : "＋"}
+            </div>
+
+            <div class="actmain">
+
+              <b>
+                ${esc(x.t)}
+              </b>
+
+              <span>
+                ${esc(x.s)}
+                •
+                ${fd(x.d)}
+              </span>
+
+            </div>
+
+            <div class="actamt">
+              ${rp(x.n)}
+            </div>
+
+          </div>
+          `
+        );
+
+      }
+    );
+
+
+  if(!a.length){
+
+    b.innerHTML = `
       <div
         style="
-          color:#999;
           font-size:8px;
+          color:#aaa;
           padding:15px 0
         "
       >
         BELUM ADA AKTIVITAS.
       </div>
-
     `;
 
-    return;
-
   }
-
-
-  box.innerHTML =
-    items.map(
-
-      x => `
-
-        <div class="act">
-
-          <div
-            class="acticon ${
-              x.type === "out"
-                ? "out"
-                : ""
-            }"
-          >
-            ${
-              x.type === "out"
-                ? "−"
-                : "+"
-            }
-          </div>
-
-          <div class="actmain">
-
-            <b>
-              ${esc(x.name)}
-            </b>
-
-            <span>
-              ${x.text} • ${fd(x.date)}
-            </span>
-
-          </div>
-
-          <div class="actamt">
-
-            ${
-              x.type === "out"
-                ? "-"
-                : "+"
-            }
-
-            ${rp(x.amount)}
-
-          </div>
-
-        </div>
-
-      `
-
-    )
-    .join("");
 
 }
 
@@ -3020,2143 +2803,296 @@ function report(){
 
   `;
 
-
-  let box =
-    document.getElementById(
-      "reportExpenses"
-    );
-
-
-  let expenses =
-    le()
-      .slice()
-      .sort(
-        (a,b) =>
-          new Date(b.date) -
-          new Date(a.date)
-      );
-
-
-  if(!expenses.length){
-
-    box.innerHTML = `
-
-      <div
-        style="
-          color:#999;
-          font-size:8px;
-          padding:15px
-        "
-      >
-        BELUM ADA PENGELUARAN.
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  box.innerHTML = `
-
-    <div class="table-scroll">
-
-      <table class="table">
-
-        <thead>
-
-          <tr>
-
-            <th>
-              TANGGAL
-            </th>
-
-            <th>
-              KETERANGAN
-            </th>
-
-            <th>
-              NOMINAL
-            </th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          ${
-            expenses.map(
-
-              e => `
-
-                <tr>
-
-                  <td>
-                    ${fd(e.date)}
-                  </td>
-
-                  <td class="name">
-                    ${esc(e.description)}
-                  </td>
-
-                  <td>
-                    ${rp(e.amount)}
-                  </td>
-
-                </tr>
-
-              `
-
-            ).join("")
-          }
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
-
 }
+
+
 
 
 // =====================================
 // NAVIGASI SECTION + MENU CEPAT
 // =====================================
-
 function show(id){
+  document.querySelectorAll(".section").forEach(x => x.classList.remove("active"));
 
-  document
-    .querySelectorAll(".section")
-    .forEach(
+  const target = document.getElementById(id);
+  if(!target) return;
 
-      x =>
-        x.classList.remove(
-          "active"
-        )
+  target.classList.add("active");
 
-    );
+  document.querySelectorAll(".nav button").forEach(x => {
+    x.classList.toggle("active", x.dataset.sec === id);
+  });
 
-
-  const target =
-    document.getElementById(id);
-
-
-  if(!target)
-    return;
-
-
-  target.classList.add(
-    "active"
-  );
-
-
-  document
-    .querySelectorAll(
-      ".nav button"
-    )
-    .forEach(
-
-      x =>
-
-        x.classList.toggle(
-
-          "active",
-
-          x.dataset.sec === id
-
-        )
-
-    );
-
-
-  document
-    .querySelectorAll(
-      ".mobile-nav button"
-    )
-    .forEach(
-
-      x =>
-
-        x.classList.toggle(
-
-          "active",
-
-          x.dataset.sec === id
-
-        )
-
-    );
-
-
-  window.scrollTo(
-    0,
-    0
-  );
-
+  window.scrollTo(0,0);
 }
 
+document.querySelectorAll(".nav button").forEach(x => {
+  x.onclick = () => show(x.dataset.sec);
+});
 
-document
-  .querySelectorAll(
-    ".nav button"
-  )
-  .forEach(
+document.querySelectorAll("[data-go]").forEach(x => {
+  x.onclick = () => show(x.dataset.go);
+});
 
-    x => {
-
-      x.onclick = () =>
-        show(
-          x.dataset.sec
-        );
-
-    }
-
-  );
-
-
-document
-  .querySelectorAll(
-    ".mobile-nav button"
-  )
-  .forEach(
-
-    x => {
-
-      x.onclick = () =>
-        show(
-          x.dataset.sec
-        );
-
-    }
-
-  );
-
-
-document
-  .querySelectorAll(
-    "[data-go]"
-  )
-  .forEach(
-
-    x => {
-
-      x.onclick = () =>
-        show(
-          x.dataset.go
-        );
-
-    }
-
-  );
-
-
-document.getElementById(
-  "monthSelect"
-).onchange = () => {
-
+document.getElementById("monthSelect").onchange = () => {
   render();
-
   renderExpenses();
-
 };
 
 
 // =====================================
 // MENU GARIS TIGA + PDF
 // =====================================
-
-const menuBtn =
-  document.getElementById(
-    "menuBtn"
-  );
-
-
-const menuPanel =
-  document.getElementById(
-    "menuPanel"
-  );
-
-
-menuBtn.onclick = e => {
-
+const menuBtn = document.getElementById("menuBtn");
+const menuPanel = document.getElementById("menuPanel");
+menuBtn.onclick = (e) => {
   e.stopPropagation();
-
-  menuPanel.classList.toggle(
-    "open"
-  );
-
+  menuPanel.classList.toggle("open");
 };
 
-
-document.addEventListener(
-  "click",
-  e => {
-
-    if(
-      !menuPanel.contains(
-        e.target
-      ) &&
-      e.target !== menuBtn
-    ){
-
-      menuPanel.classList.remove(
-        "open"
-      );
-
-    }
-
+document.addEventListener("click", (e) => {
+  if(!menuPanel.contains(e.target) && e.target !== menuBtn){
+    menuPanel.classList.remove("open");
   }
-);
-
+});
 
 function logoutNow(){
-
   sessionStorage.clear();
-
-  location.href =
-    "index.html";
-
+  location.href = "index.html";
 }
 
+document.getElementById("menuLogout").onclick = logoutNow;
 
-document.getElementById(
-  "menuLogout"
-).onclick =
-  logoutNow;
-
-
-document.getElementById(
-  "settingsMenu"
-).onclick = () => {
-
-  menuPanel.classList.remove(
-    "open"
-  );
-
-
-  document.getElementById(
-    "settingUser"
-  ).textContent =
-    nm;
-
-
-  document.getElementById(
-    "settingRole"
-  ).textContent =
-    admin
-      ? "PENGELOLA KAS"
-      : "MODE LIHAT";
-
-
-  document.getElementById(
-    "settingsModal"
-  ).classList.remove(
-    "hidden"
-  );
-
+document.getElementById("settingsMenu").onclick = () => {
+  menuPanel.classList.remove("open");
+  document.getElementById("settingUser").textContent = nm;
+  document.getElementById("settingRole").textContent = admin ? "PENGELOLA KAS" : "MODE LIHAT";
+  document.getElementById("settingsModal").classList.remove("hidden");
 };
 
+["closeSettingsModal","cancelSettings"].forEach(id => {
+  document.getElementById(id).onclick = () =>
+    document.getElementById("settingsModal").classList.add("hidden");
+});
 
-[
-  "closeSettingsModal",
-  "cancelSettings"
-].forEach(
-
-  id => {
-
-    const el =
-      document.getElementById(
-        id
-      );
-
-    if(el){
-
-      el.onclick = () =>
-        document.getElementById(
-          "settingsModal"
-        ).classList.add(
-          "hidden"
-        );
-
-    }
-
-  }
-
-);
-
-
-document.getElementById(
-  "reportMenu"
-).onclick = () => {
-
-  menuPanel.classList.remove(
-    "open"
-  );
-
-  show(
-    "reports"
-  );
-
+document.getElementById("reportMenu").onclick = () => {
+  menuPanel.classList.remove("open");
+  show("reports");
 };
-
 
 function downloadCashReportPDF(){
-
-  if(
-    !window.jspdf ||
-    !window.jspdf.jsPDF
-  ){
-
-    return alert(
-      "FITUR PDF BELUM SIAP. PASTIKAN INTERNET AKTIF LALU COBA LAGI."
-    );
-
+  if(!window.jspdf || !window.jspdf.jsPDF){
+    return alert("FITUR PDF BELUM SIAP. PASTIKAN INTERNET AKTIF LALU COBA LAGI.");
   }
 
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({unit:"mm",format:"a4"});
+  const selectedMonth = document.getElementById("monthSelect").value;
+  const selectedText = document.getElementById("monthSelect").selectedOptions[0].text;
+  const p = lp()[selectedMonth] || {};
+  const expenses = le().slice().sort((a,b) => new Date(a.date)-new Date(b.date));
+  const income = inc();
+  const expense = out();
+  const balance = income - expense;
+  const paid = employees.filter(e => p[e.id]).length;
+  const unpaid = employees.length - paid;
+  const target = employees.length * IURAN;
 
-  const {
-    jsPDF
-  } =
-    window.jspdf;
-
-
-  const doc =
-    new jsPDF({
-      unit:"mm",
-      format:"a4"
-    });
-
-
-  const selectedMonth =
-    document.getElementById(
-      "monthSelect"
-    ).value;
-
-
-  const selectedText =
-    document.getElementById(
-      "monthSelect"
-    ).selectedOptions[0].text;
-
-
-  const p =
-    lp()[selectedMonth] ||
-    {};
-
-
-  const expenses =
-    le()
-      .slice()
-      .sort(
-        (a,b) =>
-          new Date(a.date) -
-          new Date(b.date)
-      );
-
-
-  const income =
-    inc();
-
-
-  const expense =
-    out();
-
-
-  const balance =
-    income -
-    expense;
-
-
-  const paid =
-    employees.filter(
-      e => p[e.id]
-    ).length;
-
-
-  const unpaid =
-    employees.length -
-    paid;
-
-
-  const target =
-    employees.length *
-    IURAN;
-
-
-  const pageW =
-    210;
-
-
-  const margin =
-    14;
-
-
-  const contentW =
-    pageW -
-    margin * 2;
-
-
-  let y =
-    14;
-
+  const pageW = 210, margin = 14, contentW = pageW - margin*2;
+  let y = 14;
 
   function header(){
-
-    doc.setFillColor(
-      227,
-      6,
-      19
-    );
-
-
-    doc.rect(
-      0,
-      0,
-      pageW,
-      7,
-      "F"
-    );
-
-
-    doc.setTextColor(
-      227,
-      6,
-      19
-    );
-
-
-    doc.setFont(
-      "helvetica",
-      "bold"
-    );
-
-
-    doc.setFontSize(
-      18
-    );
-
-
-    doc.text(
-      "LAPORAN KAS",
-      margin,
-      18
-    );
-
-
-    doc.setFontSize(
-      10
-    );
-
-
-    doc.setTextColor(
-      80
-    );
-
-
-    doc.text(
-      "PAHLAWAN REVOLUSI 5",
-      margin,
-      24
-    );
-
-
-    doc.setFont(
-      "helvetica",
-      "normal"
-    );
-
-
-    doc.setFontSize(
-      8
-    );
-
-
-    doc.text(
-      "Laporan keuangan dan pembayaran kas",
-      margin,
-      29
-    );
-
-
-    doc.setTextColor(
-      30
-    );
-
-
-    y =
-      36;
-
+    doc.setFillColor(227,6,19);
+    doc.rect(0,0,pageW,7,"F");
+    doc.setTextColor(227,6,19);
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(18);
+    doc.text("LAPORAN KAS",margin,18);
+    doc.setFontSize(10);
+    doc.setTextColor(80);
+    doc.text("PAHLAWAN REVOLUSI 5",margin,24);
+    doc.setFont("helvetica","normal");
+    doc.setFontSize(8);
+    doc.text("Laporan keuangan dan pembayaran iuran",margin,29);
+    doc.setTextColor(30);
+    y = 36;
   }
-
 
   function footer(){
-
-    const pages =
-      doc.getNumberOfPages();
-
-
-    for(
-      let i = 1;
-      i <= pages;
-      i++
-    ){
-
+    const pages = doc.getNumberOfPages();
+    for(let i=1;i<=pages;i++){
       doc.setPage(i);
-
-
-      doc.setDrawColor(
-        225
-      );
-
-
-      doc.line(
-        margin,
-        285,
-        pageW - margin,
-        285
-      );
-
-
-      doc.setFont(
-        "helvetica",
-        "normal"
-      );
-
-
-      doc.setFontSize(
-        7
-      );
-
-
-      doc.setTextColor(
-        130
-      );
-
-
-      doc.text(
-        "PAHLAWAN REVOLUSI 5 • Laporan Kas",
-        margin,
-        290
-      );
-
-
-      doc.text(
-        "Halaman " +
-        i +
-        " / " +
-        pages,
-        pageW - margin,
-        290,
-        {
-          align:"right"
-        }
-      );
-
+      doc.setDrawColor(225);
+      doc.line(margin,285,pageW-margin,285);
+      doc.setFont("helvetica","normal");
+      doc.setFontSize(7);
+      doc.setTextColor(130);
+      doc.text("PAHLAWAN REVOLUSI 5 • Laporan Kas",margin,290);
+      doc.text("Halaman "+i+" / "+pages,pageW-margin,290,{align:"right"});
     }
-
   }
-
 
   function newPage(){
-
     doc.addPage();
-
     header();
-
   }
 
-
-  function sectionTitle(
-    title,
-    subtitle=""
-  ){
-
-    if(y > 255)
-      newPage();
-
-
-    doc.setFillColor(
-      247,
-      247,
-      247
-    );
-
-
-    doc.roundedRect(
-      margin,
-      y,
-      contentW,
-      10,
-      2,
-      2,
-      "F"
-    );
-
-
-    doc.setTextColor(
-      35
-    );
-
-
-    doc.setFont(
-      "helvetica",
-      "bold"
-    );
-
-
-    doc.setFontSize(
-      9
-    );
-
-
-    doc.text(
-      title,
-      margin + 4,
-      y + 6.5
-    );
-
-
+  function sectionTitle(title, subtitle=""){
+    if(y > 255) newPage();
+    doc.setFillColor(247,247,247);
+    doc.roundedRect(margin,y,contentW,10,2,2,"F");
+    doc.setTextColor(35);
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(9);
+    doc.text(title,margin+4,y+6.5);
     if(subtitle){
-
-      doc.setFont(
-        "helvetica",
-        "normal"
-      );
-
-
-      doc.setFontSize(
-        7
-      );
-
-
-      doc.setTextColor(
-        120
-      );
-
-
-      doc.text(
-        subtitle,
-        pageW - margin - 4,
-        y + 6.5,
-        {
-          align:"right"
-        }
-      );
-
+      doc.setFont("helvetica","normal");
+      doc.setFontSize(7);
+      doc.setTextColor(120);
+      doc.text(subtitle,pageW-margin-4,y+6.5,{align:"right"});
     }
-
-
     y += 15;
-
   }
-
 
   function money(n){
-
-    return rp(n)
-      .replace(
-        "Rp",
-        "Rp "
-      );
-
+    return rp(n).replace("Rp","Rp ");
   }
-
 
   header();
 
-
-  doc.setFillColor(
-    255,
-    248,
-    220
-  );
-
-
-  doc.roundedRect(
-    margin,
-    y,
-    contentW,
-    20,
-    3,
-    3,
-    "F"
-  );
-
-
-  doc.setTextColor(
-    35
-  );
-
-
-  doc.setFont(
-    "helvetica",
-    "bold"
-  );
-
-
-  doc.setFontSize(
-    8
-  );
-
-
-  doc.text(
-    "PERIODE",
-    margin + 5,
-    y + 7
-  );
-
-
-  doc.text(
-    "DIBUAT",
-    margin + 5,
-    y + 14
-  );
-
-
-  doc.setFont(
-    "helvetica",
-    "normal"
-  );
-
-
-  doc.text(
-    selectedText,
-    margin + 30,
-    y + 7
-  );
-
-
-  doc.text(
-    new Date().toLocaleString(
-      "id-ID"
-    ),
-    margin + 30,
-    y + 14
-  );
-
-
+  doc.setFillColor(255,248,220);
+  doc.roundedRect(margin,y,contentW,20,3,3,"F");
+  doc.setTextColor(35);
+  doc.setFont("helvetica","bold");
+  doc.setFontSize(8);
+  doc.text("PERIODE",margin+5,y+7);
+  doc.text("DIBUAT",margin+5,y+14);
+  doc.setFont("helvetica","normal");
+  doc.text(selectedText,margin+30,y+7);
+  doc.text(new Date().toLocaleString("id-ID"),margin+30,y+14);
   y += 27;
 
-
-  sectionTitle(
-    "RINGKASAN KEUANGAN",
-    "PERIODE TERPILIH"
-  );
-
-
+  sectionTitle("RINGKASAN KEUANGAN","PERIODE TERPILIH");
   const cards = [
-
-    [
-      "KAS MASUK",
-      money(income)
-    ],
-
-    [
-      "KAS KELUAR",
-      money(expense)
-    ],
-
-    [
-      "SALDO KAS",
-      money(balance)
-    ],
-
-    [
-      "TARGET KAS",
-      money(target)
-    ]
-
+    ["KAS MASUK",money(income)],
+    ["KAS KELUAR",money(expense)],
+    ["SALDO KAS",money(balance)],
+    ["TARGET IURAN",money(target)]
   ];
-
-
-  const gap =
-    4;
-
-
-  const cw =
-    (
-      contentW -
-      gap * 3
-    ) / 4;
-
-
-  cards.forEach(
-
-    (c,i) => {
-
-      const x =
-        margin +
-        i *
-        (
-          cw +
-          gap
-        );
-
-
-      doc.setDrawColor(
-        225
-      );
-
-
-      doc.setFillColor(
-        255,
-        255,
-        255
-      );
-
-
-      doc.roundedRect(
-        x,
-        y,
-        cw,
-        23,
-        2,
-        2,
-        "FD"
-      );
-
-
-      doc.setFont(
-        "helvetica",
-        "bold"
-      );
-
-
-      doc.setFontSize(
-        7
-      );
-
-
-      doc.setTextColor(
-        120
-      );
-
-
-      doc.text(
-        c[0],
-        x + 4,
-        y + 7
-      );
-
-
-      doc.setFontSize(
-        9
-      );
-
-
-      doc.setTextColor(
-        25
-      );
-
-
-      doc.text(
-        c[1],
-        x + 4,
-        y + 16
-      );
-
-    }
-
-  );
-
-
+  const gap=4, cw=(contentW-gap*3)/4;
+  cards.forEach((c,i)=>{
+    const x=margin+i*(cw+gap);
+    doc.setDrawColor(225);
+    doc.setFillColor(255,255,255);
+    doc.roundedRect(x,y,cw,23,2,2,"FD");
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(7);
+    doc.setTextColor(120);
+    doc.text(c[0],x+4,y+7);
+    doc.setFontSize(9);
+    doc.setTextColor(25);
+    doc.text(c[1],x+4,y+16);
+  });
   y += 30;
 
-
-  sectionTitle(
-    "STATUS KAS KARYAWAN",
-    paid +
-    " sudah bayar • " +
-    unpaid +
-    " belum bayar"
-  );
-
-
-  const cols = [
-
-    margin,
-    margin + 8,
-    margin + 53,
-    margin + 91,
-    margin + 130,
-    margin + 162
-
-  ];
-
-
-  const widths = [
-
-    8,
-    45,
-    38,
-    39,
-    32,
-    contentW - 162
-
-  ];
-
-
-  function tableHeader(
-    labels
-  ){
-
-    doc.setFillColor(
-      227,
-      6,
-      19
-    );
-
-
-    doc.rect(
-      margin,
-      y,
-      contentW,
-      8,
-      "F"
-    );
-
-
-    doc.setTextColor(
-      255
-    );
-
-
-    doc.setFont(
-      "helvetica",
-      "bold"
-    );
-
-
-    doc.setFontSize(
-      7
-    );
-
-
-    labels.forEach(
-
-      (v,i) =>
-
-        doc.text(
-          v,
-          cols[i] + 2,
-          y + 5.3
-        )
-
-    );
-
-
+  sectionTitle("STATUS IURAN KARYAWAN",paid+" sudah bayar • "+unpaid+" belum bayar");
+  const cols=[margin,margin+8,margin+53,margin+91,margin+130,margin+162];
+  const widths=[8,45,38,39,32,contentW-162];
+  function tableHeader(labels){
+    doc.setFillColor(227,6,19);
+    doc.rect(margin,y,contentW,8,"F");
+    doc.setTextColor(255);
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(7);
+    labels.forEach((v,i)=>doc.text(v,cols[i]+2,y+5.3));
     y += 8;
-
   }
-
-
   function checkPage(){
-
-    if(y > 273){
-
-      newPage();
-
-      sectionTitle(
-        "STATUS KAS KARYAWAN (LANJUTAN)"
-      );
-
-
-      tableHeader(
-        [
-          "NO",
-          "NAMA",
-          "NIK",
-          "JABATAN",
-          "STATUS",
-          "TANGGAL BAYAR",
-          "KAS"
-        ]
-      );
-
-    }
-
+    if(y > 273){ newPage(); sectionTitle("STATUS IURAN KARYAWAN (LANJUTAN)"); tableHeader(["NO","NAMA","JABATAN","STATUS","TANGGAL BAYAR","IURAN"]); }
   }
-
-
-  tableHeader(
-
-    [
-      "NO",
-      "NAMA",
-      "NIK",
-      "JABATAN",
-      "STATUS",
-      "TANGGAL BAYAR",
-      "KAS"
-    ]
-
-  );
-
-
-  employees.forEach(
-
-    (e,i) => {
-
-      checkPage();
-
-
-      const x =
-        p[e.id];
-
-
-      const vals = [
-
-        String(i + 1),
-
-        e.name,
-
-        e.job,
-
-        x
-          ? "SUDAH BAYAR"
-          : "BELUM BAYAR",
-
-        x
-          ? fd(x.date)
-          : "-",
-
-        money(
-          x
-            ? x.amount
-            : IURAN
-        )
-
-      ];
-
-
-      const rowH =
-        8;
-
-
-      if(
-        i % 2 === 0
-      ){
-
-        doc.setFillColor(
-          250,
-          250,
-          250
-        );
-
-
-        doc.rect(
-          margin,
-          y,
-          contentW,
-          rowH,
-          "F"
-        );
-
-      }
-
-
-      doc.setTextColor(
-        35
-      );
-
-
-      doc.setFont(
-        "helvetica",
-        x
-          ? "bold"
-          : "normal"
-      );
-
-
-      doc.setFontSize(
-        7
-      );
-
-
-      vals.forEach(
-
-        (v,j) => {
-
-          let tx =
-            String(v);
-
-
-          if(j === 5){
-
-            doc.text(
-              tx,
-              cols[j] +
-              widths[j] -
-              2,
-              y + 5.2,
-              {
-                align:"right"
-              }
-            );
-
-          }else{
-
-            doc.text(
-              tx,
-              cols[j] + 2,
-              y + 5.2
-            );
-
-          }
-
-        }
-
-      );
-
-
-      y += rowH;
-
-    }
-
-  );
-
-
+  tableHeader(["NO","NAMA","JABATAN","STATUS","TANGGAL BAYAR","IURAN"]);
+  employees.forEach((e,i)=>{
+    checkPage();
+    const x=p[e.id];
+    const vals=[String(i+1),e.name,e.job,x?"SUDAH BAYAR":"BELUM BAYAR",x?fd(x.date):"-",money(x?x.amount:IURAN)];
+    const rowH=8;
+    if(i%2===0){doc.setFillColor(250,250,250);doc.rect(margin,y,contentW,rowH,"F");}
+    doc.setTextColor(35);
+    doc.setFont("helvetica",x?"bold":"normal");
+    doc.setFontSize(7);
+    vals.forEach((v,j)=>{
+      let tx=String(v);
+      if(j===5) doc.text(tx,cols[j]+widths[j]-2,y+5.2,{align:"right"});
+      else doc.text(tx,cols[j]+2,y+5.2);
+    });
+    y+=rowH;
+  });
   y += 8;
 
+  sectionTitle("REKAP PEMBAYARAN","9 karyawan");
+  doc.setFont("helvetica","normal");
+  doc.setFontSize(8);
+  doc.setTextColor(60);
+  doc.text("Jumlah karyawan             : "+employees.length+" orang",margin,y); y+=6;
+  doc.text("Sudah membayar              : "+paid+" orang",margin,y); y+=6;
+  doc.text("Belum membayar              : "+unpaid+" orang",margin,y); y+=6;
+  doc.text("Target iuran                : "+money(target),margin,y); y+=6;
+  doc.text("Total pemasukan iuran       : "+money(income),margin,y); y+=10;
 
-  sectionTitle(
-    "REKAP PEMBAYARAN",
-    "9 karyawan"
-  );
-
-
-  doc.setFont(
-    "helvetica",
-    "normal"
-  );
-
-
-  doc.setFontSize(
-    8
-  );
-
-
-  doc.setTextColor(
-    60
-  );
-
-
-  doc.text(
-    "Jumlah karyawan             : " +
-    employees.length +
-    " orang",
-    margin,
-    y
-  );
-
-  y += 6;
-
-
-  doc.text(
-    "Sudah membayar              : " +
-    paid +
-    " orang",
-    margin,
-    y
-  );
-
-  y += 6;
-
-
-  doc.text(
-    "Belum membayar              : " +
-    unpaid +
-    " orang",
-    margin,
-    y
-  );
-
-  y += 6;
-
-
-  doc.text(
-    "Target Kas                  : " +
-    money(target),
-    margin,
-    y
-  );
-
-  y += 6;
-
-
-  doc.text(
-    "Total pemasukan Kas         : " +
-    money(income),
-    margin,
-    y
-  );
-
-  y += 10;
-
-
-  sectionTitle(
-    "RIWAYAT PENGELUARAN",
-    expenses.length +
-    " transaksi"
-  );
-
-
+  sectionTitle("RIWAYAT PENGELUARAN",expenses.length+" transaksi");
   if(!expenses.length){
-
-    doc.setTextColor(
-      130
-    );
-
-
-    doc.setFontSize(
-      8
-    );
-
-
-    doc.text(
-      "Belum ada pengeluaran yang tercatat.",
-      margin,
-      y
-    );
-
-
-    y += 10;
-
+    doc.setTextColor(130); doc.setFontSize(8);
+    doc.text("Belum ada pengeluaran yang tercatat.",margin,y); y+=10;
   }else{
-
-    tableHeader(
-      [
-        "NO",
-        "TANGGAL",
-        "KETERANGAN",
-        "NOMINAL"
-      ]
-    );
-
-
-    expenses.forEach(
-
-      (e,i) => {
-
-        if(y > 273){
-
-          newPage();
-
-          sectionTitle(
-            "RIWAYAT PENGELUARAN (LANJUTAN)"
-          );
-
-
-          tableHeader(
-            [
-              "NO",
-              "TANGGAL",
-              "KETERANGAN",
-              "NOMINAL"
-            ]
-          );
-
-        }
-
-
-        const rowH =
-          8;
-
-
-        if(
-          i % 2 === 0
-        ){
-
-          doc.setFillColor(
-            250,
-            250,
-            250
-          );
-
-
-          doc.rect(
-            margin,
-            y,
-            contentW,
-            rowH,
-            "F"
-          );
-
-        }
-
-
-        doc.setTextColor(
-          35
-        );
-
-
-        doc.setFont(
-          "helvetica",
-          "normal"
-        );
-
-
-        doc.setFontSize(
-          7
-        );
-
-
-        doc.text(
-          String(i + 1),
-          margin + 2,
-          y + 5.2
-        );
-
-
-        doc.text(
-          fd(e.date),
-          margin + 15,
-          y + 5.2
-        );
-
-
-        let desc =
-          String(
-            e.description ||
-            "-"
-          );
-
-
-        if(
-          desc.length > 70
-        ){
-
-          desc =
-            desc.slice(
-              0,
-              67
-            ) +
-            "...";
-
-        }
-
-
-        doc.text(
-          desc,
-          margin + 50,
-          y + 5.2
-        );
-
-
-        doc.text(
-          money(e.amount),
-          pageW - margin - 2,
-          y + 5.2,
-          {
-            align:"right"
-          }
-        );
-
-
-        y += rowH;
-
-      }
-
-    );
-
-
-    y += 4;
-
-
-    doc.setFont(
-      "helvetica",
-      "bold"
-    );
-
-
-    doc.setFontSize(
-      8
-    );
-
-
-    doc.text(
-      "TOTAL PENGELUARAN",
-      margin,
-      y
-    );
-
-
-    doc.text(
-      money(expense),
-      pageW - margin - 2,
-      y,
-      {
-        align:"right"
-      }
-    );
-
-
-    y += 10;
-
+    tableHeader(["NO","TANGGAL","KETERANGAN","NOMINAL"]);
+    expenses.forEach((e,i)=>{
+      if(y>273){newPage();sectionTitle("RIWAYAT PENGELUARAN (LANJUTAN)");tableHeader(["NO","TANGGAL","KETERANGAN","NOMINAL"]);}
+      const rowH=8;
+      if(i%2===0){doc.setFillColor(250,250,250);doc.rect(margin,y,contentW,rowH,"F");}
+      doc.setTextColor(35);doc.setFont("helvetica","normal");doc.setFontSize(7);
+      doc.text(String(i+1),margin+2,y+5.2);
+      doc.text(fd(e.date),margin+15,y+5.2);
+      let desc=String(e.description||"-");
+      if(desc.length>70) desc=desc.slice(0,67)+"...";
+      doc.text(desc,margin+50,y+5.2);
+      doc.text(money(e.amount),pageW-margin-2,y+5.2,{align:"right"});
+      y+=rowH;
+    });
+    y+=4;
+    doc.setFont("helvetica","bold");doc.setFontSize(8);
+    doc.text("TOTAL PENGELUARAN",margin,y);
+    doc.text(money(expense),pageW-margin-2,y,{align:"right"});
+    y+=10;
   }
 
-
-  if(y > 255)
-    newPage();
-
-
-  sectionTitle(
-    "KESIMPULAN"
-  );
-
-
-  doc.setFont(
-    "helvetica",
-    "normal"
-  );
-
-
-  doc.setFontSize(
-    8
-  );
-
-
-  doc.setTextColor(
-    55
-  );
-
-
-  const lines = [
-
-    "Saldo kas periode ini: " +
-    money(balance),
-
-    "Status kas: " +
-    paid +
-    " dari " +
-    employees.length +
-    " karyawan sudah membayar.",
-
-    "Target kas bulanan: " +
-    money(target) +
-    ".",
-
-    "Total kas keluar yang tercatat: " +
-    money(expense) +
-    "."
-
+  if(y>255)newPage();
+  sectionTitle("KESIMPULAN");
+  doc.setFont("helvetica","normal");
+  doc.setFontSize(8);
+  doc.setTextColor(55);
+  const lines=[
+    "Saldo kas periode ini: "+money(balance),
+    "Status iuran: "+paid+" dari "+employees.length+" karyawan sudah membayar.",
+    "Target iuran bulanan: "+money(target)+".",
+    "Total kas keluar yang tercatat: "+money(expense)+"."
   ];
-
-
-  lines.forEach(
-
-    t => {
-
-      doc.text(
-        t,
-        margin,
-        y
-      );
-
-      y += 6;
-
-    }
-
-  );
-
-
-  y += 5;
-
-
-  doc.setFontSize(
-    7
-  );
-
-
-  doc.setTextColor(
-    125
-  );
-
-
-  doc.text(
-    "Catatan: laporan ini dibuat berdasarkan data yang tersimpan pada perangkat/browser ini.",
-    margin,
-    y
-  );
-
-
-  doc.text(
-    "Mohon periksa kembali data sebelum laporan digunakan sebagai arsip resmi.",
-    margin,
-    y + 5
-  );
-
+  lines.forEach(t=>{doc.text(t,margin,y);y+=6;});
+  y+=5;
+  doc.setFontSize(7);
+  doc.setTextColor(125);
+  doc.text("Catatan: laporan ini dibuat berdasarkan data yang tersimpan pada perangkat/browser ini.",margin,y);
+  doc.text("Mohon periksa kembali data sebelum laporan digunakan sebagai arsip resmi.",margin,y+5);
 
   footer();
-
-
-  doc.save(
-    "Laporan-Kas-PAHLAWAN-REVOLUSI-5-" +
-    selectedMonth +
-    ".pdf"
-  );
-
+  doc.save("Laporan-Kas-PAHLAWAN-REVOLUSI-5-"+selectedMonth+".pdf");
 }
 
-
-document.getElementById(
-  "downloadPdfBtn"
-).onclick =
-  downloadCashReportPDF;
-
+document.getElementById("downloadPdfBtn").onclick = downloadCashReportPDF;
 
 // tombol keluar asli tetap bekerja
-
-if(
-  document.getElementById(
-    "logoutBtn"
-  )
-){
-
-  document.getElementById(
-    "logoutBtn"
-  ).onclick =
-    logoutNow;
-
+if(document.getElementById("logoutBtn")){
+  document.getElementById("logoutBtn").onclick = logoutNow;
 }
-
-
-// =====================================
-// MODAL PEMBAYARAN
-// =====================================
-
-const paymentModal =
-  document.getElementById(
-    "paymentModal"
-  );
-
-
-const paymentEmployee =
-  document.getElementById(
-    "paymentEmployee"
-  );
-
-
-function fillPaymentEmployees(){
-
-  paymentEmployee.innerHTML =
-    employees.map(
-
-      e => `
-
-        <option value="${e.id}">
-          ${e.name} - ${e.job}
-        </option>
-
-      `
-
-    ).join("");
-
-}
-
-
-fillPaymentEmployees();
-
-
-function openPaymentModal(
-  employeeId = null
-){
-
-  if(!admin){
-
-    alert(
-      "AKSES KHUSUS PENGELOLA KAS."
-    );
-
-    return;
-
-  }
-
-
-  fillPaymentEmployees();
-
-
-  const today =
-    new Date()
-      .toISOString()
-      .slice(
-        0,
-        10
-      );
-
-
-  document.getElementById(
-    "paymentDate"
-  ).value =
-    today;
-
-
-  document.getElementById(
-    "paymentAmount"
-  ).value =
-    IURAN;
-
-
-  if(employeeId){
-
-    paymentEmployee.value =
-      employeeId;
-
-
-    const p =
-      lp()[month()] ||
-      {};
-
-
-    if(p[employeeId]){
-
-      document.getElementById(
-        "paymentDate"
-      ).value =
-        p[employeeId].date ||
-        today;
-
-
-      document.getElementById(
-        "paymentAmount"
-      ).value =
-        p[employeeId].amount ||
-        IURAN;
-
-    }
-
-  }
-
-
-  paymentModal.classList.remove(
-    "hidden"
-  );
-
-}
-
-
-function editPayment(
-  id
-){
-
-  openPaymentModal(
-    id
-  );
-
-}
-
-
-document.getElementById(
-  "addPaymentBtn"
-).onclick = () =>
-  openPaymentModal();
-
-
-document.getElementById(
-  "closePayment"
-).onclick = () =>
-  paymentModal.classList.add(
-    "hidden"
-  );
-
-
-document.getElementById(
-  "cancelPayment"
-).onclick = () =>
-  paymentModal.classList.add(
-    "hidden"
-  );
-
-
-document.getElementById(
-  "savePayment"
-).onclick = () => {
-
-  if(!admin){
-
-    alert(
-      "AKSES KHUSUS PENGELOLA KAS."
-    );
-
-    return;
-
-  }
-
-
-  const id =
-    Number(
-      paymentEmployee.value
-    );
-
-
-  const date =
-    document.getElementById(
-      "paymentDate"
-    ).value;
-
-
-  const amount =
-    Number(
-      document.getElementById(
-        "paymentAmount"
-      ).value
-    );
-
-
-  if(!id || !date || amount <= 0){
-
-    alert(
-      "LENGKAPI DATA PEMBAYARAN."
-    );
-
-    return;
-
-  }
-
-
-  const data =
-    lp();
-
-
-  if(!data[month()])
-    data[month()] = {};
-
-
-  data[month()][id] = {
-
-    amount,
-
-    date
-
-  };
-
-
-  sp(data);
-
-
-  paymentModal.classList.add(
-    "hidden"
-  );
-
-
-  render();
-
-};
-
-
-// =====================================
-// MODAL PENGELUARAN
-// =====================================
-
-const expenseModal =
-  document.getElementById(
-    "expenseModal"
-  );
-
-
-function openExpenseModal(){
-
-  if(!admin){
-
-    alert(
-      "AKSES KHUSUS PENGELOLA KAS."
-    );
-
-    return;
-
-  }
-
-
-  document.getElementById(
-    "expenseDate"
-  ).value =
-    new Date()
-      .toISOString()
-      .slice(
-        0,
-        10
-      );
-
-
-  document.getElementById(
-    "expenseDescription"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "expenseAmount"
-  ).value =
-    "";
-
-
-  expenseModal.classList.remove(
-    "hidden"
-  );
-
-}
-
-
-document.getElementById(
-  "addExpenseBtn"
-).onclick =
-  openExpenseModal;
-
-
-document.getElementById(
-  "closeExpense"
-).onclick = () =>
-  expenseModal.classList.add(
-    "hidden"
-  );
-
-
-document.getElementById(
-  "cancelExpense"
-).onclick = () =>
-  expenseModal.classList.add(
-    "hidden"
-  );
-
-
-document.getElementById(
-  "saveExpense"
-).onclick = () => {
-
-  if(!admin){
-
-    alert(
-      "AKSES KHUSUS PENGELOLA KAS."
-    );
-
-    return;
-
-  }
-
-
-  const date =
-    document.getElementById(
-      "expenseDate"
-    ).value;
-
-
-  const description =
-    document.getElementById(
-      "expenseDescription"
-    ).value.trim();
-
-
-  const amount =
-    Number(
-      document.getElementById(
-        "expenseAmount"
-      ).value
-    );
-
-
-  if(
-    !date ||
-    !description ||
-    amount <= 0
-  ){
-
-    alert(
-      "LENGKAPI DATA PENGELUARAN."
-    );
-
-    return;
-
-  }
-
-
-  const data =
-    le();
-
-
-  data.push({
-
-    id:
-      Date.now(),
-
-    date,
-
-    description,
-
-    amount
-
-  });
-
-
-  se(data);
-
-
-  expenseModal.classList.add(
-    "hidden"
-  );
-
-
-  renderExpenses();
-
-  render();
-
-};
-
-
-function renderExpenses(){
-
-  const body =
-    document.getElementById(
-      "expenseTableBody"
-    );
-
-
-  if(!body)
-    return;
-
-
-  const data =
-    le()
-      .slice()
-      .sort(
-        (a,b) =>
-          new Date(b.date) -
-          new Date(a.date)
-      );
-
-
-  if(!data.length){
-
-    body.innerHTML = `
-
-      <tr>
-
-        <td
-          colspan="5"
-          style="
-            text-align:center;
-            color:#999;
-            padding:20px
-          "
-        >
-          BELUM ADA PENGELUARAN.
-        </td>
-
-      </tr>
-
-    `;
-
-    return;
-
-  }
-
-
-  body.innerHTML =
-    data.map(
-
-      (x,i) => `
-
-        <tr>
-
-          <td>
-            ${i + 1}
-          </td>
-
-          <td>
-            ${fd(x.date)}
-          </td>
-
-          <td class="name">
-            ${esc(x.description)}
-          </td>
-
-          <td>
-            ${rp(x.amount)}
-          </td>
-
-          <td>
-
-            ${
-              admin
-
-                ? `
-
-                  <button
-                    class="action"
-                    onclick="deleteExpense(${x.id})"
-                  >
-                    HAPUS
-                  </button>
-
-                `
-
-                : "-"
-            }
-
-          </td>
-
-        </tr>
-
-      `
-
-    ).join("");
-
-}
-
-
-function deleteExpense(
-  id
-){
-
-  if(!admin){
-
-    alert(
-      "AKSES KHUSUS PENGELOLA KAS."
-    );
-
-    return;
-
-  }
-
-
-  if(
-    !confirm(
-      "HAPUS PENGELUARAN INI?"
-    )
-  )
-    return;
-
-
-  const data =
-    le().filter(
-      x =>
-        x.id !== id
-    );
-
-
-  se(data);
-
-
-  renderExpenses();
-
-  render();
-
-}
-
-
-document.getElementById(
-  "paymentInfoBtn"
-).onclick = () => {
-
-  alert(
-    "KAS WAJIB BULANAN SETIAP KARYAWAN ADALAH RP50.000.\n\nTARGET 9 KARYAWAN = RP450.000 PER BULAN."
-  );
-
-};
-
 
 render();
 
