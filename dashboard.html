@@ -3397,91 +3397,200 @@ function downloadCashReportPDF(){
   const income = inc();
   const expense = out();
   const balance = income - expense;
+  const paid = employees.filter(e => p[e.id]).length;
+  const unpaid = employees.length - paid;
+  const target = employees.length * IURAN;
 
-  doc.setFont("helvetica","bold");
-  doc.setFontSize(17);
-  doc.text("LAPORAN KAS", 15, 18);
-  doc.setFontSize(11);
-  doc.text("PAHLAWAN REVOLUSI 5", 15, 25);
+  const pageW = 210, margin = 14, contentW = pageW - margin*2;
+  let y = 14;
 
-  doc.setFont("helvetica","normal");
-  doc.setFontSize(9);
-  doc.text("Periode: " + selectedText, 15, 33);
-  doc.text("Dibuat: " + new Date().toLocaleString("id-ID"), 15, 39);
-
-  let y = 49;
-  doc.setFont("helvetica","bold");
-  doc.text("RINGKASAN KAS", 15, y);
-  y += 7;
-  doc.setFont("helvetica","normal");
-  doc.text("Kas masuk : " + rp(income), 15, y); y += 6;
-  doc.text("Kas keluar: " + rp(expense), 15, y); y += 6;
-  doc.setFont("helvetica","bold");
-  doc.text("Saldo     : " + rp(balance), 15, y); y += 10;
-
-  doc.text("STATUS PEMBAYARAN KARYAWAN", 15, y);
-  y += 7;
-  doc.setFont("helvetica","normal");
-  doc.text("No", 15, y);
-  doc.text("Nama", 25, y);
-  doc.text("Jabatan", 85, y);
-  doc.text("Status", 120, y);
-  doc.text("Tanggal", 150, y);
-  y += 5;
-  doc.line(15,y,195,y);
-  y += 6;
-
-  employees.forEach((e,i) => {
-    if(y > 278){ doc.addPage(); y = 18; }
-    const x = p[e.id];
-    doc.text(String(i+1),15,y);
-    doc.text(e.name,25,y);
-    doc.text(e.job,85,y);
-    doc.text(x ? "SUDAH BAYAR" : "BELUM BAYAR",120,y);
-    doc.text(x ? fd(x.date) : "-",150,y);
-    y += 6;
-  });
-
-  y += 5;
-  if(y > 265){ doc.addPage(); y = 18; }
-  doc.setFont("helvetica","bold");
-  doc.text("RIWAYAT PENGELUARAN",15,y);
-  y += 7;
-  doc.setFont("helvetica","normal");
-  doc.text("Tanggal",15,y);
-  doc.text("Keterangan",48,y);
-  doc.text("Nominal",155,y);
-  y += 5;
-  doc.line(15,y,195,y);
-  y += 6;
-
-  if(!expenses.length){
-    doc.text("Belum ada pengeluaran.",15,y);
-    y += 6;
-  }else{
-    expenses.forEach((e,i) => {
-      if(y > 278){ doc.addPage(); y = 18; }
-      const desc = String(e.description || "-");
-      doc.text(fd(e.date),15,y);
-      doc.text(desc.slice(0,55),48,y);
-      doc.text(rp(e.amount),155,y);
-      y += 6;
-    });
+  function header(){
+    doc.setFillColor(227,6,19);
+    doc.rect(0,0,pageW,7,"F");
+    doc.setTextColor(227,6,19);
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(18);
+    doc.text("LAPORAN KAS",margin,18);
+    doc.setFontSize(10);
+    doc.setTextColor(80);
+    doc.text("PAHLAWAN REVOLUSI 5",margin,24);
+    doc.setFont("helvetica","normal");
+    doc.setFontSize(8);
+    doc.text("Laporan keuangan dan pembayaran iuran",margin,29);
+    doc.setTextColor(30);
+    y = 36;
   }
 
-  if(y > 275){ doc.addPage(); y = 18; }
-  y += 5;
+  function footer(){
+    const pages = doc.getNumberOfPages();
+    for(let i=1;i<=pages;i++){
+      doc.setPage(i);
+      doc.setDrawColor(225);
+      doc.line(margin,285,pageW-margin,285);
+      doc.setFont("helvetica","normal");
+      doc.setFontSize(7);
+      doc.setTextColor(130);
+      doc.text("PAHLAWAN REVOLUSI 5 • Laporan Kas",margin,290);
+      doc.text("Halaman "+i+" / "+pages,pageW-margin,290,{align:"right"});
+    }
+  }
+
+  function newPage(){
+    doc.addPage();
+    header();
+  }
+
+  function sectionTitle(title, subtitle=""){
+    if(y > 255) newPage();
+    doc.setFillColor(247,247,247);
+    doc.roundedRect(margin,y,contentW,10,2,2,"F");
+    doc.setTextColor(35);
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(9);
+    doc.text(title,margin+4,y+6.5);
+    if(subtitle){
+      doc.setFont("helvetica","normal");
+      doc.setFontSize(7);
+      doc.setTextColor(120);
+      doc.text(subtitle,pageW-margin-4,y+6.5,{align:"right"});
+    }
+    y += 15;
+  }
+
+  function money(n){
+    return rp(n).replace("Rp","Rp ");
+  }
+
+  header();
+
+  // informasi laporan
+  doc.setFillColor(255,248,220);
+  doc.roundedRect(margin,y,contentW,20,3,3,"F");
+  doc.setTextColor(35);
   doc.setFont("helvetica","bold");
-  doc.text("CATATAN",15,y);
-  y += 6;
+  doc.setFontSize(8);
+  doc.text("PERIODE",margin+5,y+7);
+  doc.text("DIBUAT",margin+5,y+14);
   doc.setFont("helvetica","normal");
-  doc.text("Target iuran bulanan: RP450.000",15,y);
-  y += 6;
-  doc.text("Laporan dibuat dari data yang tersimpan pada perangkat ini.",15,y);
+  doc.text(selectedText,margin+30,y+7);
+  doc.text(new Date().toLocaleString("id-ID"),margin+30,y+14);
+  y += 27;
 
-  doc.save("Laporan-Kas-PAHLAWAN-REVOLUSI-5-" + selectedMonth + ".pdf");
+  // kartu ringkasan
+  sectionTitle("RINGKASAN KEUANGAN","PERIODE TERPILIH");
+  const cards = [
+    ["KAS MASUK",money(income)],
+    ["KAS KELUAR",money(expense)],
+    ["SALDO KAS",money(balance)],
+    ["TARGET IURAN",money(target)]
+  ];
+  const gap=4, cw=(contentW-gap*3)/4;
+  cards.forEach((c,i)=>{
+    const x=margin+i*(cw+gap);
+    doc.setDrawColor(225);
+    doc.setFillColor(255,255,255);
+    doc.roundedRect(x,y,cw,23,2,2,"FD");
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(7);
+    doc.setTextColor(120);
+    doc.text(c[0],x+4,y+7);
+    doc.setFontSize(9);
+    doc.setTextColor(25);
+    doc.text(c[1],x+4,y+16);
+  });
+  y += 30;
+
+  sectionTitle("STATUS IURAN KARYAWAN",paid+" sudah bayar • "+unpaid+" belum bayar");
+  const cols=[margin,margin+8,margin+53,margin+91,margin+130,margin+162];
+  const widths=[8,45,38,39,32,contentW-162];
+  function tableHeader(labels){
+    doc.setFillColor(227,6,19);
+    doc.rect(margin,y,contentW,8,"F");
+    doc.setTextColor(255);
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(7);
+    labels.forEach((v,i)=>doc.text(v,cols[i]+2,y+5.3));
+    y += 8;
+  }
+  function checkPage(){
+    if(y > 273){ newPage(); sectionTitle("STATUS IURAN KARYAWAN (LANJUTAN)"); tableHeader(["NO","NAMA","JABATAN","STATUS","TANGGAL BAYAR","IURAN"]); }
+  }
+  tableHeader(["NO","NAMA","JABATAN","STATUS","TANGGAL BAYAR","IURAN"]);
+  employees.forEach((e,i)=>{
+    checkPage();
+    const x=p[e.id];
+    const vals=[String(i+1),e.name,e.job,x?"SUDAH BAYAR":"BELUM BAYAR",x?fd(x.date):"-",money(x?x.amount:IURAN)];
+    const rowH=8;
+    if(i%2===0){doc.setFillColor(250,250,250);doc.rect(margin,y,contentW,rowH,"F");}
+    doc.setTextColor(35);
+    doc.setFont("helvetica",x?"bold":"normal");
+    doc.setFontSize(7);
+    vals.forEach((v,j)=>{
+      let tx=String(v);
+      if(j===5) doc.text(tx,cols[j]+widths[j]-2,y+5.2,{align:"right"});
+      else doc.text(tx,cols[j]+2,y+5.2);
+    });
+    y+=rowH;
+  });
+  y += 8;
+
+  sectionTitle("REKAP PEMBAYARAN","9 karyawan");
+  doc.setFont("helvetica","normal");
+  doc.setFontSize(8);
+  doc.setTextColor(60);
+  doc.text("Jumlah karyawan             : "+employees.length+" orang",margin,y); y+=6;
+  doc.text("Sudah membayar              : "+paid+" orang",margin,y); y+=6;
+  doc.text("Belum membayar              : "+unpaid+" orang",margin,y); y+=6;
+  doc.text("Target iuran                : "+money(target),margin,y); y+=6;
+  doc.text("Total pemasukan iuran       : "+money(income),margin,y); y+=10;
+
+  sectionTitle("RIWAYAT PENGELUARAN",expenses.length+" transaksi");
+  if(!expenses.length){
+    doc.setTextColor(130); doc.setFontSize(8);
+    doc.text("Belum ada pengeluaran yang tercatat.",margin,y); y+=10;
+  }else{
+    tableHeader(["NO","TANGGAL","KETERANGAN","NOMINAL"]);
+    expenses.forEach((e,i)=>{
+      if(y>273){newPage();sectionTitle("RIWAYAT PENGELUARAN (LANJUTAN)");tableHeader(["NO","TANGGAL","KETERANGAN","NOMINAL"]);}
+      const rowH=8;
+      if(i%2===0){doc.setFillColor(250,250,250);doc.rect(margin,y,contentW,rowH,"F");}
+      doc.setTextColor(35);doc.setFont("helvetica","normal");doc.setFontSize(7);
+      doc.text(String(i+1),margin+2,y+5.2);
+      doc.text(fd(e.date),margin+15,y+5.2);
+      let desc=String(e.description||"-");
+      if(desc.length>70) desc=desc.slice(0,67)+"...";
+      doc.text(desc,margin+50,y+5.2);
+      doc.text(money(e.amount),pageW-margin-2,y+5.2,{align:"right"});
+      y+=rowH;
+    });
+    y+=4;
+    doc.setFont("helvetica","bold");doc.setFontSize(8);
+    doc.text("TOTAL PENGELUARAN",margin,y);
+    doc.text(money(expense),pageW-margin-2,y,{align:"right"});
+    y+=10;
+  }
+
+  if(y>255)newPage();
+  sectionTitle("KESIMPULAN");
+  doc.setFont("helvetica","normal");
+  doc.setFontSize(8);
+  doc.setTextColor(55);
+  const lines=[
+    "Saldo kas periode ini: "+money(balance),
+    "Status iuran: "+paid+" dari "+employees.length+" karyawan sudah membayar.",
+    "Target iuran bulanan: "+money(target)+".",
+    "Total kas keluar yang tercatat: "+money(expense)+"."
+  ];
+  lines.forEach(t=>{doc.text(t,margin,y);y+=6;});
+  y+=5;
+  doc.setFontSize(7);
+  doc.setTextColor(125);
+  doc.text("Catatan: laporan ini dibuat berdasarkan data yang tersimpan pada perangkat/browser ini.",margin,y);
+  doc.text("Mohon periksa kembali data sebelum laporan digunakan sebagai arsip resmi.",margin,y+5);
+
+  footer();
+  doc.save("Laporan-Kas-PAHLAWAN-REVOLUSI-5-"+selectedMonth+".pdf");
 }
-
 document.getElementById("downloadPdfBtn").onclick = downloadCashReportPDF;
 
 document.getElementById(
