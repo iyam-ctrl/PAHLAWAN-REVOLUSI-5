@@ -280,7 +280,9 @@ body{
 
 .row{
   display:grid;
-  grid-template-columns:1fr;
+  grid-template-columns:
+    minmax(0,1.65fr)
+    minmax(260px,.8fr);
   gap:12px;
   margin-top:12px
 }
@@ -311,14 +313,6 @@ body{
   font-size:8px
 }
 
-.chart{
-  height:230px
-}
-
-.chart canvas{
-  width:100%;
-  height:100%
-}
 
 .donutbox{
   display:grid;
@@ -682,15 +676,11 @@ body{
   border-radius:11px;
   display:grid;
   place-items:center;
-  font-size:21px;
-  line-height:1;
   cursor:pointer;
   box-shadow:0 5px 16px #00000008
 }
 
-.menu-btn span,
-.menu-btn span:before,
-.menu-btn span:after{
+.menu-btn span,.menu-btn span:before,.menu-btn span:after{
   display:block;
   width:18px;
   height:2px;
@@ -779,6 +769,7 @@ body{
 
 .settings-row span{color:#888}
 .settings-row b{text-align:right}
+
 .mobile-nav{
   display:none
 }
@@ -941,6 +932,8 @@ body{
 
 </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </head>
 
 <body>
@@ -1082,6 +1075,8 @@ ROSTATI
 <p>
 Kelola pembayaran, pengeluaran, dan saldo kas dengan mudah.
 </p>
+
+</div>
 
 </div>
 
@@ -2046,7 +2041,6 @@ SIMPAN
 </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 
 const employees = [
@@ -2591,6 +2585,8 @@ function finance(){
       var(--y) ${q}% 100%
     )`;
 
+
+
 }
 
 
@@ -2895,464 +2891,23 @@ function report(){
 
 }
 
-let editing =
-  null;
 
 
-function openPay(
-  id = null
-){
 
-  if(!admin)
-    return;
-
-
-  editing =
-    id;
-
-
-  let s =
-    document.getElementById(
-      "employeeSelect"
-    );
-
-
-  let p =
-    lp()[month()] || {};
-
-
-  s.innerHTML =
-    employees
-      .map(
-        e =>
-          `
-          <option
-            value="${e.id}"
-          >
-            ${e.name}
-            —
-            ${e.job}
-          </option>
-          `
-      )
-      .join("");
-
-
-  s.value =
-    id || 1;
-
-
-  document.getElementById(
-    "paymentAmount"
-  ).value =
-    id &&
-    p[id]
-      ? p[id].amount
-      : IURAN;
-
-
-  document.getElementById(
-    "paymentDate"
-  ).value =
-    id &&
-    p[id]
-      ? p[id].date
-      : new Date()
-          .toISOString()
-          .slice(
-            0,
-            10
-          );
-
-
-  document.getElementById(
-    "paymentModal"
-  ).classList.remove(
-    "hidden"
-  );
-
-}
-
-
-window.editPayment =
-  openPay;
-
-
-document.getElementById(
-  "addPaymentBtn"
-).onclick =
-  () =>
-    openPay();
-
-
-document.getElementById(
-  "savePayment"
-).onclick =
-  () => {
-
-    let id =
-      +document.getElementById(
-        "employeeSelect"
-      ).value;
-
-
-    let a =
-      +document.getElementById(
-        "paymentAmount"
-      ).value;
-
-
-    let d =
-      document.getElementById(
-        "paymentDate"
-      ).value;
-
-
-    if(
-      !id ||
-      a <= 0 ||
-      !d
-    ){
-
-      return alert(
-        "LENGKAPI DATA PEMBAYARAN."
-      );
-
-    }
-
-
-    let p =
-      lp();
-
-    let m =
-      month();
-
-
-    p[m] ??= {};
-
-
-    p[m][id] = {
-
-      amount:a,
-
-      date:d
-
-    };
-
-
-    sp(p);
-
-
-    document.getElementById(
-      "paymentModal"
-    ).classList.add(
-      "hidden"
-    );
-
-
-    render();
-
-  };
-
-
-[
-  "closePaymentModal",
-  "cancelPayment"
-].forEach(
-  id =>
-    document.getElementById(
-      id
-    ).onclick =
-      () =>
-        document.getElementById(
-          "paymentModal"
-        ).classList.add(
-          "hidden"
-        )
-);
-
-
-document.getElementById(
-  "addExpenseBtn"
-).onclick =
-  () => {
-
-    if(!admin)
-      return;
-
-
-    document.getElementById(
-      "expenseDate"
-    ).value =
-      new Date()
-        .toISOString()
-        .slice(
-          0,
-          10
-        );
-
-
-    document.getElementById(
-      "expenseAmount"
-    ).value =
-      "";
-
-
-    document.getElementById(
-      "expenseDescription"
-    ).value =
-      "";
-
-
-    document.getElementById(
-      "expenseModal"
-    ).classList.remove(
-      "hidden"
-    );
-
-  };
-
-
-document.getElementById(
-  "saveExpense"
-).onclick =
-  () => {
-
-    let d =
-      document.getElementById(
-        "expenseDate"
-      ).value;
-
-
-    let a =
-      +document.getElementById(
-        "expenseAmount"
-      ).value;
-
-
-    let s =
-      document.getElementById(
-        "expenseDescription"
-      ).value.trim();
-
-
-    if(
-      !d ||
-      a <= 0 ||
-      !s
-    ){
-
-      return alert(
-        "LENGKAPI DATA PENGELUARAN."
-      );
-
-    }
-
-
-    let e =
-      le();
-
-
-    e.push({
-
-      id:
-        Date.now(),
-
-      date:
-        d,
-
-      amount:
-        a,
-
-      description:
-        s
-
-    });
-
-
-    se(e);
-
-
-    document.getElementById(
-      "expenseModal"
-    ).classList.add(
-      "hidden"
-    );
-
-
-    renderExpenses();
-
-  };
-
-
-window.deleteExpense =
-  id => {
-
-    if(
-      !admin ||
-      !confirm(
-        "YAKIN MAU MENGHAPUS PENGELUARAN INI?"
-      )
-    )
-      return;
-
-
-    se(
-      le().filter(
-        x =>
-          x.id !== id
-      )
-    );
-
-
-    renderExpenses();
-
-  };
-
-
-[
-  "closeExpenseModal",
-  "cancelExpense"
-].forEach(
-  id =>
-    document.getElementById(
-      id
-    ).onclick =
-      () =>
-        document.getElementById(
-          "expenseModal"
-        ).classList.add(
-          "hidden"
-        )
-);
-
-
-document.getElementById(
-  "resetMonthBtn"
-).onclick =
-  () => {
-
-    if(
-      admin &&
-      confirm(
-        "YAKIN MAU RESET SEMUA STATUS PEMBAYARAN BULAN INI?"
-      )
-    ){
-
-      let p =
-        lp();
-
-
-      delete p[
-        month()
-      ];
-
-
-      sp(p);
-
-
-      render();
-
-    }
-
-  };
-
-
-function show(
-  id
-){
-
-  document
-    .querySelectorAll(
-      ".section"
-    )
-    .forEach(
-      x =>
-        x.classList.remove(
-          "active"
-        )
-    );
-
-
-  document
-    .getElementById(
-      id
-    )
-    .classList.add(
-      "active"
-    );
-
-
-  document
-    .querySelectorAll(
-      ".nav button"
-    )
-    .forEach(
-      x =>
-        x.classList.toggle(
-          "active",
-          x.dataset.sec === id
-        )
-    );
-
-
-  scrollTo(
-    0,
-    0
-  );
-
-}
-
-
-document
-  .querySelectorAll(
-    ".nav button"
-  )
-  .forEach(
-    x =>
-      x.onclick =
-        () =>
-          show(
-            x.dataset.sec
-          )
-  );
-
-
-document
-  .querySelectorAll(
-    "[data-go]"
-  )
-  .forEach(
-    x =>
-      x.onclick =
-        () =>
-          show(
-            x.dataset.go
-          )
-  );
-
-
-document.getElementById(
-  "monthSelect"
-).onchange =
-  () => {
-
-    render();
-
-    renderExpenses();
-
-  };
-
-
+// =====================================
+// MENU GARIS TIGA + PDF
+// =====================================
 const menuBtn = document.getElementById("menuBtn");
 const menuPanel = document.getElementById("menuPanel");
+const nm = sessionStorage.getItem("cashKasUser") || (role === "admin" ? "ROSTATI" : "VIEWER");
+const admin = role === "admin";
 
-menuBtn.onclick = e => {
+menuBtn.onclick = (e) => {
   e.stopPropagation();
   menuPanel.classList.toggle("open");
 };
 
-document.addEventListener("click", e => {
+document.addEventListener("click", (e) => {
   if(!menuPanel.contains(e.target) && e.target !== menuBtn){
     menuPanel.classList.remove("open");
   }
@@ -3368,8 +2923,7 @@ document.getElementById("menuLogout").onclick = logoutNow;
 document.getElementById("settingsMenu").onclick = () => {
   menuPanel.classList.remove("open");
   document.getElementById("settingUser").textContent = nm;
-  document.getElementById("settingRole").textContent =
-    admin ? "PENGELOLA KAS" : "MODE LIHAT";
+  document.getElementById("settingRole").textContent = admin ? "PENGELOLA KAS" : "MODE LIHAT";
   document.getElementById("settingsModal").classList.remove("hidden");
 };
 
@@ -3463,7 +3017,6 @@ function downloadCashReportPDF(){
 
   header();
 
-  // informasi laporan
   doc.setFillColor(255,248,220);
   doc.roundedRect(margin,y,contentW,20,3,3,"F");
   doc.setTextColor(35);
@@ -3476,7 +3029,6 @@ function downloadCashReportPDF(){
   doc.text(new Date().toLocaleString("id-ID"),margin+30,y+14);
   y += 27;
 
-  // kartu ringkasan
   sectionTitle("RINGKASAN KEUANGAN","PERIODE TERPILIH");
   const cards = [
     ["KAS MASUK",money(income)],
@@ -3591,18 +3143,13 @@ function downloadCashReportPDF(){
   footer();
   doc.save("Laporan-Kas-PAHLAWAN-REVOLUSI-5-"+selectedMonth+".pdf");
 }
+
 document.getElementById("downloadPdfBtn").onclick = downloadCashReportPDF;
 
-document.getElementById(
-  "logoutBtn"
-).onclick = logoutNow;
-
-
-addEventListener(
-  "resize",
-  draw
-);
-
+// tombol keluar asli tetap bekerja
+if(document.getElementById("logoutBtn")){
+  document.getElementById("logoutBtn").onclick = logoutNow;
+}
 
 render();
 
