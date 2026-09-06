@@ -1,1 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
 
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    DASHBOARD - PAHLAWAN REVOLUSI 5
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+  <style>
+
+    .dashboard-page {
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+
+    .topbar {
+      max-width: 1100px;
+      margin: auto;
+
+      display: flex;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      align-items: center;
+    }
+
+
+    .topbar h1 {
+      font-size:
+        clamp(22px, 5vw, 34px);
+    }
+
+
+    .role {
+      color: #72b8ee;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      margin-top: 5px;
+    }
+
+
+    .logout {
+      padding:
+        11px 16px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 10px;
+
+      background:
+        #102945;
+
+      color: #fff;
+
+      cursor: pointer;
+    }
+
+
+    .dashboard-card {
+      max-width: 1100px;
+
+      margin:
+        22px auto 0;
+
+      padding: 28px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 22px;
+
+      background:
+        #081a2e;
+    }
+
+
+    .placeholder {
+      margin-top: 20px;
+
+      padding: 30px;
+
+      border:
+        1px dashed var(--line);
+
+      border-radius: 16px;
+
+      color: var(--muted);
+
+      line-height: 1.7;
+    }
+
+
+    .admin-note {
+      margin-top: 16px;
+
+      color: #7ee2b0;
+
+      font-size: 13px;
+    }
+
+
+    @media (max-width: 600px) {
+
+      .topbar {
+        align-items:
+          flex-start;
+
+        flex-direction:
+          column;
+      }
+
+
+      .dashboard-page {
+        padding: 16px;
+      }
+
+
+      .dashboard-card {
+        padding: 20px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <main class="dashboard-page">
+
+
+    <header class="topbar">
+
+      <div>
+
+        <p class="eyebrow">
+          ALFAMART • SISTEM UANG KAS
+        </p>
+
+        <h1>
+          PAHLAWAN REVOLUSI 5
+        </h1>
+
+        <p
+          class="role"
+          id="roleLabel"
+        ></p>
+
+      </div>
+
+
+      <button
+        class="logout"
+        id="logoutBtn"
+      >
+        KELUAR
+      </button>
+
+    </header>
+
+
+    <section class="dashboard-card">
+
+      <p class="eyebrow">
+        STEP 1
+      </p>
+
+
+      <h2>
+        AKSES BERHASIL
+      </h2>
+
+
+      <div class="placeholder">
+
+        DASHBOARD UTAMA BELUM DIISI
+        FITUR KAS.
+
+        <br><br>
+
+        DI STEP BERIKUTNYA KITA MASUKKAN:
+
+        <br>
+
+        SALDO KAS
+
+        <br>
+
+        PEMBAYARAN RP50.000
+
+        <br>
+
+        DATA 9 KARYAWAN
+
+        <br>
+
+        TRANSAKSI
+
+        <br>
+
+        PENGELUARAN
+
+        <br>
+
+        LAPORAN
+
+      </div>
+
+
+      <p
+        class="admin-note"
+        id="adminNote"
+      ></p>
+
+    </section>
+
+
+  </main>
+
+
+  <script>
+
+    const role =
+      sessionStorage.getItem(
+        "cashKasRole"
+      );
+
+
+    const user =
+      sessionStorage.getItem(
+        "cashKasUser"
+      );
+
+
+    /*
+    ================================
+    CEK SESSION
+    ================================
+    */
+
+    if (!role) {
+
+      window.location.href =
+        "index.html";
+
+    }
+
+
+    /*
+    ================================
+    TAMPILKAN ROLE
+    ================================
+    */
+
+    document.getElementById(
+      "roleLabel"
+    ).textContent =
+
+      role === "admin"
+
+        ? "LOGIN: ROSTATI • PENGELOLA KAS"
+
+        : "MODE: VIEWER • HANYA LIHAT";
+
+
+    /*
+    ================================
+    PESAN AKSES
+    ================================
+    */
+
+    document.getElementById(
+      "adminNote"
+    ).textContent =
+
+      role === "admin"
+
+        ? "AKSES PENGELOLA AKTIF — FITUR TAMBAH / EDIT / HAPUS AKAN DISEDIAKAN DI STEP BERIKUTNYA."
+
+        : "AKSES VIEWER AKTIF — FITUR PERUBAHAN DATA TIDAK AKAN DITAMPILKAN.";
+
+
+    /*
+    ================================
+    LOGOUT
+    ================================
+    */
+
+    document.getElementById(
+      "logoutBtn"
+    ).addEventListener(
+      "click",
+      () => {
+
+        sessionStorage.clear();
+
+        window.location.href =
+          "index.html";
+
+      }
+    );
+
+  </script>
+
+
+</body>
+
+</html>
