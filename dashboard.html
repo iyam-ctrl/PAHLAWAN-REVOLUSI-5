@@ -10,9 +10,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>
-    PAHLAWAN REVOLUSI 5 - UANG KAS
-  </title>
+  <title>PAHLAWAN REVOLUSI 5 - UANG KAS</title>
 
   <link
     rel="stylesheet"
@@ -159,6 +157,8 @@
 
       font-size: 11px;
       font-weight: 800;
+
+      cursor: pointer;
     }
 
 
@@ -197,6 +197,16 @@
       color: var(--muted);
 
       font-size: 12px;
+    }
+
+    .eyebrow {
+      color: #72b8ee;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
     }
 
 
@@ -523,6 +533,8 @@
       font-size: 9px;
 
       font-weight: 800;
+
+      cursor: pointer;
     }
 
     .edit-btn:hover {
@@ -539,7 +551,7 @@
       display: none;
 
       grid-template-columns:
-        repeat(2, 1fr);
+        repeat(3, 1fr);
 
       gap: 10px;
 
@@ -566,6 +578,13 @@
       font-size: 10px;
 
       font-weight: 800;
+
+      cursor: pointer;
+    }
+
+    .admin-tool:hover {
+      background:
+        rgba(227,6,19,.18);
     }
 
 
@@ -641,6 +660,8 @@
       color: white;
 
       font-size: 26px;
+
+      cursor: pointer;
     }
 
 
@@ -683,6 +704,8 @@
         #041326;
 
       font-size: 12px;
+
+      box-sizing: border-box;
     }
 
     .form-group input:focus,
@@ -717,6 +740,8 @@
       font-size: 10px;
 
       font-weight: 900;
+
+      cursor: pointer;
     }
 
     .cancel-btn {
@@ -735,11 +760,13 @@
       font-size: 10px;
 
       font-weight: 900;
+
+      cursor: pointer;
     }
 
 
     /* =====================================
-       TRANSACTION INFO
+       INFO
     ===================================== */
 
     .transaction-info {
@@ -788,6 +815,11 @@
       .summary-grid {
         grid-template-columns:
           repeat(2, 1fr);
+      }
+
+      .admin-toolbar {
+        grid-template-columns:
+          1fr;
       }
 
     }
@@ -1003,7 +1035,7 @@
       </div>
 
       <div class="summary-note">
-        AKAN AKTIF DI STEP 4
+        TOTAL UANG YANG DIGUNAKAN
       </div>
 
     </div>
@@ -1046,6 +1078,14 @@
       id="addPaymentBtn"
     >
       ＋ TAMBAH PEMBAYARAN
+    </button>
+
+
+    <button
+      class="admin-tool"
+      id="addExpenseBtn"
+    >
+      ＋ TAMBAH PENGELUARAN
     </button>
 
 
@@ -1221,8 +1261,89 @@
 
       <br>
 
-      DATA PEMBAYARAN DI STEP INI
-      TERSIMPAN DI BROWSER.
+      DATA PEMBAYARAN TERSIMPAN DI BROWSER.
+
+    </div>
+
+
+  </section>
+
+
+  <!-- =================================
+       RIWAYAT PENGELUARAN
+  ================================= -->
+
+  <section class="panel">
+
+
+    <div class="panel-header">
+
+      <div>
+
+        <div class="panel-title">
+          RIWAYAT PENGELUARAN KAS
+        </div>
+
+        <div class="panel-subtitle">
+          CATATAN UANG KAS YANG TELAH DIGUNAKAN
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="table-scroll">
+
+      <table class="employee-table">
+
+        <thead>
+
+          <tr>
+
+            <th>
+              NO
+            </th>
+
+            <th>
+              TANGGAL
+            </th>
+
+            <th>
+              KETERANGAN
+            </th>
+
+            <th>
+              NOMINAL
+            </th>
+
+            <th>
+              AKSI
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="expenseTableBody">
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="transaction-info">
+
+      💸
+      <strong>
+        TOTAL PENGELUARAN:
+      </strong>
+
+      <strong id="expenseTotal">
+        RP 0
+      </strong>
 
     </div>
 
@@ -1344,6 +1465,103 @@
 </div>
 
 
+<!-- =====================================
+     MODAL PENGELUARAN
+===================================== -->
+
+<div
+  class="modal hidden"
+  id="expenseModal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2>
+        TAMBAH PENGELUARAN
+      </h2>
+
+      <button
+        class="close-modal"
+        id="closeExpenseModal"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        TANGGAL PENGELUARAN
+      </label>
+
+      <input
+        id="expenseDate"
+        type="date"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        NOMINAL
+      </label>
+
+      <input
+        id="expenseAmount"
+        type="number"
+        min="0"
+        placeholder="CONTOH: 50000"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        KETERANGAN
+      </label>
+
+      <input
+        id="expenseDescription"
+        type="text"
+        placeholder="CONTOH: BELI AIR MINUM"
+        maxlength="100"
+      >
+
+    </div>
+
+
+    <div class="modal-buttons">
+
+      <button
+        class="cancel-btn"
+        id="cancelExpense"
+      >
+        BATAL
+      </button>
+
+
+      <button
+        class="save-btn"
+        id="saveExpense"
+      >
+        SIMPAN PENGELUARAN
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
 <script>
 
 
@@ -1414,8 +1632,7 @@ const employees = [
    CONFIG
 ===================================== */
 
-const IURAN =
-  50000;
+const IURAN = 50000;
 
 
 /* =====================================
@@ -1468,7 +1685,7 @@ if (role === "admin") {
 
 
 /* =====================================
-   STORAGE
+   STORAGE PEMBAYARAN
 ===================================== */
 
 const STORAGE_KEY =
@@ -1502,6 +1719,46 @@ function savePayments(data) {
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(data)
+  );
+
+}
+
+
+/* =====================================
+   STORAGE PENGELUARAN
+===================================== */
+
+const EXPENSE_STORAGE_KEY =
+  "pahlawanRevolusi5Expenses";
+
+
+function loadExpenses() {
+
+  try {
+
+    const data =
+      localStorage.getItem(
+        EXPENSE_STORAGE_KEY
+      );
+
+    return data
+      ? JSON.parse(data)
+      : [];
+
+  } catch {
+
+    return [];
+
+  }
+
+}
+
+
+function saveExpenses(expenses) {
+
+  localStorage.setItem(
+    EXPENSE_STORAGE_KEY,
+    JSON.stringify(expenses)
   );
 
 }
@@ -1571,7 +1828,140 @@ function formatDate(dateString) {
 
 
 /* =====================================
-   RENDER
+   ESCAPE HTML
+===================================== */
+
+function escapeHtml(text) {
+
+  return String(text)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+}
+
+
+/* =====================================
+   HITUNG TOTAL PEMASUKAN
+===================================== */
+
+function getTotalIncome() {
+
+  const payments =
+    loadPayments();
+
+  const month =
+    currentMonth();
+
+  const monthPayments =
+    payments[month] || {};
+
+  let total =
+    0;
+
+
+  employees.forEach(
+    employee => {
+
+      const payment =
+        monthPayments[
+          employee.id
+        ];
+
+
+      if (payment) {
+
+        total +=
+          Number(
+            payment.amount ||
+            IURAN
+          );
+
+      }
+
+    }
+  );
+
+
+  return total;
+
+}
+
+
+/* =====================================
+   HITUNG TOTAL PENGELUARAN
+===================================== */
+
+function getTotalExpenses() {
+
+  const expenses =
+    loadExpenses();
+
+  let total =
+    0;
+
+
+  expenses.forEach(
+    expense => {
+
+      total +=
+        Number(
+          expense.amount ||
+          0
+        );
+
+    }
+  );
+
+
+  return total;
+
+}
+
+
+/* =====================================
+   UPDATE RINGKASAN KEUANGAN
+===================================== */
+
+function updateFinancialSummary() {
+
+  const totalMasuk =
+    getTotalIncome();
+
+
+  const totalKeluar =
+    getTotalExpenses();
+
+
+  const saldo =
+    totalMasuk -
+    totalKeluar;
+
+
+  document.getElementById(
+    "masukValue"
+  ).textContent =
+    rupiah(totalMasuk);
+
+
+  document.getElementById(
+    "keluarValue"
+  ).textContent =
+    rupiah(totalKeluar);
+
+
+  document.getElementById(
+    "saldoValue"
+  ).textContent =
+    rupiah(saldo);
+
+}
+
+
+/* =====================================
+   RENDER KARYAWAN
 ===================================== */
 
 function renderEmployees() {
@@ -1594,9 +1984,8 @@ function renderEmployees() {
   tbody.innerHTML = "";
 
 
-  let paid = 0;
-
-  let totalMasuk = 0;
+  let paid =
+    0;
 
 
   employees.forEach(
@@ -1616,11 +2005,6 @@ function renderEmployees() {
       if (isPaid) {
 
         paid++;
-
-        totalMasuk +=
-          Number(
-            payment.amount || IURAN
-          );
 
       }
 
@@ -1648,7 +2032,10 @@ function renderEmployees() {
         <td>
           ${rupiah(
             isPaid
-              ? Number(payment.amount || IURAN)
+              ? Number(
+                  payment.amount ||
+                  IURAN
+                )
               : IURAN
           )}
         </td>
@@ -1676,7 +2063,9 @@ function renderEmployees() {
         <td>
           ${
             isPaid
-              ? formatDate(payment.date)
+              ? formatDate(
+                  payment.date
+                )
               : "-"
           }
         </td>
@@ -1702,6 +2091,7 @@ function renderEmployees() {
               `
 
               : `
+
                 <span
                   style="
                     color:#61788f;
@@ -1710,6 +2100,7 @@ function renderEmployees() {
                 >
                   VIEW ONLY
                 </span>
+
               `
           }
 
@@ -1718,7 +2109,9 @@ function renderEmployees() {
       `;
 
 
-      tbody.appendChild(row);
+      tbody.appendChild(
+        row
+      );
 
     }
   );
@@ -1752,32 +2145,166 @@ function renderEmployees() {
     );
 
 
-  document.getElementById(
-    "masukValue"
-  ).textContent =
-    rupiah(totalMasuk);
-
-
-  /*
-  untuk sementara pengeluaran = 0
-  */
-
-  document.getElementById(
-    "keluarValue"
-  ).textContent =
-    rupiah(0);
-
-
-  document.getElementById(
-    "saldoValue"
-  ).textContent =
-    rupiah(totalMasuk);
+  updateFinancialSummary();
 
 }
 
 
 /* =====================================
-   MODAL
+   RENDER PENGELUARAN
+===================================== */
+
+function renderExpenses() {
+
+  const expenses =
+    loadExpenses();
+
+
+  const tbody =
+    document.getElementById(
+      "expenseTableBody"
+    );
+
+
+  tbody.innerHTML =
+    "";
+
+
+  let total =
+    0;
+
+
+  const sortedExpenses =
+    [...expenses].sort(
+      (a, b) =>
+        new Date(b.date) -
+        new Date(a.date)
+    );
+
+
+  if (
+    sortedExpenses.length === 0
+  ) {
+
+    tbody.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="5"
+          style="
+            text-align:center;
+            color:#61788f;
+            padding:25px;
+          "
+        >
+          BELUM ADA PENGELUARAN
+        </td>
+
+      </tr>
+
+    `;
+
+  }
+
+
+  sortedExpenses.forEach(
+    (expense, index) => {
+
+
+      total +=
+        Number(
+          expense.amount ||
+          0
+        );
+
+
+      const row =
+        document.createElement(
+          "tr"
+        );
+
+
+      row.innerHTML = `
+
+        <td>
+          ${index + 1}
+        </td>
+
+        <td>
+          ${formatDate(
+            expense.date
+          )}
+        </td>
+
+        <td class="employee-name">
+          ${escapeHtml(
+            expense.description
+          )}
+        </td>
+
+        <td>
+          ${rupiah(
+            expense.amount
+          )}
+        </td>
+
+        <td>
+
+          ${
+            role === "admin"
+
+              ? `
+
+                <button
+                  class="edit-btn"
+                  onclick="deleteExpense(${expense.id})"
+                >
+                  HAPUS
+                </button>
+
+              `
+
+              : `
+
+                <span
+                  style="
+                    color:#61788f;
+                    font-size:9px;
+                  "
+                >
+                  VIEW ONLY
+                </span>
+
+              `
+          }
+
+        </td>
+
+      `;
+
+
+      tbody.appendChild(
+        row
+      );
+
+    }
+  );
+
+
+  document.getElementById(
+    "expenseTotal"
+  ).textContent =
+    rupiah(total);
+
+
+  updateFinancialSummary();
+
+}
+
+
+/* =====================================
+   MODAL PEMBAYARAN
 ===================================== */
 
 const paymentModal =
@@ -1817,6 +2344,7 @@ function fillEmployeeSelect() {
   employeeSelect.innerHTML =
     "";
 
+
   employees.forEach(
     employee => {
 
@@ -1825,13 +2353,16 @@ function fillEmployeeSelect() {
           "option"
         );
 
+
       option.value =
         employee.id;
+
 
       option.textContent =
         employee.name +
         " — " +
         employee.job;
+
 
       employeeSelect.appendChild(
         option
@@ -1847,12 +2378,17 @@ fillEmployeeSelect();
 
 
 /* =====================================
-   OPEN MODAL
+   OPEN MODAL PEMBAYARAN
 ===================================== */
 
 function openPaymentModal(
   employeeId = null
 ) {
+
+  if (role !== "admin") {
+    return;
+  }
+
 
   editingEmployeeId =
     employeeId;
@@ -1861,8 +2397,10 @@ function openPaymentModal(
   const payments =
     loadPayments();
 
+
   const month =
     currentMonth();
+
 
   const monthPayments =
     payments[month] || {};
@@ -1886,6 +2424,7 @@ function openPaymentModal(
         payment.amount ||
         IURAN;
 
+
       paymentDate.value =
         payment.date ||
         "";
@@ -1894,6 +2433,7 @@ function openPaymentModal(
 
       paymentAmount.value =
         IURAN;
+
 
       paymentDate.value =
         new Date()
@@ -1907,8 +2447,10 @@ function openPaymentModal(
     employeeSelect.value =
       employees[0].id;
 
+
     paymentAmount.value =
       IURAN;
+
 
     paymentDate.value =
       new Date()
@@ -1925,11 +2467,16 @@ function openPaymentModal(
 }
 
 
+/* =====================================
+   CLOSE MODAL PEMBAYARAN
+===================================== */
+
 function closePaymentModal() {
 
   paymentModal.classList.add(
     "hidden"
   );
+
 
   editingEmployeeId =
     null;
@@ -1938,7 +2485,7 @@ function closePaymentModal() {
 
 
 /* =====================================
-   EDIT / CATAT
+   EDIT PEMBAYARAN
 ===================================== */
 
 window.editPayment =
@@ -1947,6 +2494,7 @@ window.editPayment =
     if (role !== "admin") {
       return;
     }
+
 
     openPaymentModal(
       employeeId
@@ -1972,7 +2520,7 @@ document.getElementById(
 
 
 /* =====================================
-   SAVE
+   SAVE PEMBAYARAN
 ===================================== */
 
 document.getElementById(
@@ -1980,6 +2528,11 @@ document.getElementById(
 ).addEventListener(
   "click",
   () => {
+
+
+    if (role !== "admin") {
+      return;
+    }
 
 
     const employeeId =
@@ -2070,12 +2623,14 @@ document.getElementById(
 
     renderEmployees();
 
+    renderExpenses();
+
   }
 );
 
 
 /* =====================================
-   CANCEL
+   CANCEL PEMBAYARAN
 ===================================== */
 
 document.getElementById(
@@ -2095,7 +2650,7 @@ document.getElementById(
 
 
 /* =====================================
-   KLIK LUAR MODAL
+   KLIK LUAR MODAL PEMBAYARAN
 ===================================== */
 
 paymentModal.addEventListener(
@@ -2116,6 +2671,283 @@ paymentModal.addEventListener(
 
 
 /* =====================================
+   MODAL PENGELUARAN
+===================================== */
+
+const expenseModal =
+  document.getElementById(
+    "expenseModal"
+  );
+
+
+const expenseDate =
+  document.getElementById(
+    "expenseDate"
+  );
+
+
+const expenseAmount =
+  document.getElementById(
+    "expenseAmount"
+  );
+
+
+const expenseDescription =
+  document.getElementById(
+    "expenseDescription"
+  );
+
+
+/* =====================================
+   OPEN MODAL PENGELUARAN
+===================================== */
+
+function openExpenseModal() {
+
+  if (role !== "admin") {
+    return;
+  }
+
+
+  expenseDate.value =
+    new Date()
+      .toISOString()
+      .slice(0, 10);
+
+
+  expenseAmount.value =
+    "";
+
+
+  expenseDescription.value =
+    "";
+
+
+  expenseModal.classList.remove(
+    "hidden"
+  );
+
+}
+
+
+/* =====================================
+   CLOSE MODAL PENGELUARAN
+===================================== */
+
+function closeExpenseModal() {
+
+  expenseModal.classList.add(
+    "hidden"
+  );
+
+}
+
+
+/* =====================================
+   BUKA MODAL
+===================================== */
+
+document.getElementById(
+  "addExpenseBtn"
+).addEventListener(
+  "click",
+  openExpenseModal
+);
+
+
+/* =====================================
+   TUTUP MODAL
+===================================== */
+
+document.getElementById(
+  "closeExpenseModal"
+).addEventListener(
+  "click",
+  closeExpenseModal
+);
+
+
+document.getElementById(
+  "cancelExpense"
+).addEventListener(
+  "click",
+  closeExpenseModal
+);
+
+
+/* =====================================
+   KLIK LUAR MODAL PENGELUARAN
+===================================== */
+
+expenseModal.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target ===
+      expenseModal
+    ) {
+
+      closeExpenseModal();
+
+    }
+
+  }
+);
+
+
+/* =====================================
+   SIMPAN PENGELUARAN
+===================================== */
+
+document.getElementById(
+  "saveExpense"
+).addEventListener(
+  "click",
+  () => {
+
+
+    if (role !== "admin") {
+      return;
+    }
+
+
+    const date =
+      expenseDate.value;
+
+
+    const amount =
+      Number(
+        expenseAmount.value
+      );
+
+
+    const description =
+      expenseDescription.value
+        .trim();
+
+
+    if (!date) {
+
+      alert(
+        "ISI TANGGAL PENGELUARAN."
+      );
+
+      return;
+
+    }
+
+
+    if (
+      !amount ||
+      amount <= 0
+    ) {
+
+      alert(
+        "NOMINAL PENGELUARAN TIDAK VALID."
+      );
+
+      return;
+
+    }
+
+
+    if (!description) {
+
+      alert(
+        "ISI KETERANGAN PENGELUARAN."
+      );
+
+      return;
+
+    }
+
+
+    const expenses =
+      loadExpenses();
+
+
+    expenses.push({
+
+      id:
+        Date.now(),
+
+      date:
+        date,
+
+      amount:
+        amount,
+
+      description:
+        description
+
+    });
+
+
+    saveExpenses(
+      expenses
+    );
+
+
+    closeExpenseModal();
+
+
+    renderExpenses();
+
+    updateFinancialSummary();
+
+  }
+);
+
+
+/* =====================================
+   HAPUS PENGELUARAN
+===================================== */
+
+window.deleteExpense =
+  function(id) {
+
+
+    if (role !== "admin") {
+      return;
+    }
+
+
+    const yakin =
+      confirm(
+        "YAKIN MAU MENGHAPUS PENGELUARAN INI?"
+      );
+
+
+    if (!yakin) {
+      return;
+    }
+
+
+    const expenses =
+      loadExpenses();
+
+
+    const updated =
+      expenses.filter(
+        expense =>
+          expense.id !== id
+      );
+
+
+    saveExpenses(
+      updated
+    );
+
+
+    renderExpenses();
+
+    updateFinancialSummary();
+
+  };
+
+
+/* =====================================
    GANTI BULAN
 ===================================== */
 
@@ -2125,12 +2957,16 @@ monthSelect.addEventListener(
 
     renderEmployees();
 
+    renderExpenses();
+
+    updateFinancialSummary();
+
   }
 );
 
 
 /* =====================================
-   RESET BULAN
+   RESET STATUS BULAN
 ===================================== */
 
 document.getElementById(
@@ -2138,6 +2974,11 @@ document.getElementById(
 ).addEventListener(
   "click",
   () => {
+
+
+    if (role !== "admin") {
+      return;
+    }
 
 
     if (
@@ -2167,6 +3008,10 @@ document.getElementById(
 
     renderEmployees();
 
+    renderExpenses();
+
+    updateFinancialSummary();
+
   }
 );
 
@@ -2195,6 +3040,10 @@ document.getElementById(
 ===================================== */
 
 renderEmployees();
+
+renderExpenses();
+
+updateFinancialSummary();
 
 
 </script>
