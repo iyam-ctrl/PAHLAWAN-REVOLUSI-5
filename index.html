@@ -1,249 +1,706 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PAHLAWAN REVOLUSI 5 - UANG KAS</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PAHLAWAN REVOLUSI 5 - SISTEM MANAJEMEN KAS</title>
 
-  <style>
-    /* =========================================
-       LOGO ALFAMART
-       ========================================= */
+<style>
+*{
+  box-sizing:border-box
+}
 
-    .alfamart-logo {
-      position: relative;
-      width: min(100%, 430px);
-      height: 150px;
-      margin: 0 auto 24px;
-      background: #ffffff;
-      border-radius: 0 0 38px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow:
-        0 12px 35px rgba(0, 0, 0, 0.22);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 72px;
-      font-weight: 900;
-      font-style: normal;
-      letter-spacing: -6px;
-      line-height: 1;
-      padding-bottom: 18px;
-      box-sizing: border-box;
-    }
+body{
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  background:#f7f7f7;
+  color:#171717;
+  min-height:100vh
+}
 
-    .alfamart-logo::before {
-      content: "";
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 18px;
-      height: 18px;
-      background: #ed1c2e;
-      border-radius: 0 0 22px 0;
-      z-index: 1;
-    }
+.page{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:46% 54%
+}
 
-    .alfamart-logo::after {
-      content: "";
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 9px;
-      height: 5px;
-      background: #ffc800;
-      border-radius: 0 0 12px 0;
-      z-index: 2;
-    }
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,#e30613,#a90008);
+  color:#fff;
+  padding:7vw 7vw;
+  display:flex;
+  align-items:center
+}
 
-    .alfamart-logo {
-      color: #0865ad;
-    }
+.hero:after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  right:-280px;
+  bottom:-270px;
+  border:35px solid #ffc400;
+  box-shadow:
+    0 0 0 15px #e30613,
+    0 0 0 50px #ffc400
+}
 
-    .alfamart-logo span {
-      color: #ed1c2e;
-    }
+.inner{
+  max-width:620px;
+  position:relative;
+  z-index:2
+}
 
-    @media (max-width: 600px) {
-      .alfamart-logo {
-        width: min(100%, 340px);
-        height: 120px;
-        font-size: 54px;
-        letter-spacing: -5px;
-        padding-bottom: 15px;
-      }
+.eyebrow{
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:2.5px;
+  opacity:.78
+}
 
-      .alfamart-logo::before {
-        left: 18px;
-        right: 18px;
-        bottom: 15px;
-        height: 14px;
-      }
+.brandmark{
+  width:58px;
+  height:58px;
+  border-radius:16px;
+  background:#fff;
+  color:#e30613;
+  display:grid;
+  place-items:center;
+  font-weight:1000;
+  font-size:18px;
+  margin-bottom:26px;
+  box-shadow:0 12px 30px #7e000855
+}
 
-      .alfamart-logo::after {
-        left: 18px;
-        right: 18px;
-        bottom: 8px;
-        height: 4px;
-      }
-    }
-  </style>
+.hero h1{
+  font-size:clamp(42px,6vw,82px);
+  line-height:.94;
+  margin:13px 0 18px;
+  font-weight:1000;
+  letter-spacing:-3px
+}
+
+.hero h1 span{
+  color:#ffc400
+}
+
+.tag{
+  font-size:13px;
+  letter-spacing:2px;
+  margin-bottom:45px;
+  opacity:.88
+}
+
+.login-card{
+  width:min(560px,100%);
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 20px 50px #70000a33;
+  color:#171717
+}
+
+.access{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px
+}
+
+.access button{
+  border:0;
+  border-radius:14px;
+  padding:16px;
+  text-align:left;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:900
+}
+
+.admin{
+  background:#e30613;
+  color:#fff
+}
+
+.viewer{
+  background:#fff5d4;
+  color:#9a7100;
+  border:1px solid #ffe28a!important
+}
+
+.ico{
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  display:grid;
+  place-items:center;
+  background:#ffffff2b;
+  font-size:18px;
+  flex:none
+}
+
+.viewer .ico{
+  background:#ffc400;
+  color:#fff
+}
+
+.access strong{
+  display:block;
+  font-size:11px
+}
+
+.access small{
+  display:block;
+  margin-top:4px;
+  font-size:8px;
+  opacity:.75
+}
+
+.facts{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:#eee;
+  margin-top:16px;
+  border-radius:13px;
+  overflow:hidden
+}
+
+.fact{
+  background:#fff;
+  padding:14px;
+  text-align:center
+}
+
+.fact b{
+  display:block;
+  font-size:13px
+}
+
+.fact span{
+  font-size:8px;
+  color:#999
+}
+
+.side{
+  padding:6vw 6vw;
+  display:flex;
+  align-items:center;
+  background:#fff
+}
+
+.panel{
+  width:min(650px,100%);
+  margin:auto
+}
+
+.panel h2{
+  font-size:clamp(28px,3vw,44px);
+  margin:0 0 8px
+}
+
+.panel p{
+  color:#777;
+  font-size:12px;
+  line-height:1.7;
+  margin:0 0 28px
+}
+
+.features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+
+.feature{
+  border:1px solid #e8e8e8;
+  border-radius:15px;
+  padding:17px;
+  background:#fff;
+  box-shadow:0 8px 25px #00000008
+}
+
+.feature .fi{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:#fff0f1;
+  color:#e30613;
+  display:grid;
+  place-items:center;
+  margin-bottom:10px
+}
+
+.feature:nth-child(2) .fi,
+.feature:nth-child(4) .fi{
+  background:#fff7d9;
+  color:#b18400
+}
+
+.feature b{
+  font-size:11px
+}
+
+.feature span{
+  display:block;
+  font-size:8px;
+  color:#999;
+  margin-top:4px
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:#0009;
+  backdrop-filter:blur(7px);
+  display:grid;
+  place-items:center;
+  padding:18px;
+  z-index:50
+}
+
+.hidden{
+  display:none!important
+}
+
+.modal-box{
+  width:min(420px,100%);
+  background:#fff;
+  border-radius:20px;
+  padding:24px;
+  box-shadow:0 30px 80px #0005
+}
+
+.close{
+  float:right;
+  border:0;
+  background:#f2f2f2;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  font-size:20px
+}
+
+.modal-icon{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  background:#ffe8ea;
+  color:#e30613;
+  display:grid;
+  place-items:center;
+  font-size:21px;
+  margin-bottom:15px
+}
+
+.modal-box h2{
+  margin:0 0 7px
+}
+
+.modal-desc{
+  font-size:11px;
+  color:#888;
+  margin:0 0 20px
+}
+
+.modal-box label{
+  display:block;
+  font-size:9px;
+  font-weight:900;
+  color:#666
+}
+
+.password-wrap{
+  display:flex;
+  margin-top:7px
+}
+
+.password-wrap input{
+  flex:1;
+  min-width:0;
+  padding:12px;
+  border:1px solid #ddd;
+  border-right:0;
+  border-radius:10px 0 0 10px;
+  outline:0
+}
+
+.password-wrap button{
+  border:1px solid #ddd;
+  background:#fafafa;
+  border-radius:0 10px 10px 0;
+  padding:0 12px;
+  font-size:9px;
+  font-weight:900
+}
+
+.error{
+  color:#e30613;
+  font-size:10px;
+  font-weight:800
+}
+
+.primary-btn{
+  width:100%;
+  border:0;
+  border-radius:11px;
+  background:#e30613;
+  color:#fff;
+  padding:13px;
+  font-size:10px;
+  font-weight:950;
+  margin-top:10px
+}
+
+@media(max-width:900px){
+
+  .page{
+    grid-template-columns:1fr
+  }
+
+  .hero{
+    min-height:620px;
+    padding:42px 22px
+  }
+
+  .side{
+    padding:42px 22px
+  }
+
+  .hero h1{
+    font-size:clamp(42px,13vw,72px)
+  }
+
+  .login-card{
+    padding:15px
+  }
+
+  .access{
+    grid-template-columns:1fr
+  }
+
+  .features{
+    grid-template-columns:1fr 1fr
+  }
+}
+
+@media(max-width:520px){
+
+  .hero{
+    min-height:650px
+  }
+
+  .facts{
+    grid-template-columns:1fr
+  }
+
+  .fact{
+    padding:11px
+  }
+
+  .features{
+    grid-template-columns:1fr
+  }
+
+  .side{
+    padding:35px 18px
+  }
+
+  .panel h2{
+    font-size:30px
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <main class="landing">
+<div class="page">
 
-    <section class="brand-card">
+  <section class="hero">
 
-      <div class="alfamart-logo" aria-label="Alfamart">
-        Alfa<span>mart</span>
+    <div class="inner">
+
+      <div class="brandmark">
+        PR5
       </div>
 
-      <div class="divider"></div>
+      <div class="eyebrow">
+        SISTEM MANAJEMEN KAS
+      </div>
 
-      <p class="eyebrow">SISTEM UANG KAS KARYAWAN</p>
+      <h1>
+        PAHLAWAN <span>REVOLUSI 5</span>
+      </h1>
 
-      <h1>PAHLAWAN REVOLUSI 5</h1>
+      <div class="tag">
+        TRANSPARAN • AKURAT • TERPERCAYA
+      </div>
 
-      <p class="subtitle">
-        PENGELOLA KAS: ROSTATI
-      </p>
+      <div class="login-card">
 
-      <div class="action-grid">
+        <div class="access">
 
-        <button class="action-btn admin-btn" id="openAdmin">
+          <button
+            class="admin"
+            id="openAdmin"
+          >
 
-          <span class="icon">🔐</span>
+            <span class="ico">
+              🔐
+            </span>
 
-          <span>
-            <strong>LOGIN ROSTATI</strong>
-            <small>AKSES PENGELOLA KAS</small>
-          </span>
+            <span>
+              <strong>
+                LOGIN ROSTATI
+              </strong>
 
-        </button>
+              <small>
+                AKSES PENUH PENGELOLA KAS
+              </small>
+            </span>
+
+          </button>
 
 
-        <button class="action-btn viewer-btn" id="enterViewer">
+          <button
+            class="viewer"
+            id="enterViewer"
+          >
 
-          <span class="icon">👁️</span>
+            <span class="ico">
+              ◉
+            </span>
 
-          <span>
-            <strong>MASUK SEBAGAI VIEWER</strong>
-            <small>LIHAT DATA TANPA LOGIN</small>
-          </span>
+            <span>
+              <strong>
+                MASUK SEBAGAI VIEWER
+              </strong>
 
-        </button>
+              <small>
+                LIHAT DATA TANPA LOGIN
+              </small>
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <div class="facts">
+
+          <div class="fact">
+            <b>RP50.000</b>
+            <span>IURAN / ORANG</span>
+          </div>
+
+          <div class="fact">
+            <b>TANGGAL 28</b>
+            <span>JATUH TEMPO</span>
+          </div>
+
+          <div class="fact">
+            <b>ROSTATI</b>
+            <span>PENGELOLA KAS</span>
+          </div>
+
+        </div>
 
       </div>
 
+    </div>
 
-      <div class="rules">
-
-        <div>
-          <b>RP50.000</b>
-          <span>IURAN / ORANG</span>
-        </div>
-
-        <div>
-          <b>TANGGAL 28</b>
-          <span>JATUH TEMPO</span>
-        </div>
-
-        <div>
-          <b>ROSTATI</b>
-          <span>PENGELOLA KAS</span>
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
+  </section>
 
 
-  <!-- LOGIN ROSTATI -->
+  <section class="side">
 
-  <div class="modal hidden" id="loginModal">
+    <div class="panel">
 
-    <div class="modal-box">
-
-      <button
-        class="close"
-        id="closeAdmin"
-        aria-label="Tutup"
+      <div
+        class="eyebrow"
+        style="color:#e30613"
       >
-        ×
-      </button>
-
-
-      <div class="modal-icon">
-        🔐
+        PUSAT INFORMASI KAS
       </div>
-
-
-      <p class="eyebrow">
-        AKSES PENGELOLA
-      </p>
-
 
       <h2>
-        LOGIN ROSTATI
+        Semua fitur kas, dipisah dan lebih teratur.
       </h2>
 
-
-      <p class="modal-desc">
-        Masukkan password pengelola untuk membuka fitur kas.
+      <p>
+        Dashboard dibuat sebagai pusat manajemen.
+        Pembayaran, pengeluaran, data karyawan, dan
+        laporan punya menu masing-masing supaya lebih
+        gampang dipantau dari HP maupun laptop.
       </p>
 
 
-      <label for="password">
-        PASSWORD
-      </label>
+      <div class="features">
+
+        <div class="feature">
+
+          <div class="fi">
+            ▣
+          </div>
+
+          <b>
+            PEMBAYARAN KAS
+          </b>
+
+          <span>
+            Monitor iuran per karyawan dan periode.
+          </span>
+
+        </div>
 
 
-      <div class="password-wrap">
+        <div class="feature">
 
-        <input
-          id="password"
-          type="password"
-          autocomplete="current-password"
-          placeholder="MASUKKAN PASSWORD"
-        >
+          <div class="fi">
+            −
+          </div>
 
-        <button
-          id="togglePassword"
-          type="button"
-        >
-          LIHAT
-        </button>
+          <b>
+            PENGELUARAN
+          </b>
+
+          <span>
+            Catat dan kontrol penggunaan uang kas.
+          </span>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="fi">
+            ♙
+          </div>
+
+          <b>
+            DATA KARYAWAN
+          </b>
+
+          <span>
+            Lihat jabatan dan status pembayaran.
+          </span>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="fi">
+            ▥
+          </div>
+
+          <b>
+            LAPORAN
+          </b>
+
+          <span>
+            Ringkasan pemasukan, pengeluaran, dan saldo.
+          </span>
+
+        </div>
 
       </div>
 
+    </div>
 
-      <p
-        class="error hidden"
-        id="loginError"
+  </section>
+
+</div>
+
+
+<div
+  class="modal hidden"
+  id="loginModal"
+>
+
+  <div class="modal-box">
+
+    <button
+      class="close"
+      id="closeAdmin"
+    >
+      ×
+    </button>
+
+
+    <div class="modal-icon">
+      🔐
+    </div>
+
+
+    <div
+      class="eyebrow"
+      style="color:#e30613"
+    >
+      AKSES PENGELOLA
+    </div>
+
+
+    <h2>
+      LOGIN ROSTATI
+    </h2>
+
+
+    <p class="modal-desc">
+      Masukkan password pengelola untuk membuka
+      dashboard manajemen kas.
+    </p>
+
+
+    <label>
+      PASSWORD
+    </label>
+
+
+    <div class="password-wrap">
+
+      <input
+        id="password"
+        type="password"
+        placeholder="MASUKKAN PASSWORD"
+        autocomplete="current-password"
       >
-        PASSWORD SALAH.
-      </p>
-
 
       <button
-        class="primary-btn"
-        id="loginBtn"
+        id="togglePassword"
+        type="button"
       >
-        MASUK KE DASHBOARD
+        LIHAT
       </button>
 
     </div>
 
+
+    <p
+      class="error hidden"
+      id="loginError"
+    >
+      PASSWORD SALAH.
+    </p>
+
+
+    <button
+      class="primary-btn"
+      id="loginBtn"
+    >
+      MASUK KE DASHBOARD
+    </button>
+
   </div>
 
+</div>
 
-  <script src="js/auth.js"></script>
+
+<script src="js/auth.js"></script>
 
 </body>
 </html>
