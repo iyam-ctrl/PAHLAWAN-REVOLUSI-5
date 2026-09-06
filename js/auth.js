@@ -1,54 +1,30 @@
-/*
-=========================================
-STEP 1 - SISTEM AKSES
-=========================================
-
-PASSWORD ROSTATI:
-
-pusingbanget
-
-*/
-
 const ROSTATI_PASSWORD = "pusingbanget";
 
 
 const openAdmin =
   document.getElementById("openAdmin");
 
-
 const closeAdmin =
   document.getElementById("closeAdmin");
-
 
 const enterViewer =
   document.getElementById("enterViewer");
 
-
 const loginModal =
   document.getElementById("loginModal");
-
 
 const loginBtn =
   document.getElementById("loginBtn");
 
-
 const passwordInput =
   document.getElementById("password");
-
 
 const loginError =
   document.getElementById("loginError");
 
-
 const togglePassword =
   document.getElementById("togglePassword");
 
-
-/*
-=========================================
-BUKA LOGIN ROSTATI
-=========================================
-*/
 
 function openLogin() {
 
@@ -66,12 +42,6 @@ function openLogin() {
 
 }
 
-
-/*
-=========================================
-TUTUP LOGIN
-=========================================
-*/
 
 function closeLogin() {
 
@@ -92,12 +62,6 @@ closeAdmin.addEventListener(
 );
 
 
-/*
-=========================================
-KLIK DI LUAR MODAL
-=========================================
-*/
-
 loginModal.addEventListener(
   "click",
   (event) => {
@@ -113,12 +77,6 @@ loginModal.addEventListener(
   }
 );
 
-
-/*
-=========================================
-SHOW / HIDE PASSWORD
-=========================================
-*/
 
 togglePassword.addEventListener(
   "click",
@@ -142,12 +100,6 @@ togglePassword.addEventListener(
   }
 );
 
-
-/*
-=========================================
-LOGIN ROSTATI
-=========================================
-*/
 
 function loginAsRostati() {
 
@@ -193,12 +145,6 @@ loginBtn.addEventListener(
 );
 
 
-/*
-=========================================
-ENTER DENGAN TOMBOL ENTER
-=========================================
-*/
-
 passwordInput.addEventListener(
   "keydown",
   (event) => {
@@ -214,12 +160,6 @@ passwordInput.addEventListener(
   }
 );
 
-
-/*
-=========================================
-MASUK SEBAGAI VIEWER
-=========================================
-*/
 
 enterViewer.addEventListener(
   "click",
